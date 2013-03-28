@@ -4,7 +4,7 @@ module DulHydra::Models
   module SolrDocument
 
     def object_profile
-      @object_profile ||= JSON.parse(self[:object_profile_display].first)
+      @object_profile ||= JSON.parse(self[:object_profile_ssm].first)
     end
 
     def datastreams
@@ -33,7 +33,7 @@ module DulHydra::Models
     end
 
     def parent_uri
-      get(:is_part_of_s) || get(:is_member_of_s) || get(:is_member_of_collection_s)
+      get(:is_part_of_ssim) || get(:is_member_of_ssim) || get(:is_member_of_collection_ssim)
     end
 
     def parent_pid
@@ -42,7 +42,7 @@ module DulHydra::Models
     end
 
     def active_fedora_model
-      get(:active_fedora_model_s)
+      get(:active_fedora_model_ssim)
     end
     
     def has_thumbnail?
@@ -55,7 +55,7 @@ module DulHydra::Models
     
     def targets
       object_uri = ActiveFedora::SolrService.escape_uri_for_query("info:fedora/#{id}")
-      query = "is_external_target_for_s:#{object_uri}"
+      query = "is_external_target_for_ssim:#{object_uri}"
       @targets ||= ActiveFedora::SolrService.query(query)
     end
     
@@ -65,7 +65,7 @@ module DulHydra::Models
     
     def children
       object_uri = ActiveFedora::SolrService.escape_uri_for_query("info:fedora/#{id}")
-      query = "is_member_of_s:#{object_uri} OR is_member_of_collection_s:#{object_uri} OR is_part_of_s:#{object_uri}"
+      query = "is_member_of_ssim:#{object_uri} OR is_member_of_collection_ssim:#{object_uri} OR is_part_of_ssim:#{object_uri}"
       @children ||= ActiveFedora::SolrService.query(query)
     end
     
@@ -74,7 +74,7 @@ module DulHydra::Models
     end
     
     def parsed_content_metadata
-      JSON.parse(self[:content_metadata_parsed_s].first)
+      JSON.parse(self[:content_metadata_parsed_s].try(:first) || "{}")
     end
 
   end

@@ -3,10 +3,12 @@ source 'https://rubygems.org'
 gem 'rails', '~> 3.2.11'
 
 gem 'sqlite3'
-gem 'hydra-head', '~> 5.4.0'
-gem 'blacklight', '~> 4.0.1'
+gem 'hydra-head', '6.0.0.rc4'
+gem 'active-fedora', '6.0.0.rc4'
+
+gem 'blacklight', :git => 'git://github.com/projectblacklight/blacklight.git'
 gem 'bootstrap-sass' # blacklight 4.0
-gem 'unicode'        # blacklight 4.0
+#gem 'unicode'        # blacklight 4.0
 gem 'devise'
 
 gem 'log4r'
