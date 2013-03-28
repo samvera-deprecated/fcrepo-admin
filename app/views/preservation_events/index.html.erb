@@ -6,27 +6,7 @@
   <%= render_pagination_info @response %>
 </div>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th scope="col">PID</th>
-			<th scope="col">Event Type</th>
-			<th scope="col">Event Outcome</th>
-			<th scope="col">Event Date</th>
-		</tr>
-	</thead>
-	<tbody>
-  		<% @document_list.each do |doc| %>
-  		<tr>
-  			<td><%= link_to doc.id, catalog_path(doc.id) %></td>
-    	 	<td><%= doc.get(:event_type_s) %></td>
-    	 	<td><%= doc.get(:event_outcome_s) %></td>
-    	 	<td><%= doc.get(:event_date_time_dt) %></td>
-  		</tr>
-  		<% end %>
-		
-	</tbody>
-</table>
+<%= render_document_index %>
 
 <div class="pagination">
   <%= paginate_rsolr_response @response, :theme => 'blacklight' %>
