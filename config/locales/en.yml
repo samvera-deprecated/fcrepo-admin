@@ -1,6 +1,0 @@
-en:
-  blacklight:
-    application_name: 'DUL Preservation Repository'
-    header_links:
-      saved_searches: 'Searches'
-      export_sets: 'Exports'

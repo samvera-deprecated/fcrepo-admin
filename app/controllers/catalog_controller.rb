@@ -6,6 +6,8 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include DulHydra::SolrHelper
 
+  include Hydra::Controller::ControllerBehavior
+
   # Adds method from Blacklight::SolrHelper to helper context
   helper_method :get_solr_response_for_doc_id
 
@@ -16,6 +18,7 @@ class CatalogController < ApplicationController
   CatalogController.solr_search_params_logic += [:add_access_controls_to_solr_params]
 
   configure_blacklight do |config|
+
     config.default_solr_params = { 
       :qt => 'search',
       :rows => 10 
@@ -127,15 +130,12 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, ' + sort_field, :label => 'relevance'
+    config.add_sort_field "score desc, #{self.class.solr_name('system_create', :sortable)} desc", :label => 'relevance'
 
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
     config.spell_max = 5
   end
 
-  def sort_field
-    "#{self.class.solr_name('system_create', :sortable)} desc"
-  end
 
 end 

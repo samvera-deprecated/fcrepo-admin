@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'fileutils'
-require "#{Rails.root}/spec/scripts/batch_ingest_spec_helper"
+require File.expand_path(File.join(File.dirname(__FILE__), "batch_ingest_spec_helper"))
 
 RSpec.configure do |c|
   c.include BatchIngestSpecHelper
