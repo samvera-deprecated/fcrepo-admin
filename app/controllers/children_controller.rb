@@ -1,4 +1,4 @@
-class ChildrenController < ApplicationController
+class ChildrenController < CatalogController
 
   include Blacklight::SolrHelper
   include DulHydra::SolrHelper

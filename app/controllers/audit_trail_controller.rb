@@ -1,4 +1,4 @@
-class AuditTrailController < ApplicationController
+class AuditTrailController < CatalogController
   
   def index
     @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
