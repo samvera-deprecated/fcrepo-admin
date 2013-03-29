@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "audit_trail/index.html.erb" do
   subject { page }
-  let(:object) { FactoryGirl.create(:test_model) }
+  let(:object) { ActiveFedora::Base.create }
   before { visit audit_trail_index_path(object) }
   after { object.delete }
   it "should display the audit trail" do
