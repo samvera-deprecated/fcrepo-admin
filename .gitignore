@@ -7,25 +7,7 @@
 # Ignore bundler config
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-
-# Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
-
-# Ignore all config yaml files
-/config/*.yml
-# Except for this one
-!/config/predicate_mappings.yml
-
-# Environment configs
-/config/environments
-
-# Pre-compiled assets
-/public/assets
-
-# Paperclip files
-/public/system
+# Test app logs
+/spec/internal/log/*.log
 
 .sass-cache
