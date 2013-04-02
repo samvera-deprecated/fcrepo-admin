@@ -1,0 +1,9 @@
+== Hydra Administrative Tool for a Fedora Repository
+
+A Rails engine providing an administrative interface to a Fedora Commons repository.  Built on the Hydra project framework.
+
+=== License
+
+See the LICENSE file in the root directory of the project for copyright and license information.
+
+Licenses for code copied from other projects will be included in source files as required.
