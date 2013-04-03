@@ -8,6 +8,7 @@
 /.bundle
 
 # Test app
+/spec/internal/db/*.sqlite3
 /spec/internal/log/*.log
 /spec/internal/jetty
 /spec/internal/tmp

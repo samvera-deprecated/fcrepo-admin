@@ -2,15 +2,19 @@ require 'spec_helper'
 
 describe AuditTrailController do
   context "#index" do
-    subject { get :index, :object_id => object, :use_route => 'fcrepo_admin' }
-    let(:object) { FactoryGirl.create(:fcrepo_object) }
-    after { object.delete }
-    it { should render_template(:index) } 
+    context "object does not respond to audit_trail" do
+      subject { get :index, :object_id => object, :use_route => 'fcrepo_admin' }
+      let(:object) { ActiveFedora::Base.create }
+      after { object.delete }
+      its(:response_code) { should eq(404) }
+    end
   end
   context "#index?download=true" do
-    subject { get :index, :object_id => object, :download => 'true', :use_route => 'fcrepo_admin' }
-    let(:object) { FactoryGirl.create(:fcrepo_object) }
-    after { object.delete }
-    it { should be_successful }
+    context "object does not respond to audit_trail" do
+      subject { get :index, :object_id => object, :download => 'true', :use_route => 'fcrepo_admin' }
+      let(:object) { ActiveFedora::Base.create }
+      after { object.delete }
+      its(:response_code) { should eq(404) }
+    end
   end
 end

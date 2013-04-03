@@ -8,7 +8,7 @@ shared_examples "a datastream show page" do
     end
   end
   it "should have a link to download the datastream content" do
-    expect(subject).to have_link("Download", :href => download_datastream_path(object, dsid))
+    expect(subject).to have_link("Download", :href => fcrepo_admin.download_datastream_path(object, dsid))
   end
 end
 
@@ -23,7 +23,7 @@ end
 
 describe "datastreams/show.html.erb" do
   subject { page }
-  before { visit fcrepo_admin_engine.datastream_path(object, dsid) }
+  before { visit fcrepo_admin.datastream_path(object, dsid) }
   after { object.delete }
   it_behaves_like "an object having datastream show pages" do
     let(:object) { ActiveFedora::Base.create }
