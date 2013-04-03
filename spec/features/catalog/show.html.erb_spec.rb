@@ -7,7 +7,7 @@ end
 
 describe "catalog/show.html.erb" do
   subject { page }
-  before { visit fcrepo_admin.catalog_path(object) }
+  before { visit catalog_path(object) }
   after do
     object.parent.delete if object.respond_to?(:parent) && object.parent
     if object.respond_to?(:children) && object.children

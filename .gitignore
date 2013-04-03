@@ -7,10 +7,9 @@
 # Ignore bundler config
 /.bundle
 
-# Test app logs
+# Test app
 /spec/internal/log/*.log
+/spec/internal/jetty
+/spec/internal/tmp
 
-.sass-cache
-
-# Ignore jetty for testing
-/jetty
+/tmp

@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
 
-  has_many :export_sets, :dependent => :destroy
-
   # Connects this user object to Hydra behaviors. 
   include Hydra::User
 

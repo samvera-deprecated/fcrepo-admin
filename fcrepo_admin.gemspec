@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "hydra-head", "6.0.0"
   s.add_dependency "blacklight"
-  s.add_dependency "rails", "~> 3.2.13"
+  s.add_dependency "rails", "~> 3.2"
 
   s.add_dependency "rubyzip"
   s.add_dependency "paperclip", '~> 3.1'
@@ -33,4 +33,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "capybara"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "factory_girl_rails"
+  s.add_development_dependency "jettywrapper"
 end

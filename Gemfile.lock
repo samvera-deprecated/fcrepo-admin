@@ -7,7 +7,7 @@ PATH
       mime-types (~> 1.19)
       mini_magick
       paperclip (~> 3.1)
-      rails (~> 3.2.13)
+      rails (~> 3.2)
       rubyzip
 
 GEM
@@ -275,6 +275,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   fcrepo_admin!
+  jettywrapper
   rspec
   rspec-rails
   sqlite3

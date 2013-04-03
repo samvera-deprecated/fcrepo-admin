@@ -3,7 +3,7 @@
 <h3>Audit Trail</h3>
 
 <p>
-	<%= link_to "Download Raw XML", "#{audit_trail_index_path(@object)}?download=true" %>
+	<%= link_to "Download Raw XML", "#{fcrepo_admin.audit_trail_index_path(@object)}?download=true" %>
 </p>
 
 <table class="table table-bordered table-condensed table-striped">
@@ -31,3 +31,4 @@
 		</tr>
 		<% end %>
 	</tbody>
+</table>

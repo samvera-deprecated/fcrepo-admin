@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-
-  mount FcrepoAdmin::Engine => "/admin"
+  Blacklight.add_routes(self)
+  root :to => "catalog#index"
+  devise_for :users
+  mount FcrepoAdmin::Engine => "/", :as => 'fcrepo_admin'
 end

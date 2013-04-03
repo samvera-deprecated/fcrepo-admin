@@ -1,6 +1,6 @@
 require 'mime/types'
 
-module FcrepoAdmin
+#module FcrepoAdmin
   class DatastreamsController < ApplicationController
 
     TEXT_MIME_TYPES = ['application/xml', 'application/rdf+xml', 'application/json']
@@ -22,4 +22,4 @@ module FcrepoAdmin
     end
 
   end
-end
+#end
