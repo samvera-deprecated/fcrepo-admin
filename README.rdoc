@@ -1,6 +1,20 @@
 == Hydra Administrative Tool for a Fedora Repository
 
-A Rails engine providing an administrative interface to a Fedora Commons repository.  Built on the Hydra project framework.
+A Rails engine providing an administrative interface to a Fedora Commons repository built on the Hydra project framework.
+
+=== Status
+
+This project is at an early stage of development and should be considered alpha at best.
+
+=== Requirements
+
+fcrepo_admin is designed for installation on hydra-head 6.0.0 or higher.  See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
+
+=== Installation
+
+Follow hydra-head installation instructions at https://github.com/projecthydra/hydra-head.
+
+TODO
 
 === License
 
