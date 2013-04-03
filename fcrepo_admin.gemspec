@@ -7,14 +7,16 @@ require "fcrepo_admin/version"
 Gem::Specification.new do |s|
   s.name        = "fcrepo_admin"
   s.version     = FcrepoAdmin::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
+  s.authors     = ["David Chandek-Stark", "Chris Beer"]
+  s.email       = ["hydra-tech@googlegroups.com"]
   s.homepage    = "http://projecthydra.org"
-  s.summary     = "TODO: Summary of Blorgh."
-  s.description = "TODO: Description of Blorgh."
+  s.summary     = "Hydra-based Fedora repository admin tool."
+  s.description = "A Rails engine for administrative access to a Fedora Commons repository. Based on Hydra Project repository application framework."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
+
+  #s.add_dependency "hydra"
 
   s.add_dependency "hydra-head", "6.0.0"
   s.add_dependency "blacklight"
@@ -24,10 +26,11 @@ Gem::Specification.new do |s|
   s.add_dependency "paperclip", '~> 3.1'
   s.add_dependency "mini_magick"
   s.add_dependency "mime-types", '~> 1.19'
-  s.add_development_dependency "devise"
 
+  s.add_development_dependency "devise"
   s.add_development_dependency "rspec"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "capybara"
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "factory_girl_rails"
 end

@@ -56,7 +56,7 @@ GEM
     arel (3.0.2)
     backports (3.1.1)
     bcrypt-ruby (3.0.1)
-    blacklight (4.1.0)
+    blacklight (4.2.0)
       bootstrap-sass (~> 2.2.0)
       kaminari (~> 0.13)
       marc (>= 0.4.3, < 1.1)
@@ -95,6 +95,11 @@ GEM
     equivalent-xml (0.3.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     fastercsv (1.5.5)
     ffi (1.6.0)
     hike (1.2.1)
@@ -268,6 +273,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   devise
+  factory_girl_rails
   fcrepo_admin!
   rspec
   rspec-rails

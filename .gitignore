@@ -11,3 +11,6 @@
 /spec/internal/log/*.log
 
 .sass-cache
+
+# Ignore jetty for testing
+/jetty

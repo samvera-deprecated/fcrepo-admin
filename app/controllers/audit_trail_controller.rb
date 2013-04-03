@@ -1,11 +1,13 @@
-class AuditTrailController < CatalogController
+module FcrepoAdmin
+  class AuditTrailController < CatalogController
   
-  def index
-    @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
-    authorize! :read, @object
-    if params[:download]
-      send_data @object.audit_trail.to_xml, :disposition => 'inline', :type => 'text/xml'
+    def index
+      @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
+      #authorize! :read, @object
+      if params[:download]
+        send_data @object.audit_trail.to_xml, :disposition => 'inline', :type => 'text/xml'
+      end
     end
-  end
   
+  end
 end

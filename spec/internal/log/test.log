@@ -878,3 +878,633 @@ Using the default fedora.yml that comes with active-fedora.  If you want to over
 Loaded datastream profile changeme:18663/RELS-EXT (3.4ms)
 Loaded datastream profile changeme:18664/RELS-EXT (3.6ms)
   [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:1/RELS-EXT (5.7ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'person2@example.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'person3@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.0ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'person4@example.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Loaded datastream list for changeme:242 (8.1ms)
+Loaded datastream profile changeme:242/RELS-EXT (7.3ms)
+Loaded datastream content changeme:242/RELS-EXT (54.2ms)
+TestModel is not a real class
+Loaded datastream profile changeme:242/DC (6.9ms)
+Loaded datastream profile changeme:242/descMetadata (5.8ms)
+Loaded datastream profile changeme:242/rightsMetadata (5.7ms)
+Loaded datastream list for changeme:242 (6.2ms)
+Loaded datastream profile changeme:242/RELS-EXT (5.6ms)
+Loaded datastream content changeme:242/RELS-EXT (5.2ms)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:243/RELS-EXT (5.8ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:244/RELS-EXT (6.3ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:245/RELS-EXT (5.6ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:246/RELS-EXT (7.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:247/RELS-EXT (5.8ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:248/RELS-EXT (5.4ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:249/RELS-EXT (6.6ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:250/RELS-EXT (5.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:251/RELS-EXT (5.5ms)
+Started GET "/admin/catalog/changeme:251/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:23:27 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:252/RELS-EXT (4.7ms)
+Started GET "/admin/catalog/changeme:252/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:23:27 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:253/RELS-EXT (5.6ms)
+Started GET "/admin/catalog/changeme:253/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:23:27 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:254/RELS-EXT (4.8ms)
+Started GET "/admin/catalog/changeme:254/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:23:27 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:255/RELS-EXT (4.8ms)
+Started GET "/admin/catalog/changeme:255/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:25:02 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:255", "id"=>"DC"}
+Loaded datastream list for changeme:255 (4.8ms)
+Loaded datastream profile changeme:255/RELS-EXT (4.7ms)
+Loaded datastream content changeme:255/RELS-EXT (4.3ms)
+Loaded datastream profile changeme:255/DC (5.2ms)
+Completed 500 Internal Server Error in 225ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:256/RELS-EXT (4.8ms)
+Started GET "/admin/catalog/changeme:256/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:25:02 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:256", "id"=>"DC"}
+Loaded datastream list for changeme:256 (4.4ms)
+Loaded datastream profile changeme:256/RELS-EXT (4.9ms)
+Loaded datastream content changeme:256/RELS-EXT (4.8ms)
+Loaded datastream profile changeme:256/DC (4.8ms)
+Completed 500 Internal Server Error in 30ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:257/RELS-EXT (5.1ms)
+Started GET "/admin/catalog/changeme:257/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:25:02 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:257", "id"=>"RELS-EXT"}
+Loaded datastream list for changeme:257 (4.7ms)
+Loaded datastream profile changeme:257/RELS-EXT (5.0ms)
+Loaded datastream content changeme:257/RELS-EXT (4.7ms)
+Completed 500 Internal Server Error in 25ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:258/RELS-EXT (5.0ms)
+Started GET "/admin/catalog/changeme:258/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:25:02 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:258", "id"=>"RELS-EXT"}
+Loaded datastream list for changeme:258 (4.9ms)
+Loaded datastream profile changeme:258/RELS-EXT (5.0ms)
+Loaded datastream content changeme:258/RELS-EXT (7.4ms)
+Completed 500 Internal Server Error in 28ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:259/RELS-EXT (4.6ms)
+Started GET "/admin/catalog/changeme:259/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:25:52 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:259", "id"=>"RELS-EXT"}
+Loaded datastream list for changeme:259 (4.6ms)
+Loaded datastream profile changeme:259/RELS-EXT (4.7ms)
+Loaded datastream content changeme:259/RELS-EXT (4.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (1.5ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.6ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 235ms (Views: 51.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:260/RELS-EXT (4.4ms)
+Started GET "/admin/catalog/changeme:260/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:25:53 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:260", "id"=>"RELS-EXT"}
+Loaded datastream list for changeme:260 (4.4ms)
+Loaded datastream profile changeme:260/RELS-EXT (4.2ms)
+Loaded datastream content changeme:260/RELS-EXT (4.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (0.4ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 24ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:261/RELS-EXT (6.0ms)
+Started GET "/admin/catalog/changeme:261/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:25:54 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:261", "id"=>"DC"}
+Loaded datastream list for changeme:261 (4.6ms)
+Loaded datastream profile changeme:261/RELS-EXT (4.6ms)
+Loaded datastream content changeme:261/RELS-EXT (4.3ms)
+Loaded datastream profile changeme:261/DC (4.7ms)
+Loaded datastream content changeme:261/DC (4.4ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (5.1ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 35ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:262/RELS-EXT (5.0ms)
+Started GET "/admin/catalog/changeme:262/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:25:54 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:262", "id"=>"DC"}
+Loaded datastream list for changeme:262 (4.9ms)
+Loaded datastream profile changeme:262/RELS-EXT (4.6ms)
+Loaded datastream content changeme:262/RELS-EXT (4.5ms)
+Loaded datastream profile changeme:262/DC (4.8ms)
+Loaded datastream content changeme:262/DC (4.4ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (5.1ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 36ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+Loaded datastream profile changeme:262/DC (4.7ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:263/RELS-EXT (4.7ms)
+Started GET "/admin/catalog/changeme:263/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:26:27 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:263", "id"=>"RELS-EXT"}
+Loaded datastream list for changeme:263 (4.3ms)
+Loaded datastream profile changeme:263/RELS-EXT (4.4ms)
+Loaded datastream content changeme:263/RELS-EXT (3.9ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (1.3ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.6ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 207ms (Views: 47.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:264/RELS-EXT (4.7ms)
+Started GET "/admin/catalog/changeme:264/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:26:28 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:264", "id"=>"RELS-EXT"}
+Loaded datastream list for changeme:264 (4.3ms)
+Loaded datastream profile changeme:264/RELS-EXT (4.3ms)
+Loaded datastream content changeme:264/RELS-EXT (4.6ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (0.7ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.4ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 28ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:265/RELS-EXT (4.4ms)
+Started GET "/admin/catalog/changeme:265/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:26:29 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:265", "id"=>"DC"}
+Loaded datastream list for changeme:265 (4.1ms)
+Loaded datastream profile changeme:265/RELS-EXT (4.1ms)
+Loaded datastream content changeme:265/RELS-EXT (3.8ms)
+Loaded datastream profile changeme:265/DC (4.4ms)
+Loaded datastream content changeme:265/DC (4.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (5.0ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 33ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:266/RELS-EXT (4.7ms)
+Started GET "/admin/catalog/changeme:266/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:26:29 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:266", "id"=>"DC"}
+Loaded datastream list for changeme:266 (4.5ms)
+Loaded datastream profile changeme:266/RELS-EXT (4.6ms)
+Loaded datastream content changeme:266/RELS-EXT (4.3ms)
+Loaded datastream profile changeme:266/DC (4.7ms)
+Loaded datastream content changeme:266/DC (4.5ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (5.3ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.3ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 36ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+Loaded datastream profile changeme:266/DC (4.7ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:267/RELS-EXT (4.3ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:268/RELS-EXT (4.6ms)
+Started GET "/admin/catalog/changeme:268/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:26:43 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:268", "id"=>"RELS-EXT"}
+Loaded datastream list for changeme:268 (4.3ms)
+Loaded datastream profile changeme:268/RELS-EXT (4.5ms)
+Loaded datastream content changeme:268/RELS-EXT (4.4ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (1.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.6ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 241ms (Views: 48.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:269/RELS-EXT (4.2ms)
+Started GET "/admin/catalog/changeme:269/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:26:44 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:269", "id"=>"RELS-EXT"}
+Loaded datastream list for changeme:269 (3.9ms)
+Loaded datastream profile changeme:269/RELS-EXT (4.0ms)
+Loaded datastream content changeme:269/RELS-EXT (3.9ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (0.4ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 23ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:270/RELS-EXT (4.4ms)
+Started GET "/admin/catalog/changeme:270/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:26:45 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:270", "id"=>"DC"}
+Loaded datastream list for changeme:270 (3.9ms)
+Loaded datastream profile changeme:270/RELS-EXT (3.9ms)
+Loaded datastream content changeme:270/RELS-EXT (3.8ms)
+Loaded datastream profile changeme:270/DC (4.2ms)
+Loaded datastream content changeme:270/DC (4.0ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (4.7ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 32ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:271/RELS-EXT (4.5ms)
+Started GET "/admin/catalog/changeme:271/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:26:45 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:271", "id"=>"DC"}
+Loaded datastream list for changeme:271 (4.1ms)
+Loaded datastream profile changeme:271/RELS-EXT (4.2ms)
+Loaded datastream content changeme:271/RELS-EXT (4.1ms)
+Loaded datastream profile changeme:271/DC (4.3ms)
+Loaded datastream content changeme:271/DC (3.8ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (4.6ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 34ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+Loaded datastream profile changeme:271/DC (4.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'person2@example.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'person3@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.0ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'person4@example.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:272/RELS-EXT (4.4ms)
+Started GET "/admin/catalog/changeme:272/audit_trail" for 127.0.0.1 at 2013-04-02 19:27:56 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:273/RELS-EXT (4.3ms)
+Started GET "/admin/catalog/changeme:273/audit_trail" for 127.0.0.1 at 2013-04-02 19:28:40 -0400
+Processing by FcrepoAdmin::AuditTrailController#index as HTML
+  Parameters: {"object_id"=>"changeme:273"}
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:274/RELS-EXT (4.5ms)
+Started GET "/admin/catalog/changeme:274/audit_trail" for 127.0.0.1 at 2013-04-02 19:30:04 -0400
+Processing by FcrepoAdmin::AuditTrailController#index as HTML
+  Parameters: {"object_id"=>"changeme:274"}
+Completed 500 Internal Server Error in 1ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:275/RELS-EXT (4.3ms)
+Started GET "/admin/catalog/changeme:275/audit_trail" for 127.0.0.1 at 2013-04-02 19:30:23 -0400
+Processing by FcrepoAdmin::AuditTrailController#index as HTML
+  Parameters: {"object_id"=>"changeme:275"}
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'person1@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'person2@example.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'person3@example.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.0ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'person4@example.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:276/RELS-EXT (4.3ms)
+Started GET "/admin/catalog/changeme:276/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:30:23 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:276", "id"=>"DC"}
+Loaded datastream list for changeme:276 (4.0ms)
+Loaded datastream profile changeme:276/RELS-EXT (4.2ms)
+Loaded datastream content changeme:276/RELS-EXT (3.7ms)
+Loaded datastream profile changeme:276/DC (4.5ms)
+Loaded datastream content changeme:276/DC (4.3ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (5.8ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.7ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 219ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+Loaded datastream profile changeme:276/DC (4.6ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:277/RELS-EXT (4.2ms)
+Started GET "/admin/catalog/changeme:277/datastreams/DC" for 127.0.0.1 at 2013-04-02 19:30:24 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:277", "id"=>"DC"}
+Loaded datastream list for changeme:277 (3.8ms)
+Loaded datastream profile changeme:277/RELS-EXT (4.1ms)
+Loaded datastream content changeme:277/RELS-EXT (4.0ms)
+Loaded datastream profile changeme:277/DC (4.3ms)
+Loaded datastream content changeme:277/DC (4.0ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (4.8ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 33ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:278/RELS-EXT (4.3ms)
+Started GET "/admin/catalog/changeme:278/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:30:25 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:278", "id"=>"RELS-EXT"}
+Loaded datastream list for changeme:278 (4.0ms)
+Loaded datastream profile changeme:278/RELS-EXT (4.1ms)
+Loaded datastream content changeme:278/RELS-EXT (3.7ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (0.4ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 23ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:279/RELS-EXT (4.5ms)
+Started GET "/admin/catalog/changeme:279/datastreams/RELS-EXT" for 127.0.0.1 at 2013-04-02 19:30:26 -0400
+Processing by FcrepoAdmin::DatastreamsController#show as HTML
+  Parameters: {"object_id"=>"changeme:279", "id"=>"RELS-EXT"}
+Loaded datastream list for changeme:279 (4.3ms)
+Loaded datastream profile changeme:279/RELS-EXT (4.0ms)
+Loaded datastream content changeme:279/RELS-EXT (3.9ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_content.html.erb (0.4ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/_profile_table.html.erb (0.2ms)
+  Rendered /Users/dc/github/projecthydra/fcrepo-admin/app/views/fcrepo_admin/datastreams/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 24ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:280/RELS-EXT (4.2ms)
+Started GET "/admin/catalog/changeme:280" for 127.0.0.1 at 2013-04-02 19:53:55 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:281/RELS-EXT (4.5ms)
+Started GET "/admin/catalog/changeme:281" for 127.0.0.1 at 2013-04-02 19:53:55 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:282/RELS-EXT (4.4ms)
+Started GET "/admin/catalog/changeme:282" for 127.0.0.1 at 2013-04-02 19:55:02 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:283/RELS-EXT (4.4ms)
+Started GET "/admin/catalog/changeme:283" for 127.0.0.1 at 2013-04-02 19:55:03 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:284/RELS-EXT (4.2ms)
+Started GET "/admin/catalog/changeme:284" for 127.0.0.1 at 2013-04-02 19:58:45 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:285/RELS-EXT (4.4ms)
+Started GET "/admin/catalog/changeme:285" for 127.0.0.1 at 2013-04-02 19:58:45 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading fedora config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/fedora.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+ActiveFedora: loading solr config from /Users/dc/.rvm/gems/ruby-1.9.3-p392@fcrepo-admin/gems/active-fedora-6.0.0/config/solr.yml
+Using the default fedora.yml that comes with active-fedora.  If you want to override this, pass the path to fedora.yml to ActiveFedora - ie. ActiveFedora.init(:fedora_config_path => '/path/to/fedora.yml') - or set Rails.root and put fedora.yml into #{Rails.root}/config.
+Loaded datastream profile changeme:286/RELS-EXT (4.1ms)
+Started GET "/admin/catalog/changeme:286" for 127.0.0.1 at 2013-04-02 20:05:08 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Loaded datastream profile changeme:287/RELS-EXT (4.4ms)
+Started GET "/admin/catalog/changeme:287" for 127.0.0.1 at 2013-04-02 20:05:08 -0400
+  [1m[35m (0.1ms)[0m  rollback transaction
