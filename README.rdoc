@@ -4,7 +4,7 @@ A Rails engine providing an administrative interface to a Fedora Commons reposit
 
 === Status
 
-This project is at an early stage of development and should be considered alpha at best.
+This project is at an early stage of development.  It should be considered experimental and not ready for production deployment.
 
 === Requirements
 
