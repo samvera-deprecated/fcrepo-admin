@@ -1,6 +1,6 @@
-namespace :dul_hydra do
+namespace :fcrepo_admin do
     namespace :solr do
-        desc "Deletes everything from the solr index"
+        desc "Deletes everything from the Solr index"
         task :clean => :environment do
           Blacklight.solr.delete_by_query("*:*")
           Blacklight.solr.commit

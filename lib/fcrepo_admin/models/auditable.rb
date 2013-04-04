@@ -1,4 +1,4 @@
-module DulHydra::Models
+module FcrepoAdmin::Models
   module Auditable
     
     def audit_trail

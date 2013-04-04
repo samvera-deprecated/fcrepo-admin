@@ -1,4 +1,4 @@
-module DulHydra::Helpers
+module FcrepoAdmin::Helpers
   module CatalogHelperBehavior
     
     def internal_uri_to_pid(args)
@@ -11,7 +11,7 @@ module DulHydra::Helpers
       # having been added as a helper method to CatalogController
       response, doc = get_solr_response_for_doc_id(pid)
       title = doc.nil? ? pid : doc.fetch('title_display', pid)
-      link_to(title, catalog_path(pid), :class => "parent-link").html_safe
+      link_to(title, fcrepo_admin.catalog_path(pid), :class => "parent-link").html_safe
     end
     
   end

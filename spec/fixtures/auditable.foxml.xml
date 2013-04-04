@@ -69,7 +69,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:contentDigest TYPE="SHA-256" DIGEST="3f588eca58dea77b31c9ed0b90e4560288a419856c4bb744fab9c7fe8749ad19"/>
 <foxml:xmlContent>
 <dc xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <dcterms:title>DulHydra Test Object</dcterms:title>
+  <dcterms:title>Fcrepo Test Object</dcterms:title>
   <dcterms:identifier>test00001</dcterms:identifier>
 </dc>
 </foxml:xmlContent>

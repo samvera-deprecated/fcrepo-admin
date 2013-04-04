@@ -1,4 +1,4 @@
 module CatalogHelper
   include Blacklight::CatalogHelperBehavior
-  include DulHydra::Helpers::CatalogHelperBehavior
+  include FcrepoAdmin::Helpers::CatalogHelperBehavior
 end
