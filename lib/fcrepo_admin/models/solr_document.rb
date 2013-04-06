@@ -4,8 +4,7 @@ module FcrepoAdmin::Models
   module SolrDocument
 
     def object_profile
-      # FIXME hard-coded field name
-      @object_profile ||= JSON.parse(self['object_profile_ssm'].first)
+      @object_profile ||= JSON.parse(self[ActiveFedora::Base.profile_solr_name].first)
     end
 
     def datastreams
@@ -13,7 +12,6 @@ module FcrepoAdmin::Models
     end
     
     def has_datastream?(dsID)
-      #!(datastreams[dsID].nil? || datastreams[dsID].empty?)
       !datastreams[dsID].blank?
     end
 
@@ -22,8 +20,7 @@ module FcrepoAdmin::Models
     end
 
     def admin_policy_uri
-      # FIXME hard-coded field name
-      get(:is_governed_by_s)
+      get ActiveFedora::SolrService.solr_name('is_governed_by', :symbol)
     end
 
     def admin_policy_pid
@@ -46,10 +43,6 @@ module FcrepoAdmin::Models
 
     def active_fedora_model
       get(ActiveFedora::SolrService.solr_name('active_fedora_model', :symbol))
-    end
-    
-    def has_content?
-      has_datastream?("content")
     end
     
   end

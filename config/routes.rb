@@ -1,17 +1,6 @@
-#require 'devise'
-
 FcrepoAdmin::Engine.routes.draw do
 
-  #root :to => "catalog#index"
-
-  #Blacklight.add_routes(self) #, :only => [:catalog])
-
-  # devise_for :users, {
-  #   module: :devise
-  # }
-
-  scope "catalog/:object_id" do
-    # get 'thumbnail' => 'thumbnail#show'
+  scope ":object_id" do
     resources :datastreams, :only => :show do
       member do
         get 'download'
