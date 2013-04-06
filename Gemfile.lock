@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fcrepo_admin (0.0.3)
+    fcrepo_admin (0.0.4)
       blacklight
       hydra-head (= 6.0.0)
       mime-types (~> 1.19)
