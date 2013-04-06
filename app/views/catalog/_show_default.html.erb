@@ -1,20 +1,12 @@
-    <%# default partial to display solr document fields in catalog show view -%>
-    <dl class="dl-horizontal  dl-invert">
-      <% document_show_fields.each do |solr_fname, field| -%>
-        <% if should_render_show_field? document, field %>
-        <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_label :field => solr_fname %></dt>
-        <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value :document => document, :field => solr_fname %></dd>
-        <% end -%>
-      <% end -%>
-    </dl>
-    <%# end blacklight default -%>
+<%# default partial to display solr document fields in catalog show view -%>
+<dl class="dl-horizontal  dl-invert">
+  <% document_show_fields.each do |solr_fname, field| -%>
+    <% if should_render_show_field? document, field %>
+    <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_label :field => solr_fname %></dt>
+    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value :document => document, :field => solr_fname %></dd>
+    <% end -%>
+  <% end -%>
+</dl>
+<%# end blacklight default -%>
 
-<h3>Datastreams</h3>
-<%= render :partial => 'datastreams', :locals => {:document => document} %>
-
-<h3>More Information</h3>
-<ul>
-  <li>
-    <%= link_to "Audit Trail", fcrepo_admin.audit_trail_index_path(document.id) %>
-  </li>
-</ul>
+<%= render :partial => 'fcrepo_admin/show', :locals => {:document => document} %>

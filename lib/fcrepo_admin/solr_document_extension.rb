@@ -1,7 +1,7 @@
 require 'json'
 
-module FcrepoAdmin::Models
-  module SolrDocument
+module FcrepoAdmin
+  module SolrDocumentExtension
 
     def object_profile
       @object_profile ||= JSON.parse(self[ActiveFedora::Base.profile_solr_name].first)
