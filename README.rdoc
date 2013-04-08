@@ -12,9 +12,20 @@ fcrepo_admin is designed for installation on hydra-head 6.0.0 or higher.  See ht
 
 === Installation
 
-Follow hydra-head installation instructions at https://github.com/projecthydra/hydra-head.
+* Add to gemfile
 
-TODO
+<code>
+gem 'fcrepo_admin'
+</code>
+
+Then <code>bundle install</code>
+
+* Run the blacklight and hydra generators
+
+  rails g blacklight --devise
+  rails g hydra:head -f
+  rails g hydra:jetty  # if you need a development copy of jetty with solr and fedora
+
 
 === License
 
