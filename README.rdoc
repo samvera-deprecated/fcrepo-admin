@@ -21,11 +21,12 @@ gem 'fcrepo_admin'
 Then <code>bundle install</code>
 
 * Run the blacklight and hydra generators
-
-  rails g blacklight --devise
-  rails g hydra:head -f
-  rails g hydra:jetty  # if you need a development copy of jetty with solr and fedora
-
+  <code>
+    rails g blacklight --devise
+    rails g hydra:head -f
+    rake db:migrate
+    rails g hydra:jetty  # if you need a development copy of jetty with solr and fedora
+  </code>
 
 === License
 
