@@ -33,6 +33,10 @@ Then <code>bundle install</code>
 
 * Augment the solr document
   In app/models/solr_document.rb add this line: <code>use_extension FcrepoAdmin::SolrDocumentExtension</code>
+
+* Add javascript
+  In app/assets/javascripts/application.js add this line: <code>//= require bootstrap-tab</code>
+
 === License
 
 See the LICENSE file in the root directory of the project for copyright and license information.
