@@ -31,6 +31,8 @@ Then <code>bundle install</code>
 * Mount the engine
   In config/routes.rb add this line: <code>  mount FcrepoAdmin::Engine => '/objects', :as=> 'fcrepo_admin'</code>
 
+* Augment the solr document
+  In app/models/solr_document.rb add this line: <code>use_extension FcrepoAdmin::SolrDocumentExtension</code>
 === License
 
 See the LICENSE file in the root directory of the project for copyright and license information.
