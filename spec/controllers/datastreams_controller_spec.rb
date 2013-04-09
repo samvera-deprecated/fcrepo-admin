@@ -4,7 +4,7 @@ shared_examples "a datastream profile view" do
   it { should render_template(:show) }
 end
 
-describe DatastreamsController do
+describe FcrepoAdmin::DatastreamsController do
   after { object.delete }
   context "#show" do
     let(:object) { ActiveFedora::Base.create }

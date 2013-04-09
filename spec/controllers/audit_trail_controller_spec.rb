@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe AuditTrailController do
+describe FcrepoAdmin::AuditTrailController do
   context "#index" do
     let(:object) { ActiveFedora::Base.create }
     after { object.delete }

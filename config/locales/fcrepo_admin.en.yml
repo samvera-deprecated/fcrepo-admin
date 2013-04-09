@@ -1,0 +1,13 @@
+en:
+  fcrepo_admin:
+    audit_trail: 
+      title: 'Audit Trail'
+      download: 'Download Raw XML'
+      record:
+        id: 'Record ID'
+        process_type: 'Process Type'
+        action: 'Action'
+        component_id: 'Component ID'
+        responsibility: 'Responsibility'
+        date: 'Date'
+        justification: 'Justification'
