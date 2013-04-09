@@ -12,5 +12,6 @@
 /spec/internal/log/*.log
 /spec/internal/jetty
 /spec/internal/tmp
+/spec/internal/.sass-cache
 
 /tmp

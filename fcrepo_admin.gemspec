@@ -21,10 +21,6 @@ Gem::Specification.new do |s|
   s.add_dependency "hydra-head", "6.0.0"
   s.add_dependency "blacklight"
   s.add_dependency "rails", "~> 3.2"
-
-  #s.add_dependency "rubyzip"
-  #s.add_dependency "paperclip", '~> 3.1'
-  #s.add_dependency "mini_magick"
   s.add_dependency "mime-types", '~> 1.19'
 
   s.add_development_dependency "devise"
@@ -34,4 +30,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "factory_girl_rails"
   s.add_development_dependency "jettywrapper"
+  s.add_development_dependency "jquery-rails"
+  s.add_development_dependency "sass-rails"
+  s.add_development_dependency "bootstrap-sass"
 end

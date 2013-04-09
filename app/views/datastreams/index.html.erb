@@ -1,3 +1,5 @@
+<h1><%= @object.pid %></h1>
+
 <div class="fcrepo-admin fcrepo-admin-datastreams">
   <h3>Datastreams</h3>
   <table class="table table-bordered table-condensed">
@@ -9,13 +11,14 @@
       </tr>
 	</thead>
 	<tbody>
-      <% datastreams.reject { |dsid, dsProfile| dsProfile.empty? }.each do |dsid, dsProfile| %>
+      <% @datastreams.reject { |dsid, ds| ds.profile.empty? }.each do |dsid, ds| %>
       <tr>
-		<td><%= link_to dsid, fcrepo_admin.datastream_path(pid, dsid) %></td>
-		<td><%= dsProfile["dsLabel"] %></td>
-		<td><%= dsProfile["dsMIME"] %></td>
+		<td><%= link_to dsid, fcrepo_admin.datastream_path(ds.pid, dsid) %></td>
+		<td><%= ds.profile["dsLabel"] %></td>
+		<td><%= ds.profile["dsMIME"] %></td>
       </tr>
       <% end %>
 	</tbody>
   </table>
 </div>
+

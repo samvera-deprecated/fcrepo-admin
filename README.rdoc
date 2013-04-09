@@ -27,15 +27,25 @@ fcrepo_admin is designed for installation on hydra-head 6.0.0 or higher.  See ht
 
 * Mount the engine
 
-  In config/routes.rb add this line: <code>  mount FcrepoAdmin::Engine => '/objects', :as=> 'fcrepo_admin'</code>
+  In config/routes.rb add this line: <code>mount FcrepoAdmin::Engine => '/objects', :as=> 'fcrepo_admin'</code>
 
-* Augment the solr document
+  Replace <code>'/objects'</code> with an alternative mount point if you prefer.
+
+* Extend the SolrDocument model
   
   In app/models/solr_document.rb add this line: <code>use_extension FcrepoAdmin::SolrDocumentExtension</code>
 
-* Add javascript
+* Add Javascript
   
   In app/assets/javascripts/application.js add this line: <code>//= require bootstrap-tab</code>
+
+* Customize catalog show page (optional)
+
+  If you would like to add Fedora object information to the catalog show page, copy the partial <code>app/views/catalog_show.html.erb</code> from the Blacklight gem to your application, then add to the bottom opf the file:
+
+    <%= render :partial => 'fcrepo_admin/show', :locals => {:document => document} %>
+
+  Use Blacklight's config options in CatalogController to control the basic content on the show page (HTML title, page title, and list of the fields/values at the top of the page)
 
 === License
 

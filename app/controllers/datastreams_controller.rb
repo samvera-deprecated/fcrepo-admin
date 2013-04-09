@@ -1,25 +1,29 @@
 require 'mime/types'
 
-#module FcrepoAdmin
-  class DatastreamsController < ApplicationController
+class DatastreamsController < ApplicationController
 
-    TEXT_MIME_TYPES = ['application/xml', 'application/rdf+xml', 'application/json']
-  
-    def show
-      @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
-      #  authorize! :read, @object
-      @datastream = @object.datastreams[params[:id]]
-      @inline = @datastream.mimeType.start_with?('text/') || TEXT_MIME_TYPES.include?(@datastream.mimeType)
-    end
+  TEXT_MIME_TYPES = ['application/xml', 'application/rdf+xml', 'application/json']
 
-    def download
-      @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
-      #  authorize! :read, @object
-      @datastream = @object.datastreams[params[:id]]
-      mimetypes = MIME::Types[@datastream.mimeType]
-      # XXX refactor - use utility method to get file name
-      send_data @datastream.content, :disposition => 'attachment', :type => @datastream.mimeType, :filename => "#{@datastream.pid.sub(/:/, '_')}_#{@datastream.dsid}.#{mimetypes.first.extensions.first}"        
-    end
-
+  def index
+    @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
+    # authorize! :read, @object
+    @datastreams = @object.datastreams
   end
-#end
+  
+  def show
+    @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
+    # authorize! :read, @object
+    @datastream = @object.datastreams[params[:id]]
+    @inline = @datastream.mimeType.start_with?('text/') || TEXT_MIME_TYPES.include?(@datastream.mimeType)
+  end
+
+  def download
+    @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
+    # authorize! :read, @object
+    @datastream = @object.datastreams[params[:id]]
+    mimetypes = MIME::Types[@datastream.mimeType]
+    send_data @datastream.content, :disposition => 'attachment', :type => @datastream.mimeType, :filename => "#{@datastream.pid.sub(/:/, '_')}_#{@datastream.dsid}.#{mimetypes.first.extensions.first}"        
+  end
+
+end
+
