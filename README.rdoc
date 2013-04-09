@@ -14,27 +14,27 @@ fcrepo_admin is designed for installation on hydra-head 6.0.0 or higher.  See ht
 
 * Add to gemfile
 
-<code>
-gem 'fcrepo_admin'
-</code>
+    gem 'fcrepo_admin'
 
-Then <code>bundle install</code>
+  Then <code>bundle install</code>
 
 * Run the blacklight and hydra generators
-  <code>
+
     rails g blacklight --devise
     rails g hydra:head -f
     rake db:migrate
     rails g hydra:jetty  # if you need a development copy of jetty with solr and fedora
-  </code>
 
 * Mount the engine
+
   In config/routes.rb add this line: <code>  mount FcrepoAdmin::Engine => '/objects', :as=> 'fcrepo_admin'</code>
 
 * Augment the solr document
+  
   In app/models/solr_document.rb add this line: <code>use_extension FcrepoAdmin::SolrDocumentExtension</code>
 
 * Add javascript
+  
   In app/assets/javascripts/application.js add this line: <code>//= require bootstrap-tab</code>
 
 === License
