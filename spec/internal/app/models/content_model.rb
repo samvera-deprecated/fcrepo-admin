@@ -9,9 +9,4 @@ class ContentModel < ActiveFedora::Base
 
   include Hydra::ModelMixins::RightsMetadata
 
-  # Pending merge of https://github.com/projecthydra/active_fedora/pull/47
-  def audit_trail
-    inner_object.audit_trail
-  end
-
 end
