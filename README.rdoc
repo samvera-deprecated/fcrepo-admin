@@ -13,13 +13,15 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
 === Installation
 
+(In the future, we hope to automate some of these tasks with a generator.)
+
 * Add to gemfile
 
     gem 'fcrepo_admin'
 
   Then <code>bundle install</code>
 
-* Run the blacklight and hydra generators
+* Run the Blacklight and Hydra generators (if this is a new Rails app, not an existing Hydra head)
 
     rails g blacklight --devise
     rails g hydra:head -f
@@ -32,8 +34,8 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
     mount FcrepoAdmin::Engine => '/admin', :as=> 'fcrepo_admin'
 
-  You may replace <code>'/admin'</code> with any mount point, including <code>'/'</code>.  
-  All routes include <code>objects</code> as a subpath.
+  You may replace <code>'/admin'</code> with any mount point (except perhaps <code>'/catalog'</code>), 
+  including <code>'/'</code>. All routes include <code>objects</code> as a subpath.
 
 * Extend the SolrDocument model
   
@@ -41,13 +43,19 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
     use_extension FcrepoAdmin::SolrDocumentExtension
 
-  (This may only be necessary if customizing the catalog show as indicated below.)
+  (This may only be necessary if customizing the catalog show page as indicated below.)
 
 * Add Javascript
   
   In app/assets/javascripts/application.js add this line: 
 
     //= require bootstrap-tab
+
+* Add CSS
+
+  In app/assets/stylesheets/application.css add this line:
+
+    //= require fcrepo_admin/fcrepo_admin
 
 * Customize catalog show page (optional)
 
