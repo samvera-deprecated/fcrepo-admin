@@ -13,14 +13,18 @@ en:
         responsibility: 'Responsibility'
         date: 'Date'
         justification: 'Justification'
+    datastreams:
+      title: 'Datastreams'
+      header:
+        id: 'Datastream ID'
+        label: 'Label'
+        mimetype: 'MIME Type'
     datastream:
       title: 'Datastream'
+      tabs:
+        content: 'Content'
+        profile: 'Profile'
       download: 'Download'
-      content: 'Content'
-      profile: 'Profile'
       content_not_text: 'The datastream content is not text'
-      id: 'Datastream ID'
-      label: 'Label'
-      mimetype: 'MIME Type'
       
 

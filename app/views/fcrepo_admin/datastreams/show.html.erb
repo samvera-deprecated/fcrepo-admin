@@ -1,4 +1,4 @@
-<h1><%= @object.pid %></h1>
+<h1><%= @datastream.pid %></h1>
 
 <h3><%= t("fcrepo_admin.datastream.title") %>: <%= @datastream.dsid %></h3>
 
@@ -6,8 +6,8 @@
 
   <div class="tabbable">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab"><%= t("fcrepo_admin.datastream.content") %></a></li>
-      <li><a href="#tab2" data-toggle="tab"><%= t("fcrepo_admin.datastream.profile") %></a></li>
+      <li class="active"><a href="#tab1" data-toggle="tab"><%= t("fcrepo_admin.datastream.tabs.content") %></a></li>
+      <li><a href="#tab2" data-toggle="tab"><%= t("fcrepo_admin.datastream.tabs.profile") %></a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="tab1">

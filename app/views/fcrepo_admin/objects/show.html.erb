@@ -1,25 +1,4 @@
 <h1><%= @object.pid %></h1>
 
-<div class="fcrepo-admin fcrepo-admin-datastreams">
-  <h3><%= t("fcrepo_admin.datastream.title").pluralize %></h3>
-  <table class="table table-bordered table-condensed">
-	<thead>
-      <tr>
-		<th scope="col"><%= t("fcrepo_admin.datastream.id") %></th>
-		<th scope="col"><%= t("fcrepo_admin.datastream.label") %></th>
-		<th scope="col"><%= t("fcrepo_admin.datastream.mimetype") %></th>
-      </tr>
-	</thead>
-	<tbody>
-      <% @object.datastreams.reject { |dsid, ds| ds.profile.empty? }.each do |dsid, ds| %>
-      <tr>
-		<td><%= link_to dsid, fcrepo_admin.object_datastream_path(@object, dsid) %></td>
-		<td><%= ds.profile["dsLabel"] %></td>
-		<td><%= ds.profile["dsMIME"] %></td>
-      </tr>
-      <% end %>
-	</tbody>
-  </table>
-</div>
-
+<%= render :partial => 'fcrepo_admin/datastreams/datastreams', :locals => {:datastreams => @object.datastreams} %>
 <%= render :partial => 'more_info', :locals => {:pid => @object.pid} %>

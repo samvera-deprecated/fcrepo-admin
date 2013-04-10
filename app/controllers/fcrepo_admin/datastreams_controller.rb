@@ -8,7 +8,6 @@ module FcrepoAdmin
     def index
       @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
       # authorize! :read, @object
-      @datastreams = @object.datastreams
     end
   
     def show
