@@ -8,7 +8,8 @@ This project is at an early stage of development.  It should be considered exper
 
 === Requirements
 
-fcrepo_admin is designed for installation on hydra-head 6.0.0 or higher.  See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
+fcrepo_admin is designed for installation on hydra-head 6.0.0 or higher.  
+See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
 === Installation
 
@@ -27,25 +28,37 @@ fcrepo_admin is designed for installation on hydra-head 6.0.0 or higher.  See ht
 
 * Mount the engine
 
-  In config/routes.rb add this line: <code>mount FcrepoAdmin::Engine => '/objects', :as=> 'fcrepo_admin'</code>
+  In config/routes.rb add this line:
 
-  Replace <code>'/objects'</code> with an alternative mount point if you prefer.
+    mount FcrepoAdmin::Engine => '/admin', :as=> 'fcrepo_admin'
+
+  You may replace <code>'/admin'</code> with any mount point, including <code>'/'</code>.  
+  All routes include <code>objects</code> as a subpath.
 
 * Extend the SolrDocument model
   
-  In app/models/solr_document.rb add this line: <code>use_extension FcrepoAdmin::SolrDocumentExtension</code>
+  In app/models/solr_document.rb add this line:
+
+    use_extension FcrepoAdmin::SolrDocumentExtension
+
+  (This may only be necessary if customizing the catalog show as indicated below.)
 
 * Add Javascript
   
-  In app/assets/javascripts/application.js add this line: <code>//= require bootstrap-tab</code>
+  In app/assets/javascripts/application.js add this line: 
+
+    //= require bootstrap-tab
 
 * Customize catalog show page (optional)
 
-  If you would like to add Fedora object information to the catalog show page, copy the partial <code>app/views/catalog_show.html.erb</code> from the Blacklight gem to your application, then add to the bottom of the file:
+  If you would like to add Fedora object information to the catalog show page, 
+  copy the partial <code>app/views/catalog/_show_default.html.erb</code> from the Blacklight 
+  gem to your application, then add to the bottom of the file:
 
     <%= render :partial => 'fcrepo_admin/show', :locals => {:document => document} %>
 
-  Use Blacklight's config options in CatalogController to control the basic content on the show page (HTML title, page title, and list of the fields/values at the top of the page).
+  Use Blacklight's config options in CatalogController to control the basic content on the show page 
+  (HTML title, page title, and list of the fields/values at the top of the page).
 
 === License
 
