@@ -2,6 +2,14 @@ en:
   fcrepo_admin:
     object:
       more_info: 'More Information'
+      properties:
+        title: 'Properties'
+        keys:
+          owner_id: 'Owner ID'
+          state: 'State'
+          create_date: 'Create Date'
+          modified_date: 'Modified Date'
+          label: 'Label'
     audit_trail: 
       title: 'Audit Trail'
       download: 'Download'

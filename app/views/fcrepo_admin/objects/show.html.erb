@@ -1,4 +1,4 @@
 <h1><%= @object.pid %></h1>
-
+<%= render :partial => 'properties', :locals => {:properties => @properties} %>
 <%= render :partial => 'fcrepo_admin/datastreams/datastreams', :locals => {:datastreams => @object.datastreams} %>
 <%= render :partial => 'more_info', :locals => {:pid => @object.pid} %>
