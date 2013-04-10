@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "objects/show.html.erb" do
   after { object.delete }
   context "basic object" do
-    let(:object) { ContentModel.create(:title => "Test Object") }
+    let(:object) { FactoryGirl.create(:content_model) }
     it "should link to all datastreams" do
       visit fcrepo_admin.object_path(object)
       object.datastreams.reject { |dsid, ds| ds.profile.empty? }.each_key do |dsid|

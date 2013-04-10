@@ -1,8 +1,11 @@
 module FcrepoAdmin
   class AuditTrailController < ApplicationController
+
+    include FcrepoAdmin::ControllerBehavior
+
+    before_filter :load_and_authz_object
   
     def index
-      @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
       # XXX Update when new version of ActiveFedora released
       @audit_trail = @object.respond_to?(:audit_trail) ? @object.audit_trail : @object.inner_object.audit_trail
       if params[:download]

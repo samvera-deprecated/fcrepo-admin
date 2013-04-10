@@ -26,6 +26,6 @@ describe "datastreams/show.html.erb" do
   before { visit fcrepo_admin.object_datastream_path(object, dsid) }
   after { object.delete }
   it_behaves_like "an object having datastream show pages" do
-    let(:object) { ContentModel.create(:title => "Test Object") }
+    let(:object) { FactoryGirl.create(:content_model) }
   end
 end

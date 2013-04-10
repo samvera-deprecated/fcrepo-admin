@@ -6,14 +6,15 @@ FactoryGirl.define do
     default_permissions [{type: 'group', name: 'public', access: 'read'}]
   end
 
-  factory :fcrepo_object do
+  factory :content_model do
     title "Test Object"
+    permissions [{type: 'group', name: 'public', access: 'read'}]
 
-    trait :apo do
+    trait :has_apo do
       admin_policy
     end
 
-    factory :fcrepo_object_apo, :traits => [:apo]
+    factory :content_model_has_apo, :traits => [:has_apo]
   end
 
 end
