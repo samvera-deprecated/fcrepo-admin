@@ -1,3 +1,4 @@
 <h1><%= @object.pid %></h1>
 
+<h3><%= t("fcrepo_admin.datastreams.title") %></h3>
 <%= render :partial => 'datastreams', :locals => {:datastreams => @object.datastreams} %>

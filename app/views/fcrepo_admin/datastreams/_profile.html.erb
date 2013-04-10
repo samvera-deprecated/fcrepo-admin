@@ -2,7 +2,7 @@
   <table class="table table-bordered table-condensed table-striped">
 	<% datastream.profile.each do |key, value| %>
 	<tr>
-	  <th scope="row"><%= t("fcrepo_admin.datastream.profile.#{key}") %>:</th>
+	  <th scope="row"><%= t("fcrepo_admin.datastream.profile.#{key}") %></th>
 	  <td><%= value.blank? ? " " : value %></td>
 	</tr>
 	<% end %>

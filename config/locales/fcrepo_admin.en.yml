@@ -2,6 +2,9 @@ en:
   fcrepo_admin:
     object:
       more_info: 'More Information'
+      tabs:
+        datastreams: 'Datastreams'
+        properties: 'Properties'
       properties:
         title: 'Properties'
         keys:
