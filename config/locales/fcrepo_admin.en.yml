@@ -1,5 +1,7 @@
 en:
   fcrepo_admin:
+    object:
+      more_info: 'More Information'
     audit_trail: 
       title: 'Audit Trail'
       download: 'Download Raw XML'
@@ -11,3 +13,14 @@ en:
         responsibility: 'Responsibility'
         date: 'Date'
         justification: 'Justification'
+    datastream:
+      title: 'Datastream'
+      download: 'Download'
+      content: 'Content'
+      profile: 'Profile'
+      content_not_text: 'The datastream content is not text'
+      id: 'Datastream ID'
+      label: 'Label'
+      mimetype: 'MIME Type'
+      
+

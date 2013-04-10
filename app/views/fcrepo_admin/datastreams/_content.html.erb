@@ -1,10 +1,10 @@
 <% if inline %>
   <pre class="prettyprint pre-scrollable"><%= datastream.content %></pre>
-  <p>
-    <%= link_to "Download", fcrepo_admin.download_datastream_path(datastream.pid, datastream.dsid) %>
-  </p>
 <% else %>
   <p>
-    The datastream content is not text.  Please <%= link_to "Download", fcrepo_admin.download_datastream_path(datastream.pid, datastream.dsid) %>.
+    <%= t("fcrepo_admin.datastream.content_not_text") %>.
   </p>
 <% end %>
+<p>
+  <%= link_to t("fcrepo_admin.datastream.download"), fcrepo_admin.download_object_datastream_path(datastream.pid, datastream.dsid) %>
+</p>
