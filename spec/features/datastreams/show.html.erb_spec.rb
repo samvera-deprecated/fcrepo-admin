@@ -3,7 +3,7 @@ require 'spec_helper'
 shared_examples "a datastream show page" do
   it "should display all attributes of the datastream profile" do
     object.datastreams[dsid].profile.each do |key, value|
-      expect(subject).to have_content(key.sub(/^ds/, ""))
+      expect(subject).to have_content(I18n.t("fcrepo_admin.datastream.profile.#{key}"))
       expect(subject).to have_content(value)
     end
   end

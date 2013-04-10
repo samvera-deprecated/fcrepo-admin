@@ -4,7 +4,7 @@ en:
       more_info: 'More Information'
     audit_trail: 
       title: 'Audit Trail'
-      download: 'Download Raw XML'
+      download: 'Download'
       record:
         id: 'Record ID'
         process_type: 'Process Type'
@@ -26,5 +26,19 @@ en:
         profile: 'Profile'
       download: 'Download'
       content_not_text: 'The datastream content is not text'
-      
+      profile:
+        dsLabel: 'Label'
+        dsMIME: 'MIME Type'
+        dsVersionID: 'Version'
+        dsCreateDate: 'Create Date'
+        dsState: 'State'
+        dsFormatURI: 'Format URI'
+        dsControlGroup: 'Control Group'
+        dsSize: 'Size'
+        dsVersionable: 'Versionable'
+        dsInfoType: 'Info Type'
+        dsLocation: 'Location'
+        dsLocationType: 'Location Type'
+        dsChecksumType: 'Checksum Type'
+        dsChecksum: 'Checksum'
 

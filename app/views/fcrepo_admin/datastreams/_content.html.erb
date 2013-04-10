@@ -1,3 +1,4 @@
+<div id="fcrepo-admin-dscontent">
 <% if inline %>
   <pre class="prettyprint pre-scrollable"><%= datastream.content %></pre>
 <% else %>
@@ -5,6 +6,7 @@
     <%= t("fcrepo_admin.datastream.content_not_text") %>.
   </p>
 <% end %>
-<p>
-  <%= link_to t("fcrepo_admin.datastream.download"), fcrepo_admin.download_object_datastream_path(datastream.pid, datastream.dsid) %>
-</p>
+  <p>
+    <%= link_to t("fcrepo_admin.datastream.download"), fcrepo_admin.download_object_datastream_path(datastream.pid, datastream.dsid), :class => "btn btn-primary" %>
+  </p>
+</div>

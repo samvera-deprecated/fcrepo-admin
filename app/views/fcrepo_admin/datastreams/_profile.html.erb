@@ -1,8 +1,10 @@
-<table class="table">
-  <% datastream.profile.each do |key, value| %>
-  <tr>
-	<th scope="row"><%= key.sub(/^ds/, "") %>:</th>
-	<td><%= value.blank? ? " " : value %></td>
-  </tr>
-  <% end %>
-</table>
+<div id="fcrepo-admin-dsprofile">
+  <table class="table table-bordered table-condensed table-striped">
+	<% datastream.profile.each do |key, value| %>
+	<tr>
+	  <th scope="row"><%= t("fcrepo_admin.datastream.profile.#{key}") %>:</th>
+	  <td><%= value.blank? ? " " : value %></td>
+	</tr>
+	<% end %>
+  </table>
+</div>
