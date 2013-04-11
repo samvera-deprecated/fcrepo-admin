@@ -7,14 +7,22 @@ require "fcrepo_admin/version"
 Gem::Specification.new do |s|
   s.name        = "fcrepo_admin"
   s.version     = FcrepoAdmin::VERSION
+  s.platform    = Gem::Platform::RUBY
   s.authors     = ["David Chandek-Stark", "Jim Coble", "Chris Beer", "Justin Coyne"]
   s.email       = ["hydra-tech@googlegroups.com"]
   s.homepage    = "http://projecthydra.org"
   s.summary     = "Hydra-based Fedora Commons repository admin tool."
   s.description = "A Rails engine for administrative access to a Fedora Commons repository based on the Hydra Project repository application framework."
+  s.license     = "BSD Simplified"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["spec/**/*"]
+  s.required_ruby_version = '>= 1.9.3'
+
+  s.files      = `git ls-files`.split("\n")
+  s.test_files = `git ls-files -- spec/*`.split("\n")
+
+  s.extra_rdoc_files = ["LICENSE", "README.rdoc"]
+
+  s.require_paths = ["lib"]
 
   s.add_dependency "hydra-head", "6.0.0"
   s.add_dependency "blacklight"
