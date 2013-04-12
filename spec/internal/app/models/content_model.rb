@@ -2,6 +2,7 @@ class ContentModel < ActiveFedora::Base
 
   has_metadata :name => "descMetadata", :type => ActiveFedora::QualifiedDublinCoreDatastream
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
+  has_file_datastream :name => "content", :type => ActiveFedora::Datastream
 
   delegate :title, :to => "descMetadata", :unique => true
 
