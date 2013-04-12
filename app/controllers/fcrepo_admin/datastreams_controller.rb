@@ -4,12 +4,12 @@ module FcrepoAdmin
   class DatastreamsController < ApplicationController
 
     include FcrepoAdmin::ControllerBehavior
-    # include CanCan::ControllerAdditions
 
     TEXT_MIME_TYPES = ['application/xml', 'application/rdf+xml', 'application/json']
 
     before_filter :load_and_authz_object, :only => :index
-    before_filter :load_and_authz_datastream, :except => :index
+    before_filter :load_and_authz_datastream, :except => [:index, :download]
+    before_filter :load_datastream, :only => :download
     before_filter :inline_filter, :only => [:show, :edit]
 
     def index
@@ -19,6 +19,7 @@ module FcrepoAdmin
     end
 
     def download
+      authorize! :read, @datastream
       mimetypes = MIME::Types[@datastream.mimeType]
       send_data @datastream.content, :disposition => 'attachment', :type => @datastream.mimeType, :filename => "#{@datastream.pid.sub(/:/, '_')}_#{@datastream.dsid}.#{mimetypes.first.extensions.first}"        
     end
@@ -28,10 +29,7 @@ module FcrepoAdmin
 
     def update
       if params[:file]
-        File.open(params[:file], 'rb') do |f|
-          # FIXME read in chunks
-          @datastream.content = f.read
-        end
+        @datastream.content = params[:file].read
       else
         @datastream.content = params[:content]
       end
