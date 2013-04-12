@@ -3,16 +3,16 @@
 <h3><%= t("fcrepo_admin.datastream.title") %>: <%= @datastream.dsid %></h3>
 
 <%= form_tag fcrepo_admin.object_datastream_path(@datastream.pid, @datastream.dsid), :method => :put, :multipart => true do %>
+  <div>
+    <%= label_tag "file", t("fcrepo_admin.datastream.edit.file")  %>
+    <%= file_field_tag "file" %>
+  </div>
   <% if @inline %>
     <div>
       <%= label_tag "content", t("fcrepo_admin.datastream.edit.content") %>
       <%= text_area_tag "content", @datastream.content, :size => "50x20", :class => "field span9" %>
 	</div>
   <% end %>
-  <div>
-    <%= label_tag "file", t("fcrepo_admin.datastream.edit.file")  %>
-    <%= file_field_tag "file" %>
-  </div>
   <p>
 	<%= submit_tag t("fcrepo_admin.datastream.edit.submit"), :confirm => t("fcrepo_admin.datastream.edit.confirm"), :class => "btn btn-primary" %>
   </p>
