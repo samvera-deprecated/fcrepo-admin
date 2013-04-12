@@ -22,6 +22,7 @@ describe "objects/show.html.erb" do
       visit fcrepo_admin.object_path(object)
       page.should have_link(I18n.t("fcrepo_admin.audit_trail.title"), :href => fcrepo_admin.object_audit_trail_index_path(object))
     end
+    it "should display the object's permissions"
     context "object governed by an admin policy" do
       it "should link to the APO"
     end

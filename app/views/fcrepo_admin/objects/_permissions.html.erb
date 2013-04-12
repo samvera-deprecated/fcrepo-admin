@@ -1,0 +1,18 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+	<tr>
+	  <th scope="col"><%= t("fcrepo_admin.object.permissions.type") %></th>
+	  <th scope="col"><%= t("fcrepo_admin.object.permissions.name") %></th>
+	  <th scope="col"><%= t("fcrepo_admin.object.permissions.access") %></th>
+	</tr>
+  </thead>
+  <tbody>
+	<% object.permissions.each do |p| %>
+    <tr>
+	  <td><%= p[:type] %></td>
+	  <td><%= p[:name] %></td>
+	  <td><%= p[:access] %></td>
+    </tr>
+	<% end %>
+  </tbody>
+</table>

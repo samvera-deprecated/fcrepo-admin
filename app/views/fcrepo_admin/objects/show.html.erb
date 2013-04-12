@@ -2,15 +2,19 @@
 
 <div class="tabbable">
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab1" data-toggle="tab"><%= t("fcrepo_admin.object.tabs.datastreams") %></a></li>
-    <li><a href="#tab2" data-toggle="tab"><%= t("fcrepo_admin.object.tabs.properties") %></a></li>
+    <li class="active"><a href="#tab-datastreams" data-toggle="tab"><%= t("fcrepo_admin.object.tabs.datastreams") %></a></li>
+    <li><a href="#tab-properties" data-toggle="tab"><%= t("fcrepo_admin.object.tabs.properties") %></a></li>
+    <li><a href="#tab-permissions" data-toggle="tab"><%= t("fcrepo_admin.object.tabs.permissions") %></a></li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="tab1">
+    <div class="tab-pane active" id="tab-datastreams">
 	  <%= render :partial => 'fcrepo_admin/datastreams/datastreams', :locals => {:datastreams => @object.datastreams} %>
     </div>
-    <div class="tab-pane" id="tab2">
+    <div class="tab-pane" id="tab-properties">
 	  <%= render :partial => 'properties', :locals => {:properties => @properties} %>
+    </div>
+    <div class="tab-pane" id="tab-permissions">
+	  <%= render :partial => 'permissions', :locals => {:object => @object} %>
     </div>
   </div>
 </div>

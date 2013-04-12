@@ -5,6 +5,7 @@ en:
       tabs:
         datastreams: 'Datastreams'
         properties: 'Properties'
+        permissions: 'Permissions'
       properties:
         title: 'Properties'
         keys:
@@ -13,6 +14,10 @@ en:
           create_date: 'Create Date'
           modified_date: 'Modified Date'
           label: 'Label'
+      permissions:
+        type: 'Type'
+        name: 'Name'
+        access: 'Access'
     audit_trail: 
       title: 'Audit Trail'
       download: 'Download'
