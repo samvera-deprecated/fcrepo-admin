@@ -2,7 +2,7 @@ FcrepoAdmin::Engine.routes.draw do
 
   scope :module => "fcrepo_admin" do
     resources :objects, :only => :show do
-      resources :datastreams, :only => [:index, :show] do
+      resources :datastreams, :only => [:index, :show, :edit, :update] do
         member do
           get 'download'
         end

@@ -52,4 +52,9 @@ en:
         dsLocationType: 'Location Type'
         dsChecksumType: 'Checksum Type'
         dsChecksum: 'Checksum'
+      edit:
+        file: 'Upload File'
+        content: 'Replace Content'
+        confirm: "These changes are not validated and cannot be undone!"
+        submit: 'Update Content'
 

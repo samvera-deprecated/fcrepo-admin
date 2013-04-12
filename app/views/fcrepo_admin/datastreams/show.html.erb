@@ -1,22 +1,27 @@
 <h1><%= @datastream.pid %></h1>
 
+<ul class="pull-right nav nav-pills">
+  <% if can? :edit, @datastream %>
+    <li>
+	  <%= link_to content_tag(:i, "", :class => "icon-pencil"), fcrepo_admin.edit_object_datastream_path(@datastream.pid, @datastream.dsid) %>
+	</li>
+  <% end %>
+</ul>
+
 <h3><%= t("fcrepo_admin.datastream.title") %>: <%= @datastream.dsid %></h3>
 
-<div class="document">
-
-  <div class="tabbable">
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab"><%= t("fcrepo_admin.datastream.tabs.content") %></a></li>
-      <li><a href="#tab2" data-toggle="tab"><%= t("fcrepo_admin.datastream.tabs.profile") %></a></li>
-    </ul>
-    <div class="tab-content">
-      <div class="tab-pane active" id="tab1">
-		<%= render :partial => 'content', :locals => {:datastream => @datastream, :inline => @inline} %>
-      </div>
-      <div class="tab-pane" id="tab2">
-		<%= render :partial => 'profile', :locals => {:datastream => @datastream} %>
-      </div>
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab1" data-toggle="tab"><%= t("fcrepo_admin.datastream.tabs.content") %></a></li>
+    <li><a href="#tab2" data-toggle="tab"><%= t("fcrepo_admin.datastream.tabs.profile") %></a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+	  <%= render :partial => 'content', :locals => {:datastream => @datastream, :inline => @inline} %>
+    </div>
+    <div class="tab-pane" id="tab2">
+	  <%= render :partial => 'profile', :locals => {:datastream => @datastream} %>
     </div>
   </div>
-
 </div>
+

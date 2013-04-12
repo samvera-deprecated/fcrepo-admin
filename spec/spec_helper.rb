@@ -41,5 +41,8 @@ RSpec.configure do |config|
   
   # Devise helper
   config.include Devise::TestHelpers, :type => :controller
+
+  # Warden 
+  config.include Warden::Test::Helpers
   
 end
