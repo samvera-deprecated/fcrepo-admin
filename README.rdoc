@@ -43,6 +43,9 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
     include FcrepoAdmin::DatastreamAbility
 
+  Note that FcrepoAdmin::DatastreamAbility currently uses the #custom_permissions hook provided by Hydra::Ability. 
+  This will likely change in the future to prevent conflicts with custom permissions in the application.
+
 * Extend the SolrDocument model
   
   In app/models/solr_document.rb add this line:
