@@ -37,6 +37,12 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
   You may replace <code>'/admin'</code> with any mount point (except perhaps <code>'/catalog'</code>), 
   including <code>'/'</code>. All routes include <code>objects</code> as a subpath.
 
+* Add abilities to your Ability class
+
+  In app/models/ability.rb add this line after the Hydra abilities:
+
+    include FcrepoAdmin::DatastreamAbility
+
 * Extend the SolrDocument model
   
   In app/models/solr_document.rb add this line:
