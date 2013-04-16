@@ -1,3 +1,7 @@
+=== 0.3.0
+
+* Feature: Added permissions and inherited permissions to object view.
+
 === 0.2.0
 
 * Feature: Datastream content editing.

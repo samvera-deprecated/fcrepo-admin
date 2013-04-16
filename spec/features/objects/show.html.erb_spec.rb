@@ -23,8 +23,14 @@ describe "objects/show.html.erb" do
       page.should have_link(I18n.t("fcrepo_admin.audit_trail.title"), :href => fcrepo_admin.object_audit_trail_index_path(object))
     end
     it "should display the object's permissions"
-    context "object governed by an admin policy" do
-      it "should link to the APO"
+  end
+  context "object governed by an admin policy" do
+    let(:object) { FactoryGirl.create(:content_model_has_apo) }
+    after { object.admin_policy.delete }
+    it "should link to the APO" do
+      visit fcrepo_admin.object_path(object)
+      page.should have_link(object.admin_policy.pid, :href => fcrepo_admin.object_path(object.admin_policy.pid))
     end
+    it "should display the inherited permissions"
   end
 end

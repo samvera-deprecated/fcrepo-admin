@@ -15,9 +15,16 @@ en:
           modified_date: 'Modified Date'
           label: 'Label'
       permissions:
-        type: 'Type'
-        name: 'Name'
-        access: 'Access'
+        no_permissions: 'No permissions.'
+        header:
+          type: 'Type'
+          name: 'Name'
+          access: 'Access'
+      apo:
+        governed_by: 'Governed By'
+        not_assigned: 'Not Assigned'
+        enforcement_disabled: 'Admin policy access control enforcement is disabled.'
+        relationship_undefined: 'This object type does not define an admin policy relationship.'
     audit_trail: 
       title: 'Audit Trail'
       download: 'Download'

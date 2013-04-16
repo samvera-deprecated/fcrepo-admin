@@ -11,7 +11,7 @@ FactoryGirl.define do
     permissions [{type: 'group', name: 'public', access: 'read'}]
 
     trait :has_apo do
-      admin_policy
+      admin_policy { create(:admin_policy) }
     end
 
     factory :content_model_has_apo, :traits => [:has_apo]
