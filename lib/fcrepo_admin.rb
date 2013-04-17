@@ -6,4 +6,5 @@ module FcrepoAdmin
   autoload :SolrDocumentExtension, 'fcrepo_admin/solr_document_extension'
   autoload :ControllerBehavior, 'fcrepo_admin/controller_behavior'
   autoload :DatastreamAbility, 'fcrepo_admin/datastream_ability'
+  autoload :CatalogHelperBehavior, 'fcrepo_admin/catalog_helper_behavior'
 end
