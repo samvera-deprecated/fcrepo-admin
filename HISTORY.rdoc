@@ -1,12 +1,17 @@
-=== 0.3.0
+=== 0.3.1
+
+* Object and datastream context nav menus added.
+* Audit trail moved into objects controller
+
+== 0.3.0
 
 * Feature: Permissions and inherited permissions added to object show view.
 
-=== 0.2.0
+== 0.2.0
 
 * Feature: Datastream content editing.
 
-=== 0.1.0
+== 0.1.0
 
 Initial release to RubyGems.
 

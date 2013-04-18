@@ -78,8 +78,11 @@ en:
         dsChecksumType: 'Checksum Type'
         dsChecksum: 'Checksum'
       edit:
-        file: 'Upload File'
-        content: 'Replace Content'
+        header: 'Edit Content'
         confirm: "These changes are not validated and cannot be undone!"
         submit: 'Update Content'
+      upload:
+        confirm: "These changes are not validated and cannot be undone!"
+        submit: 'Upload Content'
+
 
