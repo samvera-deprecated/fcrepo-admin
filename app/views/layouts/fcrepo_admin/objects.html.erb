@@ -1,0 +1,8 @@
+<% content_for :main do %>
+  <h1><%= object_title %></h1>
+  <%= yield %>
+<% end %>
+<% content_for :sidebar do %>
+  <%= render :partial => 'fcrepo_admin/objects/object_nav', :locals => {:object => @object} %>
+<% end %>
+<%= render :template => 'layouts/fcrepo_admin/default' %>

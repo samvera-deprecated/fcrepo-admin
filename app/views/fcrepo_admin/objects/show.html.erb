@@ -1,11 +1,3 @@
-<div class="span9">
-
-<h1><%= @object.pid %></h1>
-
-<p>
-  Object Type: <%= @object.class.to_s %>
-</p>
-
 <div class="tabbable">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab-datastreams" data-toggle="tab"><%= t("fcrepo_admin.object.tabs.datastreams") %></a></li>
@@ -20,12 +12,13 @@
 	  <%= render :partial => 'properties', :locals => {:properties => object_properties} %>
     </div>
     <div class="tab-pane" id="tab-permissions">
+	<% if has_permissions? %>
       <h4>Direct Permissions</h4>
 	  <%= render :partial => 'permissions', :locals => {:permissions => @object.permissions} %>
 	  <h4>Inherited Permissions</h4>
 	  <% unless apo_enforcement_enabled? %>
 	    <p class="alert">
-		  <%= t("fcrepo_admin.object.apo.enforcement_disabled") %>
+		  <%= t("fcrepo_admin.object.apo.enforcement_disabled") %>.
 	    </p>
 	  <% end %>
 	  <% if @apo_relationship_name %>
@@ -42,15 +35,12 @@
 		<% end %>
 	  <% else %>
 	    <p class="alert alert-info">
-		  <%= t("fcrepo_admin.object.apo.relationship_undefined") %>
+		  <%= t("fcrepo_admin.object.apo.relationship_undefined") %>: <%= object_type %>.
 	    </p>
 	  <% end %>
-    </div>
+    <% else %>
+	  <%= t("fcrepo_admin.object.permissions.not_supported") %>: <%= object_type %>.
+	<% end %>
+    </div> <!-- /tab-permissions -->
   </div>
-</div>
-
-</div> <!-- span9 -->
-
-<div class="span3">
-  <%= render :partial => 'fcrepo_admin/admin_tools', :locals => {:pid => @object.pid} %>
 </div>

@@ -1,11 +1,7 @@
-<div class="span9">
-
-<h1><%= @object.pid %></h1>
-
 <h3><%= t("fcrepo_admin.audit_trail.title") %></h3>
 
 <p>
-	<%= link_to t("fcrepo_admin.audit_trail.download"), "#{fcrepo_admin.object_audit_trail_index_path(@object)}?download=true", :class => "btn btn-primary" %>
+	<%= link_to t("fcrepo_admin.audit_trail.download"), "#{fcrepo_admin.audit_trail_object_path(@object)}?download=true", :class => "btn btn-primary" %>
 </p>
 
 <table class="table table-bordered table-condensed table-striped">
@@ -34,10 +30,3 @@
 		<% end %>
 	</tbody>
 </table>
-
-</div> <!-- span9 -->
-
-<div class="span3">
-  <%= render :partial => 'fcrepo_admin/admin_tools', :locals => {:pid => @object.pid} %>
-</div>
-

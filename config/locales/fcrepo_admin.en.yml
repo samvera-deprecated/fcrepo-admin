@@ -1,11 +1,15 @@
 en:
   fcrepo_admin:
     object:
-      more_info: 'More Information'
       tabs:
         datastreams: 'Datastreams'
         properties: 'Properties'
         permissions: 'Permissions'
+      nav:
+        header: 'Object Admin'
+        items:
+          summary: 'Object Summary'
+          audit_trail: 'Audit Trail'
       properties:
         title: 'Properties'
         keys:
@@ -16,6 +20,7 @@ en:
           label: 'Label'
       permissions:
         no_permissions: 'No permissions.'
+        not_supported: 'This object type does not support Hydra permissions'
         header:
           type: 'Type'
           name: 'Name'
@@ -23,8 +28,8 @@ en:
       apo:
         governed_by: 'Governed By'
         not_assigned: 'Not Assigned'
-        enforcement_disabled: 'Admin policy access control enforcement is disabled.'
-        relationship_undefined: 'This object type does not define an admin policy relationship.'
+        enforcement_disabled: 'Admin policy access control enforcement is disabled'
+        relationship_undefined: 'This object type does not define an admin policy relationship'
     audit_trail: 
       title: 'Audit Trail'
       download: 'Download'
@@ -42,8 +47,16 @@ en:
         id: 'Datastream ID'
         label: 'Label'
         mimetype: 'MIME Type'
+        create_date: 'Create Date'
     datastream:
       title: 'Datastream'
+      nav:
+        header: 'Datastream Admin'
+        items:
+          summary: 'Datastream Summary'
+          edit: 'Edit Content'
+          download: 'Download Content'
+          object: 'Object Admin'
       tabs:
         content: 'Content'
         profile: 'Profile'

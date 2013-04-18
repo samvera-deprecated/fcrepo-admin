@@ -1,0 +1,9 @@
+<% content_for :main do %>
+  <h1><%= object_title %></h1>
+  <h3><%= t("fcrepo_admin.datastream.title") %>: <%= @datastream.dsid %></h3>
+  <%= yield %>
+<% end %>
+<% content_for :sidebar do %>
+  <%= render :partial => 'fcrepo_admin/datastreams/datastream_nav', :locals => {:datastream => @datastream, :object => @object} %>
+<% end %>
+<%= render :template => 'layouts/fcrepo_admin/default' %>

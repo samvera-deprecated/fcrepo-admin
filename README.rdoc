@@ -5,8 +5,7 @@ A Rails engine providing an administrative interface to a Fedora Commons reposit
 === Status
 
 This project should be considered <strong>experimental</strong> and not ready for production deployment.
-Neither the API nor the UI are stable and both may change without notice.  If you require a stable and 
-well-tested product, please wait for the release of version 1.0.
+Versions earlier than 1.0 may change API and/or UI without notice or regard for backward compatibility.
 
 === Requirements
 
@@ -39,46 +38,21 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
   You may replace <code>'/admin'</code> with any mount point (except perhaps <code>'/catalog'</code>), 
   including <code>'/'</code>. All routes include <code>objects</code> as a subpath.
 
-* Add abilities to your Ability class
-
-  In app/models/ability.rb add this line after the Hydra abilities:
-
-    include FcrepoAdmin::DatastreamAbility
-
-* Extend the SolrDocument model
-  
-  In app/models/solr_document.rb add this line:
-
-    use_extension FcrepoAdmin::SolrDocumentExtension
-
-  (This may only be necessary if customizing the catalog show page as indicated below.)
-
 * Add Javascript
   
   In app/assets/javascripts/application.js add this line: 
 
     //= require bootstrap-tab
 
-* Add CSS
+* Customize catalog search results (optional)
 
-  In app/assets/stylesheets/application.css add this line:
+  If you would like items from the catalog search results list to the object admin view
+  instead of the catalog show view, create app/helpers/blacklight_helper.rb with this content:
 
-    //= require fcrepo_admin/fcrepo_admin
-
-  NOTE: This stylesheet is little used and may be remove in the future.
-
-* Customize catalog show page (optional)
-
-  If you would like to add Fedora object information to the catalog show page, 
-  create app/helper/catalog_helper.rb with this content:
-
-    module CatalogHelper
-	  include Blacklight::CatalogHelperBehavior  # Default Blacklight behaviors
-	  include FcrepoAdmin::CatalogHelperBehavior # fcrepo_admin overrides
+    module BlacklightHelper
+	  include Blacklight::BlacklightHelperBehavior  # Default Blacklight behaviors
+	  include FcrepoAdmin::BlacklightHelperBehavior # fcrepo_admin overrides
     end
-
-  Use Blacklight's config options in CatalogController to control the basic content on the show page 
-  (HTML title, page title, and list of the fields/values at the top of the page).
 
 === License
 

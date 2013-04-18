@@ -1,13 +1,13 @@
 module FcrepoAdmin
   module ControllerBehavior
 
-    def load_and_authz_object(param = :object_id)
-      load_object param
+    def load_and_authz_object
+      load_object
       authorize_object
     end
 
-    def load_object(param = :object_id)
-      @object = ActiveFedora::Base.find(params[param], :cast => true)
+    def load_object
+      @object = ActiveFedora::Base.find(params[:id], :cast => true)
     end
 
     def authorize_object
@@ -20,7 +20,7 @@ module FcrepoAdmin
     end
 
     def load_datastream
-      load_object unless @object
+      @object ||= ActiveFedora::Base.find(params[:object_id], :cast => true)
       @datastream = @object.datastreams[params[:id]]
     end
 

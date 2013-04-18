@@ -4,6 +4,7 @@
 	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.id") %></th>
 	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.label") %></th>
 	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.mimetype") %></th>
+	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.create_date") %></th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,7 @@
 	  <td><%= link_to dsid, fcrepo_admin.object_datastream_path(ds.pid, dsid) %></td>
 	  <td><%= ds.profile["dsLabel"] %></td>
 	  <td><%= ds.profile["dsMIME"] %></td>
+	  <td><%= ds.profile["dsCreateDate"] %></td>
     </tr>
     <% end %>
   </tbody>
