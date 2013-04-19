@@ -1,19 +1,19 @@
-<h3><%= t("fcrepo_admin.audit_trail.title") %></h3>
+<h3><%= t("fcrepo_admin.object.audit_trail.title") %></h3>
 
 <p>
-	<%= link_to t("fcrepo_admin.audit_trail.download"), "#{fcrepo_admin.audit_trail_object_path(@object)}?download=true", :class => "btn btn-primary" %>
+	<%= link_to t("fcrepo_admin.object.audit_trail.download"), "#{fcrepo_admin.audit_trail_object_path(@object)}?download=true", :class => "btn btn-primary" %>
 </p>
 
 <table class="table table-bordered table-condensed table-striped">
 	<thead>
 		<tr>
-			<th scope="col"><%= t("fcrepo_admin.audit_trail.record.id") %></th>
-			<th scope="col"><%= t("fcrepo_admin.audit_trail.record.process_type") %></th>
-			<th scope="col"><%= t("fcrepo_admin.audit_trail.record.action") %></th>
-			<th scope="col"><%= t("fcrepo_admin.audit_trail.record.component_id") %></th>
-			<th scope="col"><%= t("fcrepo_admin.audit_trail.record.responsibility") %></th>
-			<th scope="col"><%= t("fcrepo_admin.audit_trail.record.date") %></th>
-			<th scope="col"><%= t("fcrepo_admin.audit_trail.record.justification") %></th>
+			<th scope="col"><%= t("fcrepo_admin.object.audit_trail.record.id") %></th>
+			<th scope="col"><%= t("fcrepo_admin.object.audit_trail.record.process_type") %></th>
+			<th scope="col"><%= t("fcrepo_admin.object.audit_trail.record.action") %></th>
+			<th scope="col"><%= t("fcrepo_admin.object.audit_trail.record.component_id") %></th>
+			<th scope="col"><%= t("fcrepo_admin.object.audit_trail.record.responsibility") %></th>
+			<th scope="col"><%= t("fcrepo_admin.object.audit_trail.record.date") %></th>
+			<th scope="col"><%= t("fcrepo_admin.object.audit_trail.record.justification") %></th>
 		</tr>
 	</thead>
 	<tbody>

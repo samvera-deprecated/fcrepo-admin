@@ -17,7 +17,7 @@ describe "datastreams/show.html.erb" do
     end
   end
   it "should have a link to download the datastream content" do
-    page.should have_link(I18n.t("fcrepo_admin.datastream.download"), :href => "#{fcrepo_admin.object_datastream_path(object, dsid)}?download=true")
+    page.should have_link(I18n.t("fcrepo_admin.datastream.download"), :href => fcrepo_admin.download_object_datastream_path(object, dsid))
   end
   context "user can edit" do
     let(:user) { FactoryGirl.create(:user) }

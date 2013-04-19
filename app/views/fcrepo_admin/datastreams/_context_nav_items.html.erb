@@ -1,0 +1,17 @@
+<li class="nav-header">
+  <%= t("fcrepo_admin.datastream.nav.header") %>
+</li>
+<li>
+  <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.summary"), fcrepo_admin.object_datastream_path(object, datastream.dsid) %>
+</li>
+<% if can? :edit, object %>
+<li>
+  <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.edit"), fcrepo_admin.edit_object_datastream_path(object, datastream.dsid) %>
+</li>
+<li>
+  <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.upload"), fcrepo_admin.upload_object_datastream_path(object, datastream.dsid) %>
+</li>
+<% end %>
+<li>
+  <%= link_to t("fcrepo_admin.datastream.nav.items.download"), fcrepo_admin.download_object_datastream_path(object, datastream.dsid) %>
+</li>

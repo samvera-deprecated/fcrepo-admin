@@ -19,7 +19,7 @@ describe "datastreams/upload.html.erb" do
     Warden.test_reset!
   end
   it "should provide an upload form" do
-    attach_file "file", File.open(File.join(Rails.root, 'spec', 'fixtures', 'files', 'descMetadata.xml'), 'rb')
+    attach_file "file", File.join(Rails.root, "spec", "fixtures", "files", "descMetadata.xml")
     click_button I18n.t("fcrepo_admin.datastream.upload.submit")
     object.reload
     object.title.should == "Altered Test Component"

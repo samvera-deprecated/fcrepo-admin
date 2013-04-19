@@ -20,7 +20,7 @@ describe "objects/show.html.erb" do
     end
     it "should link to its audit trail" do
       visit fcrepo_admin.object_path(object)
-      page.should have_link(I18n.t("fcrepo_admin.audit_trail.title"), :href => fcrepo_admin.audit_trail_object_path(object))
+      page.should have_link(I18n.t("fcrepo_admin.object.audit_trail.title"), :href => fcrepo_admin.audit_trail_object_path(object))
     end
     it "should display the object's permissions"
   end
@@ -29,7 +29,7 @@ describe "objects/show.html.erb" do
     after { object.admin_policy.delete }
     it "should link to the APO" do
       visit fcrepo_admin.object_path(object)
-      page.should have_link(object.admin_policy.pid, :href => fcrepo_admin.object_path(object.admin_policy.pid))
+      page.should have_link(object.admin_policy.pid, :href => fcrepo_admin.object_path(object.admin_policy))
     end
     it "should display the inherited permissions"
   end

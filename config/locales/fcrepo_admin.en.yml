@@ -30,17 +30,17 @@ en:
         not_assigned: 'Not Assigned'
         enforcement_disabled: 'Admin policy access control enforcement is disabled'
         relationship_undefined: 'This object type does not define an admin policy relationship'
-    audit_trail: 
-      title: 'Audit Trail'
-      download: 'Download'
-      record:
-        id: 'Record ID'
-        process_type: 'Process Type'
-        action: 'Action'
-        component_id: 'Component ID'
-        responsibility: 'Responsibility'
-        date: 'Date'
-        justification: 'Justification'
+      audit_trail: 
+        title: 'Audit Trail'
+        download: 'Download'
+        record:
+          id: 'Record ID'
+          process_type: 'Process Type'
+          action: 'Action'
+          component_id: 'Component ID'
+          responsibility: 'Responsibility'
+          date: 'Date'
+          justification: 'Justification'
     datastreams:
       title: 'Datastreams'
       header:
@@ -55,6 +55,7 @@ en:
         items:
           summary: 'Datastream Summary'
           edit: 'Edit Content'
+          upload: 'Upload Content'
           download: 'Download Content'
           object: 'Object Admin'
       tabs:
@@ -80,9 +81,10 @@ en:
       edit:
         header: 'Edit Content'
         confirm: "These changes are not validated and cannot be undone!"
-        submit: 'Update Content'
+        submit: 'Update'
       upload:
+        header: 'Upload Content'
         confirm: "These changes are not validated and cannot be undone!"
-        submit: 'Upload Content'
+        submit: 'Upload'
 
 

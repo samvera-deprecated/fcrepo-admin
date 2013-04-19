@@ -5,14 +5,10 @@ module FcrepoAdmin
     
     PROPERTIES = [:owner_id, :state, :create_date, :modified_date, :label]
 
-    helper_method :apo_enforcement_enabled?
     helper_method :object_properties
-    helper_method :admin_policy_object?
-    helper_method :object_type
-    helper_method :has_permissions?
 
     before_filter :load_and_authorize_object
-    before_filter :load_apo_info, :only => :show  # depends on load_and_authz_object
+    before_filter :load_apo_info, :only => :show
 
     def show
     end
@@ -43,49 +39,28 @@ module FcrepoAdmin
 
     protected
 
-    def apo_enforcement_enabled?
-      # Including Hydra::PolicyAwareAccessControlsEnforcement in ApplicationController 
-      # appears to be the only way that APO access control enforcement can be enabled.
-      self.class.ancestors.include?(Hydra::PolicyAwareAccessControlsEnforcement)    
-    end
-
     def object_properties
-      properties = {}
-      PROPERTIES.each { |p| properties[p] = @object.send(p) }
-      properties
+      unless @object_properties
+        @object_properties = {}
+        PROPERTIES.each { |p| @object_properties[p] = @object.send(p) }
+      end
+      @object_properties
     end
 
-    def object_type
-      @object.class.to_s
+    def apo_relationship_name
+      @object.reflections.each_value do |reflection|
+        # XXX This test should also check that reflection class is identical to admin policy class
+        return reflection.name if reflection.options[:property] == :is_governed_by && reflection.macro == :belongs_to
+      end
+      nil
     end
 
     def load_apo_info
-      @apo_relationship_name = nil
-      @apo = nil
-      @object.reflections.each_value do |reflection|
-        if reflection.options[:property] == :is_governed_by \
-          && reflection.macro == :belongs_to
-          @apo_relationship_name = reflection.name
-          @apo = @object.send(@apo_relationship_name)
-          break
-        end
-      end
-    end
-
-    def has_permissions?
-      @object.is_a?(Hydra::ModelMixins::RightsMetadata)
-    end
-
-    def admin_policy_object?
-      @object.is_a?(apo_class)
-    end
-
-    def apo_class
-      # XXX Ideally we would use Hydra::PolicyAwareAccessControlsEnforcement#policy_class,
-      # but it's only available if it's been included in the application controller, i.e.,
-      # if APO access control enforcement is enabled.  We want to know the name of the
-      # relationship regardless of whether policy enforcement is enabled.
-      Hydra.config[:permissions].fetch(:policy_class, Hydra::AdminPolicy)
+      @apo_relationship_name ||= apo_relationship_name
+      @object_admin_policy ||= @apo_relationship_name ? @object.send(@apo_relationship_name) : nil
+      # Including Hydra::PolicyAwareAccessControlsEnforcement in ApplicationController 
+      # appears to be the only way that APO access control enforcement can be enabled.
+      @apo_enforcement_enabled ||= self.class.ancestors.include?(Hydra::PolicyAwareAccessControlsEnforcement)
     end
 
   end

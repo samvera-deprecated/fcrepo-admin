@@ -3,6 +3,6 @@
   <%= yield %>
 <% end %>
 <% content_for :sidebar do %>
-  <%= render :partial => 'fcrepo_admin/objects/object_nav', :locals => {:object => @object} %>
+  <%= render :partial => 'fcrepo_admin/objects/context_nav_items', :locals => {:object => @object}, :layout => 'fcrepo_admin/shared/context_nav_list' %>
 <% end %>
 <%= render :template => 'layouts/fcrepo_admin/default' %>

@@ -4,7 +4,10 @@ FcrepoAdmin::Engine.routes.draw do
     resources :objects, :only => :show do
       get 'audit_trail', :on => :member
       resources :datastreams, :only => [:show, :edit, :update] do
-        get 'upload', :on => :member
+        member do
+          get 'upload'
+          get 'download'
+        end
       end
     end
   end

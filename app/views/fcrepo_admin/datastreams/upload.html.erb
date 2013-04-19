@@ -1,5 +1,5 @@
 <h4><%= t("fcrepo_admin.datastream.upload.header") %></h4>
-<%= form_tag fcrepo_admin.object_datastream_path(@datastream.pid, @datastream.dsid), :method => :put do %>
+<%= form_tag fcrepo_admin.object_datastream_path(@datastream.pid, @datastream.dsid), :method => :put, :multipart => true do %>
 <div>
   <%= file_field_tag "file" %>
 </div>

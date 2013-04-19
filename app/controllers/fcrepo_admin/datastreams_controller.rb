@@ -7,15 +7,17 @@ module FcrepoAdmin
 
     # Additional types of content that should be displayed inline
     TEXT_MIME_TYPES = ['application/xml', 'application/rdf+xml', 'application/json']
+    MAX_INLINE_SIZE = 1024 * 64
 
     before_filter :load_and_authorize_datastream
     before_filter :inline_filter, :only => [:show, :edit]
 
     def show
-      if params[:download]
-        mimetypes = MIME::Types[@datastream.mimeType]
-        send_data @datastream.content, :disposition => 'attachment', :type => @datastream.mimeType, :filename => "#{@datastream.pid.sub(/:/, '_')}_#{@datastream.dsid}.#{mimetypes.first.extensions.first}"                
-      end
+    end
+
+    def download
+      mimetypes = MIME::Types[@datastream.mimeType]
+      send_data @datastream.content, :disposition => 'attachment', :type => @datastream.mimeType, :filename => "#{@datastream.pid.sub(/:/, '_')}_#{@datastream.dsid}.#{mimetypes.first.extensions.first}"                
     end
 
     def edit
@@ -25,13 +27,13 @@ module FcrepoAdmin
     end
 
     def update
-      if params[:file]
+      if params[:file] # file uploaded
         @datastream.content = params[:file].read
-      else
+      else # content submitted
         @datastream.content = params[:content]
       end
       @object.save
-      flash[:notice] = "Datastream content updated."
+      flash[:notice] = "Datastream content updated." # i18n
       redirect_to fcrepo_admin.object_datastream_url(@object, @datastream.dsid)
     end
 
@@ -52,7 +54,14 @@ module FcrepoAdmin
     end
 
     def authorize_datastream
-      action = params[:action] == 'upload' ? :edit : params[:action].to_sym
+      action = case params[:action]
+               when 'upload'
+                 :edit
+               when 'download'
+                 :read
+               else
+                 params[:action].to_sym
+               end
       # Datastream permissions are solely based on object permissions
       authorize! action, @object
     end
@@ -61,6 +70,7 @@ module FcrepoAdmin
 
     def inline_filter
       @inline = @datastream.mimeType.start_with?('text/') || TEXT_MIME_TYPES.include?(@datastream.mimeType)
+      # @inline &&= @datastream.dsSize <= MAX_INLINE_SIZE
     end
 
   end
