@@ -1,4 +1,4 @@
 module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
-  include FcrepoAdmin::BlacklightHelperBehavior
+  include FcrepoAdmin::Helpers::BlacklightHelperBehavior
 end

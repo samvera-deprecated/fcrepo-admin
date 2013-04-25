@@ -1,3 +1,8 @@
+=== 0.3.4
+
+* Moved FcrepoAdmin::BlacklightHelperBehavior to FcrepoAdmin::Helpers::BlacklightHelperBehavior.
+* FcrepoAdmin::ObjectsHelper method can now be easily overridden.
+
 === 0.3.3
 
 * Audit trail functionality fails gracefully (i.e., if object does not implement ActiveFedora::Auditable)
