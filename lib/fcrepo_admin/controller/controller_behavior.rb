@@ -1,4 +1,4 @@
-module FcrepoAdmin
+module FcrepoAdmin::Controller
   module ControllerBehavior
     extend ActiveSupport::Concern
 

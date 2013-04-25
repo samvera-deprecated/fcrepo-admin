@@ -73,6 +73,26 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
   In particular you may want to override #object_title.
 
+* Controllers
+
+  To override/extend the objects controller, create app/controllers/fcrepo_admin/objects_controller.rb:
+
+    module FcrepoAdmin
+	  class ObjectsController < ApplicationController
+	    include FcrepoAdmin::Controller::ObjectsBehavior
+        # add your customizations
+	  end
+    end
+
+  To override/extend the datastreams controller, create app/controllers/fcrepo_admin/datastreams_controller.rb:
+
+    module FcrepoAdmin
+	  class DatastreamsController < ApplicationController
+	    include FcrepoAdmin::Controller::DatastreamsBehavior
+        # add your customizations
+	  end
+    end
+
 === License
 
 See the LICENSE file in the root directory of the project for copyright and license information.

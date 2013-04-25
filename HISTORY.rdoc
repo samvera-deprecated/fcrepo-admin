@@ -2,6 +2,7 @@
 
 * Moved FcrepoAdmin::BlacklightHelperBehavior to FcrepoAdmin::Helpers::BlacklightHelperBehavior.
 * FcrepoAdmin::ObjectsHelper method can now be easily overridden.
+* Objects and datastreams controller behaviors are now easily overrideable.
 
 === 0.3.3
 
