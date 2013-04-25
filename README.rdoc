@@ -54,6 +54,12 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
       include FcrepoAdmin::BlacklightHelperBehavior # fcrepo_admin overrides
     end
 
+* Add audit trail support (optional)
+
+  To enable access to the Fedora audit trail data through the fcrepo_admin UI, add your ActiveFedora models:
+
+    include ActiveFedora::Auditable
+
 === License
 
 See the LICENSE file in the root directory of the project for copyright and license information.
