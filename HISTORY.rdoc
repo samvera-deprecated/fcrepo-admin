@@ -1,7 +1,16 @@
+=== 0.3.3
+
+* Audit trail functionality fails gracefully (i.e., if object do not implement ActiveFedora::Auditable)
+
+=== 0.3.2
+
+* Separated datastream and object context navigation menus.
+* Added object helpers.
+
 === 0.3.1
 
 * Object and datastream context nav menus added.
-* Audit trail moved into objects controller
+* Audit trail moved into objects controller.
 
 == 0.3.0
 
