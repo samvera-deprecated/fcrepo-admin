@@ -1,6 +1,6 @@
 === 0.3.3
 
-* Audit trail functionality fails gracefully (i.e., if object do not implement ActiveFedora::Auditable)
+* Audit trail functionality fails gracefully (i.e., if object does not implement ActiveFedora::Auditable)
 
 === 0.3.2
 
