@@ -31,6 +31,7 @@ en:
         enforcement_disabled: 'Admin policy access control enforcement is disabled'
         relationship_undefined: 'This object type does not define an admin policy relationship'
       audit_trail: 
+        not_implemented: 'This object does implement access to the Fedora audit trail (ActiveFedora::Auditable)'
         title: 'Audit Trail'
         download: 'Download'
         record:

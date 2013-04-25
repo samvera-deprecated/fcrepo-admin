@@ -1,12 +1,13 @@
 module FcrepoAdmin
   class ObjectsController < ApplicationController
 
+    include FcrepoAdmin::ControllerBehavior
+
     layout 'fcrepo_admin/objects'
     
     PROPERTIES = [:owner_id, :state, :create_date, :modified_date, :label]
 
     helper_method :object_properties
-    helper_method :is_auditable?
 
     before_filter :load_and_authorize_object
     before_filter :load_apo_info, :only => :show
@@ -15,12 +16,12 @@ module FcrepoAdmin
     end
 
     def audit_trail
-      if is_auditable?
+      if object_is_auditable?
         if params[:download]
           send_data @object.audit_trail.to_xml, :disposition => 'inline', :type => 'text/xml'
         end
       else
-        # TODO 404
+        render :text => I18n.t("fcrepo_admin.object.audit_trail.not_implemented"), :status => 404
       end
     end
 
@@ -43,11 +44,7 @@ module FcrepoAdmin
     protected
 
     def object_properties
-      unless @object_properties
-        @object_properties = {}
-        PROPERTIES.each { |p| @object_properties[p] = @object.send(p) }
-      end
-      @object_properties
+      @object_properties ||= PROPERTIES.inject(Hash.new) { |h, p| h[p] = @object.send(p); h }
     end
 
     def apo_relationship_name
@@ -64,14 +61,6 @@ module FcrepoAdmin
       # Including Hydra::PolicyAwareAccessControlsEnforcement in ApplicationController 
       # appears to be the only way that APO access control enforcement can be enabled.
       @apo_enforcement_enabled ||= self.class.ancestors.include?(Hydra::PolicyAwareAccessControlsEnforcement)
-    end
-
-    def is_auditable?
-      begin
-        @object.is_a?(ActiveFedora::Auditable)
-      rescue
-        false
-      end
     end
 
   end

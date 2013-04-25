@@ -3,6 +3,8 @@ require 'mime/types'
 module FcrepoAdmin
   class DatastreamsController < ApplicationController
 
+    include FcrepoAdmin::ControllerBehavior
+
     layout 'fcrepo_admin/datastreams'
 
     # Additional types of content that should be displayed inline
@@ -69,8 +71,7 @@ module FcrepoAdmin
     protected
 
     def inline_filter
-      @inline = @datastream.mimeType.start_with?('text/') || TEXT_MIME_TYPES.include?(@datastream.mimeType)
-      # @inline &&= @datastream.dsSize <= MAX_INLINE_SIZE
+      @inline = (@datastream.mimeType.start_with?('text/') || TEXT_MIME_TYPES.include?(@datastream.mimeType)) && @datastream.dsSize <= MAX_INLINE_SIZE
     end
 
   end

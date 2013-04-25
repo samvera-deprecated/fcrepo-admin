@@ -9,5 +9,6 @@ class ContentModel < ActiveFedora::Base
   belongs_to :admin_policy, :property => :is_governed_by
 
   include Hydra::ModelMixins::RightsMetadata
+  include ActiveFedora::Auditable
 
 end
