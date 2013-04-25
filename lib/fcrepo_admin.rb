@@ -11,7 +11,7 @@ module FcrepoAdmin
   end
   module Controller
     autoload :ControllerBehavior, 'fcrepo_admin/controller/controller_behavior'
-    autoload :ObjectsBehavior, 'fcrepo_admin/controller/objects_behavior'
-    autoload :DatastreamsBehavior, 'fcrepo_admin/controller/datastreams_behavior'
+    autoload :ObjectsControllerBehavior, 'fcrepo_admin/controller/objects_controller_behavior'
+    autoload :DatastreamsControllerBehavior, 'fcrepo_admin/controller/datastreams_controller_behavior'
   end
 end

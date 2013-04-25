@@ -79,7 +79,7 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
     module FcrepoAdmin
       class ObjectsController < ApplicationController
-        include FcrepoAdmin::Controller::ObjectsBehavior
+        include FcrepoAdmin::Controller::ObjectsControllerBehavior
         # add your customizations
       end
     end
@@ -88,7 +88,7 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
     module FcrepoAdmin
       class DatastreamsController < ApplicationController
-        include FcrepoAdmin::Controller::DatastreamsBehavior
+        include FcrepoAdmin::Controller::DatastreamsControllerBehavior
         # add your customizations
       end
     end

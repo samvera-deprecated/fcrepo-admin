@@ -1,6 +1,6 @@
 module FcrepoAdmin
   class DatastreamsController < ApplicationController
-    include FcrepoAdmin::Controller::DatastreamsBehavior
+    include FcrepoAdmin::Controller::DatastreamsControllerBehavior
   end
 end
 

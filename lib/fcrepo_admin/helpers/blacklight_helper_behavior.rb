@@ -1,13 +1,3 @@
-#
-# Overrides of Blacklight helpers in Blacklight::BlacklightHelperBehavior
-#
-# To implement, create blacklight_helper.rb in app/helpers with this content:
-#
-# module BlacklightHelper
-#   include Blacklight::BlacklightHelperBehavior
-#   include FcrepoAdmin::Helpers::BlacklightHelperBehavior
-# end
-#
 module FcrepoAdmin::Helpers
   module BlacklightHelperBehavior
 
