@@ -46,7 +46,7 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
 * Customize catalog search results (optional)
 
-  If you would like catalog search results items to link to the object admin view
+  If you would like catalog search results items to link to the fcrepo_admin object show view
   instead of the catalog show view, create app/helpers/blacklight_helper.rb with this content:
 
     module BlacklightHelper
