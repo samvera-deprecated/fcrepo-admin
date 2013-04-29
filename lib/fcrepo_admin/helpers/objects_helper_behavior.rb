@@ -1,5 +1,6 @@
 module FcrepoAdmin::Helpers
   module ObjectsHelperBehavior
+    include FcrepoAdmin::Helpers::FcrepoAdminHelperBehavior
 
     def object_title
       "#{object_type} #{@object.pid}"

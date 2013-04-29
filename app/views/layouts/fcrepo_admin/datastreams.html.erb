@@ -4,7 +4,7 @@
   <%= yield %>
 <% end %>
 <% content_for :sidebar do %>
-  <%= render :partial => 'fcrepo_admin/objects/context_nav_items', :locals => {:object => @object}, :layout => 'fcrepo_admin/shared/context_nav_list' %>
-  <%= render :partial => 'fcrepo_admin/datastreams/context_nav_items', :locals => {:datastream => @datastream, :object => @object}, :layout => 'fcrepo_admin/shared/context_nav_list' %>
+  <%= render_object_context_nav %>
+  <%= render_datastream_context_nav %>
 <% end %>
 <%= render :template => 'layouts/fcrepo_admin/default' %>

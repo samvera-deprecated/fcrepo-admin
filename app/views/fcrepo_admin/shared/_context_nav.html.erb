@@ -1,0 +1,12 @@
+<div class="well">
+  <ul class="nav nav-list">
+	<li class="nav-header">
+	  <%= header %>
+	</li>
+	<% items.each do |label, path| %>
+	<li>
+	  <%= link_to_unless_current label, path %>
+	</li>
+	<% end %>
+  </ul>
+</div>
