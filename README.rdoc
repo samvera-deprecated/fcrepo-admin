@@ -9,7 +9,7 @@ Versions earlier than 1.0 may change API and/or UI without notice or regard for 
 
 === Requirements
 
-fcrepo_admin is designed for installation on hydra-head 6.1 or higher (as of version 0.3.5).  
+fcrepo_admin is designed for installation on hydra-head 6.0 or higher (requires active-fedora 6.1 or higher).
 See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
 === Installation
@@ -77,7 +77,6 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
   It should return an array of [label, path] items suitable for use by link_to_unless_current:
 
     <%= link_to_unless_current label, path %>
-
 
 * Datastream views
 

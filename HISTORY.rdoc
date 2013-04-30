@@ -1,6 +1,6 @@
 === 0.3.5
 
-* Requires hydra-head 6.1.
+* Requires active-fedora 6.1.
 
 === 0.3.4
 
