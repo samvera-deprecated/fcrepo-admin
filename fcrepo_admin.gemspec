@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = ["lib"]
 
-  s.add_dependency "hydra-head", "6.0.0"
+  s.add_dependency "hydra-head", "~> 6.1"
   s.add_dependency "blacklight"
   s.add_dependency "rails", "~> 3.2"
   s.add_dependency "mime-types", '~> 1.19'

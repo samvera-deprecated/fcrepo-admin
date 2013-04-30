@@ -9,7 +9,7 @@ Versions earlier than 1.0 may change API and/or UI without notice or regard for 
 
 === Requirements
 
-fcrepo_admin is designed for installation on hydra-head 6.0.0 or higher.  
+fcrepo_admin is designed for installation on hydra-head 6.1 or higher (as of version 0.3.5).  
 See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
 === Installation
@@ -62,7 +62,7 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
 === Overriding fcrepo_admin behaviors
 
-* Object view helpers
+* Object views
 
   Create app/helpers/fcrepo_admin/objects_helper.rb with this content:
 
@@ -72,6 +72,26 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
     end
 
   In particular you may want to override #object_title.
+
+  The contents of the object context navigation menu can be customized by overriding #object_context_nav_items.
+  It should return an array of [label, path] items suitable for use by link_to_unless_current:
+
+    <%= link_to_unless_current label, path %>
+
+
+* Datastream views
+
+  The contents of the datastream context navigation menu can be customized by overriding #datastream_context_nav_items.
+  Create app/helpers/fcrepo_admin/datastreams_helper.rb with this content:
+
+    module FcrepoAdmin::DatastreamsHelper
+      include FcrepoAdmin::Helpers::DatastreamsHelperBehavior
+      # override and/or add methods here
+    end    
+
+  datastream_context_nav_items should return an array of [label, path] items suitable for use by link_to_unless_current:
+
+    <%= link_to_unless_current label, path %>
 
 * Controllers
 
