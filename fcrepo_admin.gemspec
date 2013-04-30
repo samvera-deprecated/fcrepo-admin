@@ -24,12 +24,13 @@ Gem::Specification.new do |s|
 
   s.require_paths = ["lib"]
 
-  s.add_dependency "hydra-head", "6.0.0"
+  s.add_dependency "hydra-head", "~> 6.0"
+  s.add_dependency "active-fedora", "~> 6.1"
   s.add_dependency "blacklight"
   s.add_dependency "rails", "~> 3.2"
   s.add_dependency "mime-types", '~> 1.19'
+  s.add_dependency "devise"
 
-  s.add_development_dependency "devise"
   s.add_development_dependency "rspec"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "capybara"
