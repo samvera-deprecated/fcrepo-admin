@@ -1,0 +1,20 @@
+<table class="table table-bordered table-condensed">
+  <thead>
+	<tr>
+	  <th scope="col">Name</th>
+	  <th scope="col">Association</th>
+	  <th scope="col">Target Object Type</th>
+	  <th scope="col">Property/Predicate</th>
+	</tr>
+  </thead>
+  <tbody>
+	<% object.reflections.each do |assoc, refl| %>
+	<tr>
+	  <td><%= link_to assoc, fcrepo_admin.association_object_path(object, assoc) %></td>
+	  <td><%= refl.macro %></td>
+	  <td><%= refl.class_name %></td>
+	  <td><%= refl.options[:property] %></td>
+	</tr>
+	<% end %>
+  </tbody>
+</table>

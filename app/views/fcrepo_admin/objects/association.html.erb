@@ -1,0 +1,17 @@
+<h3>Association: <%= @association %></h3>
+
+<% unless @associated_docs.blank? %>
+  <h4>Associated Objects</h4>
+  <ul>
+	<% @associated_docs.each do |doc| %>
+	<li>
+	  <%= link_to_document doc %>
+	  <%= "(#{doc.id})" %> 
+	</li>
+	<% end %>
+  </ul>
+<% else %>
+  <div class="alert">
+	No associated objects found.
+  </div>
+<% end %>

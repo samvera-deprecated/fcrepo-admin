@@ -25,6 +25,22 @@ module FcrepoAdmin::Controller
       end
     end
 
+    def association
+      @association = params[:association].to_sym
+      if @object.reflections.has_key? @association
+        if @object.reflections[@association].collection?
+          @associated_docs = @object.send(@association).load_from_solr.collect { |h| SolrDocument.new(h) }
+        else
+          associated = @object.send(@association)
+          if associated
+            # redirect to associated object
+          end
+        end
+      else
+        render :text => "Not an association for this object", :status => 404
+      end
+    end
+
     private
 
     def load_and_authorize_object
@@ -37,7 +53,11 @@ module FcrepoAdmin::Controller
     end
 
     def authorize_object
-      action = params[:action] == 'audit_trail' ? :read : params[:action].to_sym
+      if params[:action] == 'audit_trail' || params[:action] == 'association'
+        action = :read
+      else
+        action = params[:action].to_sym
+      end
       authorize! action, @object
     end
 

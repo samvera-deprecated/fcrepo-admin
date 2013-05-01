@@ -5,6 +5,7 @@ en:
         datastreams: 'Datastreams'
         properties: 'Properties'
         permissions: 'Permissions'
+        associations: 'Associations'
       nav:
         header: 'Object Admin'
         items:
