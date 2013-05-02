@@ -6,13 +6,15 @@ module FcrepoAdmin::Controller
       layout 'fcrepo_admin/objects'
       include FcrepoAdmin::Controller::ControllerBehavior
       helper_method :object_properties
-      before_filter :load_and_authorize_object
+      before_filter :load_and_authorize_object, :except => :show
       before_filter :load_apo_info, :only => :permissions
     end
     
     PROPERTIES = [:owner_id, :state, :create_date, :modified_date, :label]
 
     def show
+      @response, @document = get_solr_response_for_doc_id(params[:id])
+      @object = ActiveFedora::SolrService.reify_solr_results([@document], :load_from_solr => true).first
     end
 
     def audit_trail

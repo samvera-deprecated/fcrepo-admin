@@ -11,6 +11,10 @@ en:
         items:
           summary: 'Object Summary'
           audit_trail: 'Audit Trail'
+          permissions: 'Permissions'
+          properties: 'Properties'
+          datastreams: 'Datastreams'
+          associations: 'Associations'
       properties:
         title: 'Properties'
         keys:

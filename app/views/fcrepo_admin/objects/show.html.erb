@@ -1,1 +1,3 @@
-<%= render :partial => 'datastreams', :locals => {:object => @object} %>
+<%= render_document_partial @document, :show %>
+<%= render 'properties' %>
+

@@ -1,5 +1,6 @@
 module FcrepoAdmin
-  class ObjectsController < ApplicationController
+  class ObjectsController < CatalogController
+    include FcrepoAdmin::Controller::CatalogControllerBehavior
     include FcrepoAdmin::Controller::ObjectsControllerBehavior
   end
 end

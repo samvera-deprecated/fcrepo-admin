@@ -1,13 +1,9 @@
 <h3><%= t("fcrepo_admin.object.associations.title") %>: <%= @association.name %></h3>
 
+<!-- <pre><%= @response %></pre> -->
+
 <% unless @documents.blank? %>
-  <ul>
-	<% @documents.each do |doc| %>
-	<li>
-	  <%= link_to_document doc %> 
-	</li>
-	<% end %>
-  </ul>
+  <%= render_document_index @documents %>
 <% else %>
   <div class="alert">
 	No associated objects found.
