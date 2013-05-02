@@ -7,7 +7,7 @@ module FcrepoAdmin::Controller
       include FcrepoAdmin::Controller::ControllerBehavior
       helper_method :object_properties
       before_filter :load_and_authorize_object
-      before_filter :load_apo_info, :only => :show
+      before_filter :load_apo_info, :only => :permissions
     end
     
     PROPERTIES = [:owner_id, :state, :create_date, :modified_date, :label]
@@ -23,6 +23,12 @@ module FcrepoAdmin::Controller
       else
         render :text => I18n.t("fcrepo_admin.object.audit_trail.not_implemented"), :status => 404
       end
+    end
+
+    def properties
+    end
+
+    def permissions
     end
 
     protected

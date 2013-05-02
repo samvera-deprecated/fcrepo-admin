@@ -1,6 +1,8 @@
 === 0.4.0
 
 * Feature: Display object's associations.
+* Require inclusion of CanCan action aliases in application's Ability class.
+* Tabbed object show view ("summary") replaced with separate views.
 
 === 0.3.5
 

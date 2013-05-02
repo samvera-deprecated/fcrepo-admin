@@ -1,3 +1,4 @@
+<h3><%= t("fcrepo_admin.object.associations.title") %></h3>
 <table class="table table-bordered table-condensed">
   <thead>
 	<tr>
@@ -15,7 +16,9 @@
 	  <td><%= association.name %></td>
 	  <td><%= link_to_target association %></td>
 	  <td><%= association.class_name %></td>
-	  <td><%= association.options[:property] %></td>
+	  <td>
+		<%= association.options[:property] %><% if association.options[:inbound] %> (inbound)<% end %>
+	  </td>
 	</tr>
 	<% end %>
   </tbody>

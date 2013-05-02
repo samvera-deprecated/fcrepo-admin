@@ -1,0 +1,18 @@
+<% if permissions.empty? %>
+  <div class="alert">
+	<%= t("fcrepo_admin.object.permissions.no_permissions") %>
+  </div>
+<% else %>
+  <table class="table table-bordered table-condensed table-autowidth" style="width: auto">
+	<thead>
+	  <tr>
+		<th scope="col"><%= t("fcrepo_admin.object.permissions.header.type") %></th>
+		<th scope="col"><%= t("fcrepo_admin.object.permissions.header.name") %></th>
+		<th scope="col"><%= t("fcrepo_admin.object.permissions.header.access") %></th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <%= render :partial => "permissions_list_item", :collection => permissions, :as => :permission %>
+	</tbody>
+  </table>
+<% end %>

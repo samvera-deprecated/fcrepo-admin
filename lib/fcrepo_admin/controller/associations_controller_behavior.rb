@@ -6,7 +6,10 @@ module FcrepoAdmin::Controller
       layout 'fcrepo_admin/objects'
       include FcrepoAdmin::Controller::ControllerBehavior
       before_filter :load_and_authorize_object
-      before_filter :load_association
+      before_filter :load_association, :only => :show
+    end
+
+    def index
     end
 
     def show

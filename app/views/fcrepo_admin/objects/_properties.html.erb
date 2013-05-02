@@ -1,4 +1,5 @@
-<table class="table table-bordered table-condensed">
+<h3><%= t("fcrepo_admin.object.properties.title") %></h3>
+<table class="table table-bordered table-condensed" style="width: auto">
   <% object_properties.each do |key, value| %>
     <tr>
 	  <th scope="row"><%= t("fcrepo_admin.object.properties.keys.#{key}") %></th>

@@ -20,6 +20,7 @@ en:
           modified_date: 'Modified Date'
           label: 'Label'
       permissions:
+        title: 'Permissions'
         no_permissions: 'No permissions.'
         not_supported: 'This object type does not support Hydra permissions'
         direct: 'Direct Permissions'
@@ -39,8 +40,8 @@ en:
           class_name: 'Target Object Type'
           property: 'Property/Predicate'
       apo:
-        governed_by: 'Governed By'
-        not_assigned: 'Not Assigned'
+        governed_by: 'Governed by admin policy object'
+        not_assigned: 'This object is not governed by an admin policy object'
         enforcement_disabled: 'Admin policy access control enforcement is disabled'
         relationship_undefined: 'This object type does not define an admin policy relationship'
       audit_trail: 

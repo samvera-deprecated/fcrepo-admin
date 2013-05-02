@@ -1,18 +1,35 @@
-<% if permissions.empty? %>
-  <div class="alert alert-info">
-	<%= t("fcrepo_admin.object.permissions.no_permissions") %>
-  </div>
+<h3><%= t("fcrepo_admin.object.permissions.title") %></h3>
+<% if object_has_permissions? %>
+
+  <h4><%= t("fcrepo_admin.object.permissions.direct") %></h4>
+  <%= render :partial => 'permissions_list', :locals => {:permissions => object.permissions} %>
+
+  <h4><%= t("fcrepo_admin.object.permissions.inherited") %></h4>
+  <% unless admin_policy_enforcement_enabled? %>
+    <p class="alert">
+	  <%= t("fcrepo_admin.object.apo.enforcement_disabled") %>.
+	</p>
+  <% end %>
+  <% if object_model_belongs_to_apo? %>
+    <div class="alert alert-info">
+	  <% if object_has_admin_policy? %>
+	    <%= t("fcrepo_admin.object.apo.governed_by") %>: 
+	    <%= link_to object_admin_policy.pid, fcrepo_admin.object_path(object_admin_policy) %>
+	  <% else %>
+	    <%= t("fcrepo_admin.object.apo.not_assigned") %>.
+	  <% end %>
+	</div>
+	<% if object_has_inherited_permissions? %>
+	  <%= render :partial => 'permissions_list', :locals => {:permissions => object_inherited_permissions} %>
+	<% end %>
+  <% else %>
+    <p class="alert alert-info">
+	  <%= t("fcrepo_admin.object.apo.relationship_undefined") %>: <%= object_type %>.
+	</p>
+  <% end %>
+
 <% else %>
-  <table class="table table-bordered table-condensed">
-	<thead>
-	  <tr>
-		<th scope="col"><%= t("fcrepo_admin.object.permissions.header.type") %></th>
-		<th scope="col"><%= t("fcrepo_admin.object.permissions.header.name") %></th>
-		<th scope="col"><%= t("fcrepo_admin.object.permissions.header.access") %></th>
-	  </tr>
-	</thead>
-	<tbody>
-	  <%= render :partial => "permissions_row", :collection => permissions, :as => :permission %>
-	</tbody>
-  </table>
+  <div class="alert">
+	<%= t("fcrepo_admin.object.permissions.not_supported") %>: <%= object_type %>.
+  </div>
 <% end %>

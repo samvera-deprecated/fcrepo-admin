@@ -1,5 +1,5 @@
 class Ability
   include Hydra::Ability
   include Hydra::PolicyAwareAbility
-  include FcrepoAdmin::DatastreamAbility
+  include FcrepoAdmin::Ability
 end

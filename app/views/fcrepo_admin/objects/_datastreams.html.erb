@@ -1,3 +1,4 @@
+<h3><%= t("fcrepo_admin.datastreams.title") %></h3>
 <table class="table table-bordered table-condensed">
   <thead>
     <tr>
@@ -8,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <% datastreams.reject { |dsid, ds| ds.profile.empty? }.each do |dsid, ds| %>
+    <% object.datastreams.reject { |dsid, ds| ds.profile.empty? }.each do |dsid, ds| %>
     <tr>
 	  <td><%= link_to dsid, fcrepo_admin.object_datastream_path(ds.pid, dsid) %></td>
 	  <td><%= ds.profile["dsLabel"] %></td>

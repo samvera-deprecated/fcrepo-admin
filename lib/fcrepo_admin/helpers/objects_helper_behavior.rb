@@ -10,10 +10,6 @@ module FcrepoAdmin::Helpers
       @object.class.to_s
     end
 
-    def object_has_permissions?
-      @object.is_a?(Hydra::ModelMixins::RightsMetadata)
-    end
-
     def object_model_belongs_to_apo?
       !@apo_relationship_name.nil?
     end

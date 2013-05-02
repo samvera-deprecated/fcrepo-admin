@@ -5,15 +5,20 @@ module FcrepoAdmin::Controller
     extend ActiveSupport::Concern
 
     included do
-      layout 'fcrepo_admin/datastreams'
+      layout 'fcrepo_admin/datastreams', :except => :index
+      layout 'fcrepo_admin/objects', :only => :index
       include FcrepoAdmin::Controller::ControllerBehavior
-      before_filter :load_and_authorize_datastream
+      before_filter :load_and_authorize_object
+      before_filter :load_datastream, :except => :index
       before_filter :inline_filter, :only => [:show, :edit]
     end
 
     # Additional types of content that should be displayed inline
     TEXT_MIME_TYPES = ['application/xml', 'application/rdf+xml', 'application/json']
     MAX_INLINE_SIZE = 1024 * 64
+
+    def index
+    end
 
     def show
     end
@@ -41,27 +46,9 @@ module FcrepoAdmin::Controller
     end
 
     private
-
-    def load_and_authorize_datastream
-      load_object
-      load_datastream
-      authorize_datastream
-    end
     
     def load_datastream
       @datastream = @object.datastreams[params[:id]]
-    end
-
-    def authorize_datastream
-      action = case params[:action]
-               when 'upload'
-                 :edit
-               when 'download'
-                 :read
-               else
-                 params[:action].to_sym
-               end
-      authorize! action, @object
     end
 
     protected
