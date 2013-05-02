@@ -1,7 +1,7 @@
 module FcrepoAdmin::Helpers
   module AssociationsHelperBehavior
 
-    def link_to_association(association)
+    def link_to_target(association)
       target = @object.send(association.name)
       if association.collection?
         text = "#{target.size} #{target.size == 1 ? 'object' : 'objects'}"
