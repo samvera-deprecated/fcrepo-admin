@@ -11,8 +11,8 @@ module FcrepoAdmin::Helpers
       items << [t("fcrepo_admin.datastream.nav.items.summary"), fcrepo_admin.object_datastream_path(@object, @datastream.dsid)]
       if can? :edit, @object
         items << [t("fcrepo_admin.datastream.nav.items.edit"), fcrepo_admin.edit_object_datastream_path(@object, @datastream.dsid)]
+        items << [t("fcrepo_admin.datastream.nav.items.upload"), fcrepo_admin.upload_object_datastream_path(@object, @datastream.dsid)]
       end
-      items << [t("fcrepo_admin.datastream.nav.items.upload"), fcrepo_admin.upload_object_datastream_path(@object, @datastream.dsid)]
       items << [t("fcrepo_admin.datastream.nav.items.download"), fcrepo_admin.download_object_datastream_path(@object, @datastream.dsid)]
       items
     end

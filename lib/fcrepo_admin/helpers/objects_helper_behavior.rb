@@ -45,10 +45,6 @@ module FcrepoAdmin::Helpers
       # relationship regardless of whether policy enforcement is enabled.
       @object.is_a?(Hydra.config[:permissions].fetch(:policy_class, Hydra::AdminPolicy))
     end
-
-    def link_to_association(association)
-      link_to(association, @object.reflections[association.to_sym].collection? ? fcrepo_admin.association_object_path(@object, association) : fcrepo_admin.object_path(@object.send("#{association}_id".to_sym)))
-    end
     
   end
 end

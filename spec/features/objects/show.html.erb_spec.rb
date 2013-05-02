@@ -23,12 +23,7 @@ describe "objects/show.html.erb" do
       page.should have_link(I18n.t("fcrepo_admin.object.audit_trail.title"), :href => fcrepo_admin.audit_trail_object_path(object))
     end
     it "should display the object's permissions"
-    it "should list the object's associations" do
-      visit fcrepo_admin.object_path(object)
-      object.reflections.each do |assoc, refl|
-        page.should have_link(assoc, :href => fcrepo_admin.association_object_path(object, assoc))
-      end
-    end
+    it "should list the object's associations"
   end
   context "object governed by an admin policy" do
     let(:object) { FactoryGirl.create(:content_model_has_apo) }

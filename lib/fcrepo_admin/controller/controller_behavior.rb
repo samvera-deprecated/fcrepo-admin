@@ -14,5 +14,26 @@ module FcrepoAdmin::Controller
       end
     end
 
+    protected
+
+    def load_and_authorize_object
+      load_object
+      authorize_object
+    end
+
+    def load_object
+      id = params[:object_id] || params[:id]
+      @object = ActiveFedora::Base.find(id, :cast => true)
+    end
+
+    def authorize_object
+      if params[:controller] == 'fcrepo_admin/objects' && params[:action] == 'audit_trail'
+        action = :read
+      else
+        action = params[:action].to_sym
+      end
+      authorize! action, @object
+    end
+
   end
 end

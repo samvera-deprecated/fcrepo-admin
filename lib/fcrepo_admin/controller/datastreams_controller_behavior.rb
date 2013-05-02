@@ -48,10 +48,6 @@ module FcrepoAdmin::Controller
       authorize_datastream
     end
     
-    def load_object
-      @object = ActiveFedora::Base.find(params[:object_id], :cast => true)
-    end
-
     def load_datastream
       @datastream = @object.datastreams[params[:id]]
     end
@@ -65,7 +61,6 @@ module FcrepoAdmin::Controller
                else
                  params[:action].to_sym
                end
-      # Datastream permissions are solely based on object permissions
       authorize! action, @object
     end
 

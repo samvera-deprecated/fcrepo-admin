@@ -15,17 +15,4 @@ describe FcrepoAdmin::ObjectsController do
     subject { get :audit_trail, :id => object, :download => 'true', :use_route => 'fcrepo_admin' }
     its(:response_code) { should eq(200) }
   end
-  context "#association" do
-    subject { get :association, :id => object, :association => association, :use_route => 'fcrepo_admin' }
-    context "not an association" do
-      let(:association) { "foo" }
-      its(:response_code) { should eq(404) }
-    end
-    context "collection" do
-      pending
-    end
-    context "not a collection" do
-      pending
-    end
-  end
 end

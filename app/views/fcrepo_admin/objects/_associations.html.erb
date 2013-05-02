@@ -1,19 +1,21 @@
 <table class="table table-bordered table-condensed">
   <thead>
 	<tr>
-	  <th scope="col">Name</th>
-	  <th scope="col">Association</th>
-	  <th scope="col">Target Object Type</th>
-	  <th scope="col">Property/Predicate</th>
+	  <th scope="col"><%= t("fcrepo_admin.object.associations.header.macro") %></th>
+	  <th scope="col"><%= t("fcrepo_admin.object.associations.header.name") %></th>
+	  <th scope="col"><%= t("fcrepo_admin.object.associations.header.target") %></th>
+	  <th scope="col"><%= t("fcrepo_admin.object.associations.header.class_name") %></th>
+	  <th scope="col"><%= t("fcrepo_admin.object.associations.header.property") %></th>
 	</tr>
   </thead>
   <tbody>
-	<% object.reflections.each do |assoc, refl| %>
+	<% object.reflections.each_value do |association| %>
 	<tr>
-	  <td><%= link_to assoc, fcrepo_admin.association_object_path(object, assoc) %></td>
-	  <td><%= refl.macro %></td>
-	  <td><%= refl.class_name %></td>
-	  <td><%= refl.options[:property] %></td>
+	  <td><%= association.macro %></td>
+	  <td><%= association.name %></td>
+	  <td><%= link_to_association association %></td>
+	  <td><%= association.class_name %></td>
+	  <td><%= association.options[:property] %></td>
 	</tr>
 	<% end %>
   </tbody>

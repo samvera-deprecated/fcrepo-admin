@@ -7,41 +7,13 @@
   </ul>
   <div class="tab-content">
     <div class="tab-pane active" id="tab-datastreams">
-	  <%= render :partial => 'fcrepo_admin/datastreams/datastreams', :locals => {:datastreams => @object.datastreams} %>
+	  <%= render :partial => 'datastreams', :locals => {:datastreams => @object.datastreams} %>
     </div>
     <div class="tab-pane" id="tab-properties">
 	  <%= render 'properties' %>
     </div>
     <div class="tab-pane" id="tab-permissions">
-	<% if object_has_permissions? %>
-      <h4>Direct Permissions</h4>
-	  <%= render :partial => 'permissions', :locals => {:permissions => @object.permissions} %>
-	  <h4>Inherited Permissions</h4>
-	  <% unless admin_policy_enforcement_enabled? %>
-	    <p class="alert">
-		  <%= t("fcrepo_admin.object.apo.enforcement_disabled") %>.
-	    </p>
-	  <% end %>
-	  <% if object_model_belongs_to_apo? %>
-	    <p>
-		  <%= t("fcrepo_admin.object.apo.governed_by") %>: 
-		  <% if object_has_admin_policy? %>
-		    <%= link_to object_admin_policy.pid, fcrepo_admin.object_path(object_admin_policy) %>
-	      <% else %>
-		    <span class="label"><%= t("fcrepo_admin.object.apo.not_assigned") %></span>
-		  <% end %>
-	    </p>
-		<% if object_has_inherited_permissions? %>
-	      <%= render :partial => 'permissions', :locals => {:permissions => object_inherited_permissions} %>
-		<% end %>
-	  <% else %>
-	    <p class="alert alert-info">
-		  <%= t("fcrepo_admin.object.apo.relationship_undefined") %>: <%= object_type %>.
-	    </p>
-	  <% end %>
-    <% else %>
-	  <%= t("fcrepo_admin.object.permissions.not_supported") %>: <%= object_type %>.
-	<% end %>
+	  <%= render :partial => 'direct_and_inherited_permissions', :locals => {:object => @object} %>
     </div> <!-- /tab-permissions -->
 	<div class="tab-pane" id="tab-associations">
 	  <%= render :partial => 'associations', :locals => {:object => @object} %>

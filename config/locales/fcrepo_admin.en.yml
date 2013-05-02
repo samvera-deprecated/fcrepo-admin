@@ -22,10 +22,22 @@ en:
       permissions:
         no_permissions: 'No permissions.'
         not_supported: 'This object type does not support Hydra permissions'
+        direct: 'Direct Permissions'
+        inherited: 'Inherited Permissions'
         header:
           type: 'Type'
           name: 'Name'
           access: 'Access'
+      associations:
+        title: 'Associations'
+        not_assigned: 'not assigned'
+        collection_target: 'object'
+        header:
+          macro: 'Macro'
+          name: 'Association Name'
+          target: 'Target Object(s)'
+          class_name: 'Target Object Type'
+          property: 'Property/Predicate'
       apo:
         governed_by: 'Governed By'
         not_assigned: 'Not Assigned'
