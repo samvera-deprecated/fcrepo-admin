@@ -5,7 +5,7 @@ RSpec.configure do |c|
 end
 
 describe "datastreams/edit.html.erb" do
-  let(:object) { FactoryGirl.create(:content_model) }
+  let(:object) { FactoryGirl.create(:item) }
   let(:user) { FactoryGirl.create(:user) }
   before { 
     object.permissions = [{type: 'user', name: user.email, access: 'edit'}]

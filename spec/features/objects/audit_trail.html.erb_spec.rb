@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "audit_trail.html.erb" do
-  let(:object) { FactoryGirl.create(:content_model) }
+  let(:object) { FactoryGirl.create(:item) }
   after { object.delete }
   it "should display the audit trail" do
     visit fcrepo_admin.audit_trail_object_path(object)

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe FcrepoAdmin::ObjectsController do
-  let(:object) { FactoryGirl.create(:content_model) }
+  let(:object) { FactoryGirl.create(:item) }
   after { object.delete }
   context "#show" do
     subject { get :show, :id => object, :use_route => 'fcrepo_admin' }
@@ -14,5 +14,9 @@ describe FcrepoAdmin::ObjectsController do
   context "#audit_trail?download=true" do
     subject { get :audit_trail, :id => object, :download => 'true', :use_route => 'fcrepo_admin' }
     its(:response_code) { should eq(200) }
+  end
+  context "#permissions" do
+    subject { get :permissions, :id => object, :use_route => 'fcrepo_admin' }
+    it { should render_template(:permissions) }
   end
 end

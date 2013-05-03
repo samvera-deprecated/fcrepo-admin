@@ -5,7 +5,7 @@ RSpec.configure do |c|
 end
 
 describe "datastreams/show.html.erb" do
-  let!(:object) { FactoryGirl.create(:content_model) }
+  let!(:object) { FactoryGirl.create(:item) }
   let(:dsid) { "descMetadata" }
   before { visit fcrepo_admin.object_datastream_path(object, dsid) }
   after { object.delete }

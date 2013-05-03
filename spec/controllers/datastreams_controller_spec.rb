@@ -1,24 +1,26 @@
 require 'spec_helper'
 
-shared_examples "a datastream profile view" do
-  it { should render_template(:show) }
-end
+# shared_examples "a datastream profile view" do
+#   it { should render_template(:show) }
+# end
 
 describe FcrepoAdmin::DatastreamsController do
   before do
-    @object = FactoryGirl.create(:content_model)
+    @object = FactoryGirl.create(:item)
     @dsid = "descMetadata"
   end
   after { @object.delete }
   context "#show" do
-    context "browser view" do
-      subject { get :show, :object_id => @object, :id => @dsid, :use_route => 'fcrepo_admin' }
-      it { should render_template(:show) }
-    end
-    context "download" do
-      subject { get :show, :object_id => @object, :id => @dsid, :download => 'true', :use_route => 'fcrepo_admin' }
-      it { should be_successful }
-    end
+    subject { get :show, :object_id => @object, :id => @dsid, :use_route => 'fcrepo_admin' }
+    it { should render_template(:show) }
+  end
+  context "#show" do
+    subject { get :content, :object_id => @object, :id => @dsid, :use_route => 'fcrepo_admin' }
+    it { should render_template(:content) }
+  end
+  context "#download" do
+    subject { get :download, :object_id => @object, :id => @dsid, :use_route => 'fcrepo_admin' }
+    it { should be_successful }
   end
   context "change methods" do
     let(:user) { FactoryGirl.create(:user) }

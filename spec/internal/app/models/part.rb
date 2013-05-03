@@ -1,4 +1,4 @@
-class ContentModel < ActiveFedora::Base
+class Part < ActiveFedora::Base
 
   has_metadata :name => "descMetadata", :type => ActiveFedora::QualifiedDublinCoreDatastream
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
@@ -7,7 +7,7 @@ class ContentModel < ActiveFedora::Base
   delegate :title, :to => "descMetadata", :unique => true
 
   belongs_to :admin_policy, :property => :is_governed_by
-  belongs_to :collection, :property => :is_member_of_collection
+  belongs_to :container, :property => :is_part_of, :class_name => 'Item'
 
   include Hydra::ModelMixins::RightsMetadata
   include ActiveFedora::Auditable

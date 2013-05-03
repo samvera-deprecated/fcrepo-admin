@@ -18,6 +18,13 @@ module FcrepoAdmin::Controller
       if @association.collection?
         self.solr_search_params_logic += [:association_filter]
         @response, @documents = get_search_results({:qt => 'standard'})
+      else
+        target = @object.send("#{@association.name}_id")
+        if target
+          redirect_to :controller => 'objects', :action => 'show', :id => target, :use_route => 'fcrepo_admin'
+        else
+          render :text => "Target not found", :status => 404
+        end
       end
     end
 

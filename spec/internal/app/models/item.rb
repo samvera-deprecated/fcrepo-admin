@@ -1,4 +1,4 @@
-class Collection < ActiveFedora::Base
+class Item < ActiveFedora::Base
 
   has_metadata :name => "descMetadata", :type => ActiveFedora::QualifiedDublinCoreDatastream
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
@@ -6,7 +6,8 @@ class Collection < ActiveFedora::Base
   delegate :title, :to => "descMetadata", :unique => true
 
   belongs_to :admin_policy, :property => :is_governed_by
-  has_many :members, :property => :is_member_of_collection, :inbound => true, :class_name => 'Item'
+  belongs_to :collection, :property => :is_member_of_collection, :class_name => 'Collection'
+  has_many :parts, :property => :is_part_of, :inbound => true, :class_name => 'Part'
 
   include Hydra::ModelMixins::RightsMetadata
   include ActiveFedora::Auditable
