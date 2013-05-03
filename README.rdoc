@@ -35,17 +35,17 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
     mount FcrepoAdmin::Engine => '/', :as=> 'fcrepo_admin'
 
-  You may replace <code>'/admin'</code> with any mount point (except perhaps <code>'/catalog'</code>).
+  You may use any mount point (except perhaps <code>'/catalog'</code>).
   All routes include <code>objects</code> as a subpath.
 
-* Add CanCan action aliases
+* Add CanCan action aliases (version 0.4.0+)
 
   In your Ability class (app/models/ability.rb) include the FcrepoAdmin::Ability module, for example:
 
     class Ability
-	  include Hydra::Ability
-	  include Hydra::PolicyAwareAbility
-	  include FcrepoAdmin::Ability
+      include Hydra::Ability
+      include Hydra::PolicyAwareAbility
+      include FcrepoAdmin::Ability
     end
 
   FcrepoAdmin::Ability defines action aliases for permissions which are enforced on (ActiveFedora::Base) objects.
@@ -65,11 +65,13 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
     module BlacklightHelper
       include Blacklight::BlacklightHelperBehavior  # Default Blacklight behaviors
       include FcrepoAdmin::Helpers::BlacklightHelperBehavior # fcrepo_admin overrides
+      # additional customizations here, if any
     end
 
 * Add audit trail support (optional)
 
-  To enable access to the Fedora audit trail data through the fcrepo_admin UI, add your ActiveFedora models:
+  To enable access to the Fedora audit trail data through the fcrepo_admin UI, include the 
+  ActiveFedora::Auditable mixin in your ActiveFedora models:
 
     include ActiveFedora::Auditable
 
@@ -77,7 +79,7 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
 The following are examples of possible customizations.  This list is not necessarily exhaustive.
 
-* Object views
+* Helpers
 
   Override objects helpers by creating app/helpers/fcrepo_admin/objects_helper.rb with this content:
 
@@ -90,8 +92,6 @@ The following are examples of possible customizations.  This list is not necessa
 
   The contents of the object context navigation menu can be customized by overriding #object_context_nav_items, 
   or by copying and modifying the partial fcrepo_admin/objects/context_nav_items.
-
-* Datastream views
 
   Override datastreams helpers by creating app/helpers/fcrepo_admin/datastreams_helper.rb with this content:
 
@@ -114,7 +114,7 @@ The following are examples of possible customizations.  This list is not necessa
       end
     end
 
-  Note that this controller subclasses CatalogController, not ApplicationController.
+  NOTE: This controller subclasses CatalogController, not ApplicationController.
 
   To override/extend the datastreams controller, create app/controllers/fcrepo_admin/datastreams_controller.rb:
 
