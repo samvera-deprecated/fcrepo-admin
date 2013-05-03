@@ -7,10 +7,14 @@ module FcrepoAdmin::Controller
     included do
       layout 'fcrepo_admin/datastreams', :except => :index
       layout 'fcrepo_admin/objects', :only => :index
+
       include FcrepoAdmin::Controller::ControllerBehavior
+
       before_filter :load_and_authorize_object
       before_filter :load_datastream, :except => :index
-      before_filter :inline_filter, :only => [:show, :edit]
+
+      helper_method :ds_content_is_text?
+      helper_method :ds_content_is_editable?
     end
 
     # Additional types of content that should be displayed inline
@@ -21,6 +25,9 @@ module FcrepoAdmin::Controller
     end
 
     def show
+    end
+
+    def content
     end
 
     def download
@@ -53,8 +60,12 @@ module FcrepoAdmin::Controller
 
     protected
 
-    def inline_filter
-      @inline = (@datastream.mimeType.start_with?('text/') || TEXT_MIME_TYPES.include?(@datastream.mimeType)) && @datastream.dsSize <= MAX_INLINE_SIZE
+    def ds_content_is_text?
+      @datastream.mimeType.start_with?('text/') || TEXT_MIME_TYPES.include?(@datastream.mimeType)
+    end
+
+    def ds_content_is_editable?
+      ds_content_is_text? && (@datastream.dsSize <= MAX_INLINE_SIZE)
     end
 
   end

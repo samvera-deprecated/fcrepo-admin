@@ -9,6 +9,7 @@ FcrepoAdmin::Engine.routes.draw do
       resources :associations, :only => [:index, :show]
       resources :datastreams, :only => [:index, :show, :edit, :update] do
         member do
+          get 'content'
           get 'upload'
           get 'download'
         end

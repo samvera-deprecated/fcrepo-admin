@@ -10,6 +10,7 @@ module FcrepoAdmin
       alias_action :download, :to => :read
       alias_action :audit_trail, :to => :read
       alias_action :permissions, :to => :read
+      alias_action :content, :to => :read
       alias_action :upload, :to => :update
     end
 

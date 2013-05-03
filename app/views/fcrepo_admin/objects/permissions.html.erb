@@ -1,1 +1,5 @@
-<%= render :partial => 'permissions', :locals => {:object => @object} %>
+<h3><%= t("fcrepo_admin.object.permissions.title") %></h3>
+<%= render :partial => 'direct_permissions', :locals => {:object => @object} %>
+<%= render 'inherited_permissions' %>
+
+

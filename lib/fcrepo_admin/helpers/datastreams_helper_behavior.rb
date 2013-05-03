@@ -18,9 +18,5 @@ module FcrepoAdmin::Helpers
       can? :upload, @object
     end
 
-    def can_download_datastream?
-      can? :download, @object
-    end
-
   end
 end

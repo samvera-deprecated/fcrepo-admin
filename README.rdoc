@@ -53,7 +53,7 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
 * Add Javascript
   
-  In app/assets/javascripts/application.js add this line: 
+  In app/assets/javascripts/application.js add:
 
     //= require bootstrap-tab
 

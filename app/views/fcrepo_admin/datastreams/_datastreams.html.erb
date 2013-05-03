@@ -9,12 +9,24 @@
     </tr>
   </thead>
   <tbody>
-    <% object.datastreams.reject { |dsid, ds| ds.profile.empty? }.each do |dsid, ds| %>
+    <% object.datastreams.each do |dsid, ds| %>
     <tr>
-	  <td><%= link_to dsid, fcrepo_admin.object_datastream_path(ds.pid, dsid) %></td>
+	  <td>
+		<%= 
+		   link_to_unless ds.profile.empty?, dsid, fcrepo_admin.object_datastream_path(ds.pid, dsid) do |name|
+		     name
+		   end
+		 %>
+      </td>
 	  <td><%= ds.profile["dsLabel"] %></td>
 	  <td><%= ds.profile["dsMIME"] %></td>
-	  <td><%= ds.profile["dsCreateDate"] %></td>
+	  <td>
+		<% unless ds.profile.empty? %>
+		  <%= ds.profile["dsCreateDate"] %>
+		<% else %>
+		  [<%= t("fcrepo_admin.datastreams.not_persisted") %>]
+		<% end %>
+	  </td>
     </tr>
     <% end %>
   </tbody>

@@ -1,7 +1,8 @@
-<% if inline %>
+<h4>Content</h4>
+<% if ds_content_is_text? %>
   <pre class="prettyprint pre-scrollable"><%= datastream.content %></pre>
 <% else %>
-  <p>
+  <div class="alert">
     <%= t("fcrepo_admin.datastream.content_not_text") %>.
-  </p>
+  </div>
 <% end %>

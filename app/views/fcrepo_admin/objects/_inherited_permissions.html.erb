@@ -1,0 +1,23 @@
+<h4><%= t("fcrepo_admin.object.permissions.inherited") %></h4>
+<% unless admin_policy_enforcement_enabled? %>
+  <p class="alert">
+	<%= t("fcrepo_admin.object.apo.enforcement_disabled") %>.
+  </p>
+<% end %>
+<% if object_is_governable? %>
+  <div class="alert alert-info">
+	<% if object_is_governed_by %>
+	  <%= t("fcrepo_admin.object.apo.governed_by") %>: 
+	  <%= link_to object_is_governed_by.pid, fcrepo_admin.object_path(object_is_governed_by) %>
+	<% else %>
+	  <%= t("fcrepo_admin.object.apo.not_assigned") %>.
+    <% end %>
+  </div>
+  <% if object_is_governed_by %>
+    <%= render :partial => 'permissions_list', :locals => {:permissions => object_is_governed_by.default_permissions} %>
+  <% end %>
+<% else %>
+  <p class="alert alert-info">
+    <%= t("fcrepo_admin.object.apo.relationship_undefined") %>: <%= object_type %>.
+  </p>
+<% end %>
