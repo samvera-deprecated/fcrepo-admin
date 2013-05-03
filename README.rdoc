@@ -33,10 +33,10 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
   In config/routes.rb add this line:
 
-    mount FcrepoAdmin::Engine => '/admin', :as=> 'fcrepo_admin'
+    mount FcrepoAdmin::Engine => '/', :as=> 'fcrepo_admin'
 
-  You may replace <code>'/admin'</code> with any mount point (except perhaps <code>'/catalog'</code>), 
-  including <code>'/'</code>. All routes include <code>objects</code> as a subpath.
+  You may replace <code>'/admin'</code> with any mount point (except perhaps <code>'/catalog'</code>).
+  All routes include <code>objects</code> as a subpath.
 
 * Add CanCan action aliases
 
@@ -79,7 +79,7 @@ The following are examples of possible customizations.  This list is not necessa
 
 * Object views
 
-  Create app/helpers/fcrepo_admin/objects_helper.rb with this content:
+  Override objects helpers by creating app/helpers/fcrepo_admin/objects_helper.rb with this content:
 
     module FcrepoAdmin::ObjectsHelper
       include FcrepoAdmin::Helpers::ObjectsHelperBehavior
@@ -88,35 +88,33 @@ The following are examples of possible customizations.  This list is not necessa
 
   In particular you may want to override #object_title.
 
-  The contents of the object context navigation menu can be customized by overriding #object_context_nav_items.
-  It should return an array of [label, path] items suitable for use by link_to_unless_current:
-
-    <%= link_to_unless_current label, path %>
+  The contents of the object context navigation menu can be customized by overriding #object_context_nav_items, 
+  or by copying and modifying the partial fcrepo_admin/objects/context_nav_items.
 
 * Datastream views
 
-  The contents of the datastream context navigation menu can be customized by overriding #datastream_context_nav_items.
-  Create app/helpers/fcrepo_admin/datastreams_helper.rb with this content:
+  Override datastreams helpers by creating app/helpers/fcrepo_admin/datastreams_helper.rb with this content:
 
     module FcrepoAdmin::DatastreamsHelper
       include FcrepoAdmin::Helpers::DatastreamsHelperBehavior
       # override and/or add methods here
     end    
 
-  datastream_context_nav_items should return an array of [label, path] items suitable for use by link_to_unless_current:
-
-    <%= link_to_unless_current label, path %>
+  The contents of the datastream context navigation menu can be customized by overriding #datastream_context_nav_items,
+  or by copying and modifying the partial fcrepo_admin/datastreams/context_nav_items.
 
 * Controllers
 
   To override/extend the objects controller, create app/controllers/fcrepo_admin/objects_controller.rb:
 
     module FcrepoAdmin
-      class ObjectsController < ApplicationController
+      class ObjectsController < CatalogController
         include FcrepoAdmin::Controller::ObjectsControllerBehavior
         # add your customizations
       end
     end
+
+  Note that this controller subclasses CatalogController, not ApplicationController.
 
   To override/extend the datastreams controller, create app/controllers/fcrepo_admin/datastreams_controller.rb:
 
@@ -126,6 +124,15 @@ The following are examples of possible customizations.  This list is not necessa
         # add your customizations
       end
     end
+
+=== Contributing
+
+* Consider first posting to hydra-tech@googlegroups.com with a question or bug report, or submit an issue
+  to the Github issue tracker at https://github.com/projecthydra/fcrepo-admin/issues.
+* Fork the git repository, create a feature branch, make your changes, and submit a pull request.  
+  It is preferable for all changes to be made in one commit, if possible.
+
+Thanks!
 
 === License
 

@@ -1,7 +1,9 @@
 <h3><%= t("fcrepo_admin.object.properties.title") %></h3>
-<dl class="dl-horizontal">
+<table class="table" style="width: auto">
   <% object_properties.each do |key, value| %>
-  <dt><%= t("fcrepo_admin.object.properties.keys.#{key}") %>:</dt>
-  <dd><%= value %></dd>
+  <tr>
+	<th scope="row"><%= t("fcrepo_admin.object.properties.keys.#{key}") %>:</th>
+	<td><%= value %></td>
+  </tr>
   <% end %>
-</dl>
+</table>

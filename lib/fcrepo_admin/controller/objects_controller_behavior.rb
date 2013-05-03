@@ -27,9 +27,6 @@ module FcrepoAdmin::Controller
       end
     end
 
-    def properties
-    end
-
     def permissions
     end
 

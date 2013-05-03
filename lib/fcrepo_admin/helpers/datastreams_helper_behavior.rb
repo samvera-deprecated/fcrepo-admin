@@ -7,18 +7,19 @@ module FcrepoAdmin::Helpers
     end
 
     def datastream_context_nav_items
-      items = []
-      items << [t("fcrepo_admin.datastream.nav.items.summary"), fcrepo_admin.object_datastream_path(@object, @datastream.dsid)]
-      if can? :edit, @object
-        items << [t("fcrepo_admin.datastream.nav.items.edit"), fcrepo_admin.edit_object_datastream_path(@object, @datastream.dsid)]
-        items << [t("fcrepo_admin.datastream.nav.items.upload"), fcrepo_admin.upload_object_datastream_path(@object, @datastream.dsid)]
-      end
-      items << [t("fcrepo_admin.datastream.nav.items.download"), fcrepo_admin.download_object_datastream_path(@object, @datastream.dsid)]
-      items
+      render :partial => 'fcrepo_admin/datastreams/context_nav_items', :locals => {:object => @object, :datastream => @datastream}
     end
 
-    def render_datastream_context_nav
-      render :partial => 'fcrepo_admin/shared/context_nav', :locals => {:header => datastream_context_nav_header, :items => datastream_context_nav_items}
+    def can_edit_datastream?
+      can? :edit, @object
+    end
+
+    def can_upload_datastream?
+      can? :upload, @object
+    end
+
+    def can_download_datastream?
+      can? :download, @object
     end
 
   end

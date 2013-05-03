@@ -3,7 +3,7 @@
   <%= yield %>
 <% end %>
 <% content_for :sidebar do %>
-  <%= render_object_context_nav %>
-  <%= render_datastream_context_nav %>
+  <%= render 'fcrepo_admin/objects/context_nav' %>
+  <%= render 'fcrepo_admin/datastreams/context_nav' %>
 <% end %>
 <%= render :template => 'layouts/fcrepo_admin/default' %>

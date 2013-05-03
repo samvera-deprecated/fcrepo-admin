@@ -8,7 +8,6 @@ module FcrepoAdmin
 
     def fcrepo_admin_aliases
       alias_action :download, :to => :read
-      alias_action :properties, :to => :read
       alias_action :audit_trail, :to => :read
       alias_action :permissions, :to => :read
       alias_action :upload, :to => :update

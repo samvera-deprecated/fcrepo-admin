@@ -27,12 +27,13 @@ module FcrepoAdmin::Controller
     end
 
     def authorize_object
-      if params[:controller] == 'fcrepo_admin/objects' && params[:action] == 'audit_trail'
-        action = :read
-      else
-        action = params[:action].to_sym
-      end
-      authorize! action, @object
+      # if params[:controller] == 'fcrepo_admin/objects' && params[:action] == 'audit_trail'
+      #   action = :read
+      # else
+      #   action = params[:action].to_sym
+      # end
+      # authorize! action, @object
+      authorize! params[:action].to_sym, @object
     end
 
   end
