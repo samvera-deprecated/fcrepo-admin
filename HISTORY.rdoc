@@ -1,4 +1,4 @@
-=== 0.4.0 (unreleased)
+=== 0.4.0
 
 * Feature: Display object's associations.
 * Require inclusion of CanCan action aliases in application's Ability class.
