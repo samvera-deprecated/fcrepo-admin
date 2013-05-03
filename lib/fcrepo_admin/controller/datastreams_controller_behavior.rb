@@ -30,6 +30,9 @@ module FcrepoAdmin::Controller
     def content
     end
 
+    def history
+    end
+
     def download
       mimetypes = MIME::Types[@datastream.mimeType]
       send_data @datastream.content, :disposition => 'attachment', :type => @datastream.mimeType, :filename => "#{@datastream.pid.sub(/:/, '_')}_#{@datastream.dsid}.#{mimetypes.first.extensions.first}"                
@@ -56,6 +59,7 @@ module FcrepoAdmin::Controller
     
     def load_datastream
       @datastream = @object.datastreams[params[:id]]
+      @datastream = @datastream.asOfDateTime(params[:asOfDateTime]) if params[:asOfDateTime]
     end
 
     protected
