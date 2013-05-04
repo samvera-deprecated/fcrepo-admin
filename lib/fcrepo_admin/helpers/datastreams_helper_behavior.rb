@@ -22,8 +22,8 @@ module FcrepoAdmin::Helpers
       params.has_key?(:asOfDateTime) ? {:asOfDateTime => params[:asOfDateTime]} : {}
     end
 
-    def datastream_not_current_version?
-      params.has_key?(:asOfDateTime)
+    def datastream_is_current_version?
+      !params.has_key?(:asOfDateTime)
     end
 
     def can_edit_datastream?

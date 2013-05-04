@@ -1,10 +1,10 @@
 <% content_for :main do %>
   <h1><%= object_title %></h1>
   <h3><%= t("fcrepo_admin.datastream.title") %>: <%= @datastream.dsid %></h3>
-  <% if datastream_not_current_version? %>
+  <% unless datastream_is_current_version? %>
     <div class="alert">
-	  This is not the current version of the datastream. 
-	  <%= link_to "Get the current version", fcrepo_admin.object_datastream_path(@object, @datastream.dsid) %>.
+	  This is a previous version of the datastream. 
+	  <%= link_to "Go to the current version", fcrepo_admin.object_datastream_path(@object, @datastream.dsid) %>.
 	</div>
   <% end %>
   <%= yield %>
