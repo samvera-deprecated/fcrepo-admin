@@ -125,6 +125,11 @@ The following are examples of possible customizations.  This list is not necessa
       end
     end
 
+=== I18n
+
+An effort has been made to support i18n on headings, menus, etc.  See https://github.com/projecthydra/fcrepo-admin/blob/master/config/locales/fcrepo_admin.en.yml
+for the keys and consult the Rails documentation on how to provide your own translations or alternate text values.
+
 === Contributing
 
 * Consider first posting to hydra-tech@googlegroups.com with a question or bug report, or submit an issue
