@@ -125,6 +125,20 @@ The following are examples of possible customizations.  This list is not necessa
       end
     end
 
+  IMPORTANT: If you add a non-RESTful action to a controller, you will probably have to add a CanCan action alias
+  to your Ability class.  For this, you can use Hydra's #custom_permissions callback:
+
+    class Ability
+      include Hydra::Ability
+      include Hydra::PolicyAwareAbility
+      include FcrepoAdmin::Ability
+
+      def custom_permissions
+        alias_action :my_method, :to => :read
+      end
+
+    end  
+
 === I18n
 
 An effort has been made to support i18n on headings, menus, etc.  See https://github.com/projecthydra/fcrepo-admin/blob/master/config/locales/fcrepo_admin.en.yml
