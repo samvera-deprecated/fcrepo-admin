@@ -10,6 +10,22 @@ module FcrepoAdmin::Helpers
       render :partial => 'fcrepo_admin/datastreams/context_nav_items', :locals => {:object => @object, :datastream => @datastream}
     end
 
+    def datastream_index_columns
+      ["dsLabel", "dsMIME", "dsCreateDate"]
+    end
+
+    def datastream_history_columns
+      ["dsCreateDate"]
+    end
+
+    def datastream_params
+      params.has_key?(:asOfDateTime) ? {:asOfDateTime => params[:asOfDateTime]} : {}
+    end
+
+    def datastream_is_current_version?
+      !params.has_key?(:asOfDateTime)
+    end
+
     def can_edit_datastream?
       can? :edit, @object
     end

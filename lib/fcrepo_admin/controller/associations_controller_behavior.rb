@@ -6,6 +6,7 @@ module FcrepoAdmin::Controller
       layout 'fcrepo_admin/objects'
 
       include FcrepoAdmin::Controller::ControllerBehavior
+      include FcrepoAdmin::Controller::CatalogControllerBehavior
 
       before_filter :load_and_authorize_object
       before_filter :load_association, :only => :show

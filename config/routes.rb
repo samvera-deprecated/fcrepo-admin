@@ -12,6 +12,7 @@ FcrepoAdmin::Engine.routes.draw do
           get 'content'
           get 'upload'
           get 'download'
+          get 'history'
         end
       end
     end

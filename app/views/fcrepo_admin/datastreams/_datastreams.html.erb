@@ -3,10 +3,10 @@
   <thead>
     <tr>
 	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.id") %></th>
-	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.label") %></th>
-	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.mimetype") %></th>
-	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.create_date") %></th>
-    </tr>
+	  <% datastream_index_columns.each do |col| %>
+	  <th scope="col"><%= t("fcrepo_admin.datastream.profile.#{col}") %></th>
+	  <% end %>
+    </Tr>
   </thead>
   <tbody>
     <% object.datastreams.each do |dsid, ds| %>
@@ -18,15 +18,9 @@
 		   end
 		 %>
       </td>
-	  <td><%= ds.profile["dsLabel"] %></td>
-	  <td><%= ds.profile["dsMIME"] %></td>
-	  <td>
-		<% unless ds.profile.empty? %>
-		  <%= ds.profile["dsCreateDate"] %>
-		<% else %>
-		  [<%= t("fcrepo_admin.datastreams.not_persisted") %>]
-		<% end %>
-	  </td>
+	  <% datastream_index_columns.each do |col| %>
+	  <td><%= ds.profile[col] %></td>
+	  <% end %>
     </tr>
     <% end %>
   </tbody>

@@ -6,6 +6,7 @@ module FcrepoAdmin::Controller
       layout 'fcrepo_admin/objects'
 
       include FcrepoAdmin::Controller::ControllerBehavior
+      include FcrepoAdmin::Controller::CatalogControllerBehavior
 
       helper_method :object_properties
 

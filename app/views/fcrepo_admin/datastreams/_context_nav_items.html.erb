@@ -1,13 +1,13 @@
 <li>
-  <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.summary"), fcrepo_admin.object_datastream_path(object, datastream.dsid) %>
+  <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.summary"), fcrepo_admin.object_datastream_path(object, datastream.dsid, datastream_params) %>
 </li>
 <% if ds_content_is_text? %>
   <li>
-	<%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.content"), fcrepo_admin.content_object_datastream_path(object, datastream.dsid) %>
+	<%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.content"), fcrepo_admin.content_object_datastream_path(object, datastream.dsid, datastream_params) %>
   </li>
 <% end %>
 <li>
-  <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.download"), fcrepo_admin.download_object_datastream_path(object, datastream.dsid) %>
+  <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.download"), fcrepo_admin.download_object_datastream_path(object, datastream.dsid, datastream_params) %>
 </li>
 <% if can_edit_datastream? && ds_content_is_editable? %>
   <li>
@@ -19,3 +19,6 @@
 	<%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.upload"), fcrepo_admin.upload_object_datastream_path(object, datastream.dsid) %>
   </li>
 <% end %>
+<li>
+  <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.history"), fcrepo_admin.history_object_datastream_path(object, datastream.dsid) %>
+</li>

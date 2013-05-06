@@ -1,11 +1,6 @@
 en:
   fcrepo_admin:
     object:
-      tabs:
-        datastreams: 'Datastreams'
-        properties: 'Properties'
-        permissions: 'Permissions'
-        associations: 'Associations'
       nav:
         header: 'Object Admin'
         items:
@@ -79,9 +74,7 @@ en:
           upload: 'Upload Content'
           download: 'Download Content'
           object: 'Object Admin'
-      tabs:
-        content: 'Content'
-        profile: 'Profile'
+          history: 'History'
       download: 'Download'
       content_not_text: 'The datastream content is not text'
       profile:
