@@ -18,7 +18,11 @@ module FcrepoAdmin::Controller
 
     def load_object
       id = params[:object_id] || params[:id]
-      @object = ActiveFedora::Base.find(id, :cast => true)
+      begin
+        @object = ActiveFedora::Base.find(id, :cast => true)
+      rescue ActiveFedora::ObjectNotFoundError
+        render :text => "Object not found", :status => 404
+      end
     end
 
     def authorize_object
