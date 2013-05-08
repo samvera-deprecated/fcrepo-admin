@@ -1,5 +1,6 @@
 <h3><%= t("fcrepo_admin.datastreams.title") %></h3>
-<table class="table table-bordered table-condensed">
+
+<table class="table table-bordered table-condensed table-striped">
   <thead>
     <tr>
 	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.id") %></th>
@@ -10,20 +11,22 @@
   </thead>
   <tbody>
     <% object.datastreams.each do |dsid, ds| %>
-      <%= content_tag :tr, :class => (ds.profile.empty? ? "warning" : "") do %>
+      <tr>
 	    <td>
 		  <%= link_to dsid, fcrepo_admin.object_datastream_path(ds.pid, dsid) %>
 		</td>
 	    <% unless ds.new? %>
 	      <% datastream_index_columns.each do |col| %>
-	        <td><%= ds.profile[col] %></td>
+	        <td>
+			  <%= format_ds_profile_value ds.profile, col %>
+			</td>
 	      <% end %>
         <% else %>
 	      <%= content_tag :td, :colspan => datastream_index_columns.size do %>
-		    <em>Not persisted to Fedora</em> (<%= ds.class.to_s %>)
+		    <em><%= t("fcrepo_admin.datastream.not_persisted") %></em>
 		  <% end %>
 	    <% end %>
-      <% end %>
+      </tr>
     <% end %>
   </tbody>
 </table>

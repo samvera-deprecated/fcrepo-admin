@@ -9,6 +9,14 @@ module FcrepoAdmin::Helpers
     def object_type
       @object.class.to_s
     end
+
+    def object_properties_keys
+      [:owner_id, :state, :create_date, :modified_date, :label]
+    end
+
+    def object_properties
+      object_properties_keys.inject(Hash.new) { |h, p| h[p] = @object.send(p); h }
+    end
     
   end
 end

@@ -9,17 +9,18 @@
   </thead>
   <tbody>
     <% object.datastreams.each do |dsid, ds| %>
-      <%= content_tag :tr, :class => (ds.profile.empty? ? "warning" : "") do %>
+      <tr>
 	    <td>
-		  <%= link_to dsid, fcrepo_admin.object_datastream_path(ds.pid, dsid) %>
+		  <%= link_to dsid, fcrepo_admin.object_datastream_path(object, dsid) %>
         </td>
 		<td>
 	      <% unless ds.new? %>
-	        <%= ds.profile["dsLabel"] %>
+	        <%= ds.dsLabel %>
 		  <% else %>
-		    <em>Not persisted to Fedora</em>
+		    <em><%= t("fcrepo_admin.datastream.not_persisted") %></em>
 		  <% end %>
-      <% end %>
+		</td>
+	  </tr>
     <% end %>
   </tbody>
 </table>

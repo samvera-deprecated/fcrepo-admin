@@ -14,9 +14,5 @@ module FcrepoAdmin
   end
   module Controller
     autoload :ControllerBehavior, 'fcrepo_admin/controller/controller_behavior'
-    autoload :ObjectsControllerBehavior, 'fcrepo_admin/controller/objects_controller_behavior'
-    autoload :DatastreamsControllerBehavior, 'fcrepo_admin/controller/datastreams_controller_behavior'
-    autoload :AssociationsControllerBehavior, 'fcrepo_admin/controller/associations_controller_behavior'
-    autoload :CatalogControllerBehavior, 'fcrepo_admin/controller/catalog_controller_behavior'
   end
 end

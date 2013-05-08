@@ -4,10 +4,9 @@ en:
       nav:
         header: 'Object Admin'
         items:
-          summary: 'Basic View'
+          summary: 'Summary'
           audit_trail: 'Audit Trail'
           permissions: 'Permissions'
-          properties: 'Properties'
           datastreams: 'Datastreams'
           associations: 'Associations'
       properties:
@@ -65,9 +64,12 @@ en:
         create_date: 'Create Date'
     datastream:
       title: 'Datastream'
+      not_persisted: 'Not persisted to Fedora'
+      version: 'Version'
       nav:
         header: 'Datastream Admin'
         items:
+          current_version: 'Current Version'
           summary: 'Profile'
           content: 'View Content'
           edit: 'Edit Content'
@@ -78,6 +80,7 @@ en:
       download: 'Download'
       content_not_text: 'The datastream content is not text'
       profile:
+        title: 'Profile'
         dsLabel: 'Label'
         dsMIME: 'MIME Type'
         dsVersionID: 'Version'

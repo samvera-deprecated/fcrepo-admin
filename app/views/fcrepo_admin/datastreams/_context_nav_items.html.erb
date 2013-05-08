@@ -1,3 +1,11 @@
+<% unless ds_is_current_version? %>
+  <li>
+	<%= render :partial => 'version', :locals => {:datastream => datastream} %>
+  </li>
+  <li>
+	<%= link_to t("fcrepo_admin.nav.items.current_version"), fcrepo_admin.object_datastream_path(object, datastream.dsid) %>
+  </li>
+<% end %>
 <li>
   <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.summary"), fcrepo_admin.object_datastream_path(object, datastream.dsid, datastream_params) %>
 </li>
@@ -11,15 +19,17 @@
     <%= link_to t("fcrepo_admin.datastream.nav.items.download"), fcrepo_admin.download_object_datastream_path(object, datastream.dsid, datastream_params) %>
   </li>
 <% end %>
-<% if ds_content_is_editable? && can_edit_datastream? %>
-  <li>
-    <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.edit"), fcrepo_admin.edit_object_datastream_path(object, datastream.dsid) %>
-  </li>
-<% end %>
-<% if can_upload_datastream? %>
-  <li>
-	<%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.upload"), fcrepo_admin.upload_object_datastream_path(object, datastream.dsid) %>
-  </li>
+<% if ds_is_current_version? %>
+  <% if ds_content_is_editable? && can?(:edit, object) %>
+    <li>
+      <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.edit"), fcrepo_admin.edit_object_datastream_path(object, datastream.dsid) %>
+	</li>
+  <% end %>
+  <% if can?(:upload, object) %>
+    <li>
+	  <%= link_to_unless_current t("fcrepo_admin.datastream.nav.items.upload"), fcrepo_admin.upload_object_datastream_path(object, datastream.dsid) %>
+    </li>
+  <% end %>
 <% end %>
 <% unless datastream.new? %>
   <li>

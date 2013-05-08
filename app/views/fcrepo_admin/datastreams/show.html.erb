@@ -1,9 +1,3 @@
 <%= render :partial => 'active_fedora', :locals => {:datastream => @datastream} %>
+<%= render :partial => 'profile', :locals => {:datastream => @datastream} %>
 
-<% unless @datastream.new? %>
-  <%= render :partial => 'profile', :locals => {:datastream => @datastream} %>
-<% else %>
-  <div class="alert alert-info">
-	This datastream has not been persisted to Fedora.
-  </div>
-<% end %>

@@ -5,12 +5,8 @@ module FcrepoAdmin
 
     include FcrepoAdmin::Controller::ControllerBehavior
 
-    helper_method :object_properties
-
     before_filter :load_and_authorize_object
     
-    PROPERTIES = [:owner_id, :state, :create_date, :modified_date, :label]
-
     def show
     end
 
@@ -25,12 +21,6 @@ module FcrepoAdmin
     end
 
     def permissions
-    end
-
-    protected
-
-    def object_properties
-      @object_properties ||= PROPERTIES.inject(Hash.new) { |h, p| h[p] = @object.send(p); h }
     end
 
   end

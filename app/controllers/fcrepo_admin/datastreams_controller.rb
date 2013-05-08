@@ -13,6 +13,7 @@ module FcrepoAdmin
 
     helper_method :ds_content_is_text?
     helper_method :ds_content_is_editable?
+    helper_method :ds_is_current_version?
 
     # Additional types of content that should be displayed inline
     TEXT_MIME_TYPES = ['application/xml', 'application/rdf+xml', 'application/json']
@@ -31,6 +32,7 @@ module FcrepoAdmin
     end
 
     def download
+      # XXX Replace with Hydra download behavior?
       mimetypes = MIME::Types[@datastream.mimeType]
       send_data @datastream.content, :disposition => 'attachment', :type => @datastream.mimeType, :filename => "#{@datastream.pid.sub(/:/, '_')}_#{@datastream.dsid}.#{mimetypes.first.extensions.first}"                
     end
@@ -67,6 +69,10 @@ module FcrepoAdmin
 
     def ds_content_is_editable?
       @datastream.new? || (ds_content_is_text? && (@datastream.dsSize <= MAX_INLINE_SIZE))
+    end
+
+    def ds_is_current_version?
+      @current_version ||= (@datastream.new? || @datastream.dsVersionID == @datastream.versions.first.dsVersionID)
     end
 
   end

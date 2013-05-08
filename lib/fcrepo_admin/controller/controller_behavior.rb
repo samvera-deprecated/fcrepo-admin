@@ -18,9 +18,9 @@ module FcrepoAdmin::Controller
     end
 
     def load_object
-      id = params[:object_id] || params[:id]
+      pid = params[:object_id] || params[:id]
       begin
-        @object = ActiveFedora::Base.find(id, :cast => true)
+        @object = ActiveFedora::Base.find(pid, :cast => true)
       rescue ActiveFedora::ObjectNotFoundError
         render :text => "Object not found", :status => 404
       end
@@ -54,7 +54,7 @@ module FcrepoAdmin::Controller
       end
     end
 
-    # solr_response_for_raw_result and solr_documents_for_response
+    # #solr_response_for_raw_result and #solr_documents_for_response
     # duplicate Blacklight functionality outside of a full Blacklight
     # catalog controller context.
     def solr_response_for_raw_result(solr_result)

@@ -3,7 +3,11 @@
   <h3>
 	<%= t("fcrepo_admin.datastream.title") %>: <%= @datastream.dsid %>
   </h3>
-  <%= render :partial => 'version', :locals => {:object => @object, :datastream => @datastream} %>
+  <% unless ds_is_current_version? %>
+    <p>
+      <%= render :partial => 'version', :locals => {:datastream => @datastream} %>
+	</p>
+  <% end %>
   <%= yield %>
 <% end %>
 <% content_for :sidebar do %>

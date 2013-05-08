@@ -1,6 +1,1 @@
-<% unless datastream_is_current_version? %>
-<h5>
-  Version <span class="label label-important"><%= datastream.profile["dsVersionID"] %></span>
-  <small>[<%= link_to "Go to current version", fcrepo_admin.object_datastream_path(object, datastream.dsid) %>]</small>
-</h5>
-<% end %>
+<span class="label label-important"><%= t("fcrepo_admin.datastream.version") %> <%= datastream.profile["dsVersionID"] %></span>

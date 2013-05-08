@@ -10,10 +10,10 @@ describe "datastreams/show.html.erb" do
   before { visit fcrepo_admin.object_datastream_path(object, dsid) }
   after { object.delete }
   it "should display all attributes of the datastream profile" do
-    object.datastreams[dsid].profile.each do |key, value|
+    profile = object.datastreams[dsid].profile
+    profile.each do |key, value|
       # TODO use paths
       page.should have_content(I18n.t("fcrepo_admin.datastream.profile.#{key}"))
-      page.should have_content(value)
     end
   end
   it "should have a link to download the datastream content" do
