@@ -11,14 +11,10 @@
     <% object.datastreams.each do |dsid, ds| %>
       <%= content_tag :tr, :class => (ds.profile.empty? ? "warning" : "") do %>
 	    <td>
-		<%= 
-		   link_to_unless ds.profile.empty?, dsid, fcrepo_admin.object_datastream_path(ds.pid, dsid) do |name|
-		     name
-		   end
-		 %>
+		  <%= link_to dsid, fcrepo_admin.object_datastream_path(ds.pid, dsid) %>
         </td>
 		<td>
-	      <% unless ds.profile.empty? %>
+	      <% unless ds.new? %>
 	        <%= ds.profile["dsLabel"] %>
 		  <% else %>
 		    <em>Not persisted to Fedora</em>

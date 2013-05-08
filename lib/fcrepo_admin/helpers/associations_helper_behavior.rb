@@ -4,7 +4,7 @@ module FcrepoAdmin::Helpers
     def link_to_association_target(association)
       target = @object.send(association.name)
       if association.collection?
-        link_to_unless target.size == 0, "#{association.class_name.pluralize} (#{target.size})", fcrepo_admin.object_association_path(@object, association.name) do |text|
+        link_to_unless target.size == 0, "#{association.class_name} (#{target.size})", fcrepo_admin.object_association_path(@object, association.name) do |text|
           text
         end
       else # not a collection

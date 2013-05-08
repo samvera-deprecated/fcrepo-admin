@@ -1,5 +1,5 @@
 <h4>History</h4>
-<table class="table" style="width: auto">
+<table class="table table-condensed table-bordered" style="width: auto">
   <thead>
 	<tr>
 	  <th scope="col"><%= t("fcrepo_admin.datastream.profile.dsVersionID") %></th>
@@ -9,9 +9,14 @@
 	</tr>
   </thead>
   <tbody>
-	<% @datastream.versions.each do |ds| %>
+	<% @datastream.versions.each_with_index do |ds, i| %>
 	<tr>
-	  <td><%= link_to ds.profile["dsVersionID"], "#{fcrepo_admin.object_datastream_path(@object, ds.dsid)}?asOfDateTime=#{ds.asOfDateTime}" %></td>
+	  <td><%= 
+			 link_to_unless i == 0, ds.profile["dsVersionID"], "#{fcrepo_admin.object_datastream_path(@object, ds.dsid)}?asOfDateTime=#{ds.asOfDateTime}" do |name|
+			   "#{name} (current version)"
+			 end
+			 -%>
+	  </td>
 	  <% datastream_history_columns.each do |col| %>
 	  <td><%= ds.profile[col] %></td>
 	  <% end %>

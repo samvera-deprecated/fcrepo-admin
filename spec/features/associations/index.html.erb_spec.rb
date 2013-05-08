@@ -12,7 +12,7 @@ describe "associations/index.html.erb" do
     end
     it "should link to the show view of the association" do
       visit fcrepo_admin.object_associations_path(object)
-      page.should have_link("Parts (1)", :href => fcrepo_admin.object_association_path(object, "parts"))
+      page.should have_link("Part (1)", :href => fcrepo_admin.object_association_path(object, "parts"))
     end
   end
   context "association is not a collection" do

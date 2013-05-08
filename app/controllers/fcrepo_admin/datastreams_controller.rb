@@ -66,7 +66,7 @@ module FcrepoAdmin
     end
 
     def ds_content_is_editable?
-      ds_content_is_text? && (@datastream.dsSize <= MAX_INLINE_SIZE)
+      @datastream.new? || (ds_content_is_text? && (@datastream.dsSize <= MAX_INLINE_SIZE))
     end
 
   end
