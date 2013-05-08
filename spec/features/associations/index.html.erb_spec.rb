@@ -12,7 +12,7 @@ describe "associations/index.html.erb" do
     end
     it "should link to the show view of the association" do
       visit fcrepo_admin.object_associations_path(object)
-      page.should have_link("1 object", :href => fcrepo_admin.object_association_path(object, "parts"))
+      page.should have_link("Parts (1)", :href => fcrepo_admin.object_association_path(object, "parts"))
     end
   end
   context "association is not a collection" do
@@ -22,7 +22,7 @@ describe "associations/index.html.erb" do
     it "should link to the show view of the target object" do
       pending "Bug in Capybara?"
       visit fcrepo_admin.object_associations_path(object)
-      page.should have_link(collection.pid, :href => fcrepo_admin.object_path(collection))
+      page.should have_link("Collection #{collection.pid}", :href => fcrepo_admin.object_path(collection))
     end
   end
 end

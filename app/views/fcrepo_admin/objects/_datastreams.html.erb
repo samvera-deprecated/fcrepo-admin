@@ -1,11 +1,10 @@
 <h3><%= t("fcrepo_admin.datastreams.title") %></h3>
+
 <table class="table table-bordered table-condensed">
   <thead>
     <tr>
 	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.id") %></th>
-	  <% datastream_index_columns.each do |col| %>
-	  <th scope="col"><%= t("fcrepo_admin.datastream.profile.#{col}") %></th>
-	  <% end %>
+	  <th scope="col"><%= t("fcrepo_admin.datastream.profile.label") %></th>
     </tr>
   </thead>
   <tbody>
@@ -18,15 +17,12 @@
 		   end
 		 %>
         </td>
-	    <% unless ds.profile.empty? %>
-	      <% datastream_index_columns.each do |col| %>
-	        <td><%= ds.profile[col] %></td>
-	      <% end %>
-        <% else %>
-	      <%= content_tag :td, :colspan => datastream_index_columns.size do %>
-		    <em>Not persisted to Fedora</em> (<%= ds.class.to_s %>)
+		<td>
+	      <% unless ds.profile.empty? %>
+	        <%= ds.profile["dsLabel"] %>
+		  <% else %>
+		    <em>Not persisted to Fedora</em>
 		  <% end %>
-	    <% end %>
       <% end %>
     <% end %>
   </tbody>

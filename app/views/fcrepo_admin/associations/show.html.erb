@@ -1,7 +1,13 @@
 <h3><%= t("fcrepo_admin.object.associations.title") %>: <%= @association.name %></h3>
 
-<% unless @documents.blank? %>
-  <%= render_document_index @documents %>
+<% if @response.total > 0 %>
+  <%= content_tag :ol, :start => @response.params[:start].to_i + 1 do %>
+    <% @documents.each do |doc| %>
+	  <li>
+		<%= link_to doc.id, fcrepo_admin.object_path(doc.id) %>
+	  </li>
+	<% end %>
+  <% end %>
 <% else %>
   <div class="alert">
 	No associated objects found.
