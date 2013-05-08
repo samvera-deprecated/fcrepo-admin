@@ -1,16 +1,13 @@
 <% content_for :main do %>
   <h1><%= object_title %></h1>
-  <h3><%= t("fcrepo_admin.datastream.title") %>: <%= @datastream.dsid %></h3>
-  <% unless datastream_is_current_version? %>
-    <div class="alert">
-	  This is a previous version of the datastream. 
-	  <%= link_to "Go to the current version", fcrepo_admin.object_datastream_path(@object, @datastream.dsid) %>.
-	</div>
-  <% end %>
+  <h3>
+	<%= t("fcrepo_admin.datastream.title") %>: <%= @datastream.dsid %>
+  </h3>
+  <%= render :partial => 'version', :locals => {:object => @object, :datastream => @datastream} %>
   <%= yield %>
 <% end %>
 <% content_for :sidebar do %>
   <%= render 'fcrepo_admin/objects/context_nav' %>
-  <%= render 'fcrepo_admin/datastreams/context_nav' %>
+  <%= render 'context_nav' %>
 <% end %>
 <%= render :template => 'layouts/fcrepo_admin/default' %>

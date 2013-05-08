@@ -1,3 +1,9 @@
-<%= render_document_partial @document, :show %>
-<%= render 'properties' %>
+<div class="row">
+  <div class="span6">
+	<%= render :partial => 'datastreams', :locals => {:object => @object} %>
+  </div>
+  <div class="span3">
+	<%= render 'properties' %>
+  </div>
+</div>
 
