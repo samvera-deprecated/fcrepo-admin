@@ -17,6 +17,11 @@ module FcrepoAdmin::Helpers
     def object_properties
       object_properties_keys.inject(Hash.new) { |h, p| h[p] = @object.send(p); h }
     end
+
+    # List of ds profile keys for for object show view
+    def object_show_datastream_columns
+      ["dsLabel"]
+    end
     
   end
 end

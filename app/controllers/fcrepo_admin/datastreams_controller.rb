@@ -11,13 +11,14 @@ module FcrepoAdmin
     before_filter :load_and_authorize_object
     before_filter :load_datastream, :except => :index
 
+    helper_method :ds_is_current_version?
     helper_method :ds_content_is_text?
     helper_method :ds_content_is_editable?
-    helper_method :ds_is_current_version?
+    helper_method :ds_content_is_uploadable?
 
-    # Additional types of content that should be displayed inline
-    TEXT_MIME_TYPES = ['application/xml', 'application/rdf+xml', 'application/json']
-    MAX_INLINE_SIZE = 1024 * 64
+    # TODO Migrate to config initializer
+    EXTRA_TEXT_MIME_TYPES = ['application/xml', 'application/rdf+xml', 'application/json']
+    MAX_EDITABLE_SIZE = 1024 * 64
 
     def index
     end
@@ -41,6 +42,9 @@ module FcrepoAdmin
     end
 
     def upload
+      unless ds_content_is_uploadable?
+        render :text => "This datstream does not support file content", :status => 403
+      end
     end
 
     def update
@@ -63,16 +67,37 @@ module FcrepoAdmin
 
     protected
 
-    def ds_content_is_text?
-      @datastream.mimeType.start_with?('text/') || TEXT_MIME_TYPES.include?(@datastream.mimeType)
+    # XXX Use Rubydora::Datastream#current_version? when it becomes available
+    # https://github.com/projecthydra/rubydora/pull/25
+    def ds_is_current_version?
+      @current_version ||= (@datastream.new? || @datastream.dsVersionID == @datastream.versions.first.dsVersionID)
+    end
+
+    def ds_content_is_url?
+      @datastream.external? || @datastream.redirect?
     end
 
     def ds_content_is_editable?
-      @datastream.new? || (ds_content_is_text? && (@datastream.dsSize <= MAX_INLINE_SIZE))
+      !ds_content_is_url? && ds_content_is_text? && ds_editable_content_size_ok?
     end
 
-    def ds_is_current_version?
-      @current_version ||= (@datastream.new? || @datastream.dsVersionID == @datastream.versions.first.dsVersionID)
+    def ds_editable_content_size_ok?
+      @datastream.dsSize <= MAX_EDITABLE_SIZE
+    end
+
+    def ds_content_is_uploadable?
+      @datastream.managed? || @datastream.inline?
+    end
+
+    private
+
+    def ds_content_is_text?
+      mimetype_is_text(@datastream.mimeType)
+    end
+
+    def mimetype_is_text(mimetype)
+      return false if mimetype.blank?
+      mimetype.start_with?('text/') || EXTRA_TEXT_MIME_TYPES.include?(mimetype)
     end
 
   end

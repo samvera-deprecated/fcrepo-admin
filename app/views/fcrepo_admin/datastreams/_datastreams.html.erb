@@ -1,32 +1,3 @@
 <h3><%= t("fcrepo_admin.datastreams.title") %></h3>
 
-<table class="table table-bordered table-condensed table-striped">
-  <thead>
-    <tr>
-	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.id") %></th>
-	  <% datastream_index_columns.each do |col| %>
-	  <th scope="col"><%= t("fcrepo_admin.datastream.profile.#{col}") %></th>
-	  <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% object.datastreams.each do |dsid, ds| %>
-      <tr>
-	    <td>
-		  <%= link_to dsid, fcrepo_admin.object_datastream_path(ds.pid, dsid) %>
-		</td>
-	    <% unless ds.new? %>
-	      <% datastream_index_columns.each do |col| %>
-	        <td>
-			  <%= format_ds_profile_value ds.profile, col %>
-			</td>
-	      <% end %>
-        <% else %>
-	      <%= content_tag :td, :colspan => datastream_index_columns.size do %>
-		    <em><%= t("fcrepo_admin.datastream.not_persisted") %></em>
-		  <% end %>
-	    <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render :partial => 'datastreams_list', :locals => {:object => object, :columns => datastream_index_columns} %>

@@ -20,16 +20,6 @@ module FcrepoAdmin::Helpers
       ["dsCreateDate"]
     end
 
-    def format_ds_profile_value(profile, key)
-      value = profile[key]
-      case
-      when key == "dsSize" then number_to_human_size(value)
-      when key == "dsCreateDate" then value.strftime("%Y-%m-%dT%H:%M:%S.%LZ")
-      when key == "dsLocation" && ['E','R'].include?(profile["dsControlGroup"]) then link_to(value, value)
-      else value
-      end
-    end
-
     def datastream_params
       params.has_key?(:asOfDateTime) ? {:asOfDateTime => params[:asOfDateTime]} : {}
     end

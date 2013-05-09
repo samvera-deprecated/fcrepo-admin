@@ -5,7 +5,7 @@
 	<% datastream.profile.each_key do |key| %>
 	<tr>
 	  <th scope="row"><%= t("fcrepo_admin.datastream.profile.#{key}") %></th>
-	  <td><%= format_ds_profile_value datastream.profile, key %></td>
+	  <td><%= format_ds_profile_value datastream, key %></td>
 	</tr>
 	<% end %>
   </table>  
