@@ -3,8 +3,6 @@ module FcrepoAdmin::Controller
     extend ActiveSupport::Concern
 
     included do
-      include Hydra::Controller::ControllerBehavior
-      include Hydra::PolicyAwareAccessControlsEnforcement
       helper_method :object_is_auditable?
       helper_method :object_is_governable?
       helper_method :object_is_governed_by
