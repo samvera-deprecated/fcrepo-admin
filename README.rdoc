@@ -1,18 +1,18 @@
-= Hydra Administrative Tool for a Fedora Repository
+== Hydra Administrative Tool for a Fedora Repository
 
 A Rails engine providing an administrative interface to a Fedora Commons repository built on the Hydra project framework.
 
-== Status
+=== Status
 
 This project should be considered *experimental* and not ready for production deployment.
 Versions earlier than 1.0 may change API and/or UI without notice or regard for backward compatibility.
 
-== Requirements
+=== Requirements
 
 fcrepo_admin is designed for installation on hydra-head 6.0 or higher (requires active-fedora 6.1 or higher).
 See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
-== Installation
+=== Installation
 
 (In the future, we hope to automate some of these tasks with a generator.)
 
@@ -75,11 +75,11 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
     include ActiveFedora::Auditable
 
-== Overriding fcrepo_admin behaviors
+=== Overriding fcrepo_admin behaviors
 
 The following are examples of possible customizations.  This list is not necessarily exhaustive.
 
-=== Helpers
+==== Helpers
 
 Override objects helpers by creating app/helpers/fcrepo_admin/objects_helper.rb with this content:
 
@@ -97,7 +97,7 @@ Override datastreams helpers by creating app/helpers/fcrepo_admin/datastreams_he
       # override methods here
     end    
 
-=== Context Navigation Menus
+==== Context Navigation Menus
 
 The contents of the object context navigation menu can be customized by overriding the #object_context_nav_items
 helper method, or by copying and modifying the partial fcrepo_admin/objects/context_nav_items.
@@ -105,7 +105,7 @@ helper method, or by copying and modifying the partial fcrepo_admin/objects/cont
 The contents of the datastream context navigation menu can be customized by overriding the 
 #datastream_context_nav_items helper method, or by copying and modifying the partial fcrepo_admin/datastreams/context_nav_items.
 
-=== Controllers
+==== Controllers
 
 To override or extend controller behaviors, please consult Rails engine documentation and guides, such as 
 http://edgeguides.rubyonrails.org/engines.html.
@@ -124,12 +124,12 @@ to your Ability class.  For this, you can use Hydra's #custom_permissions callba
 
     end  
 
-== Internationalization (i18n)
+=== Internationalization (i18n)
 
 An effort has been made to support i18n on headings, menus, etc.  See https://github.com/projecthydra/fcrepo-admin/blob/master/config/locales/fcrepo_admin.en.yml
 for the keys and consult the Rails documentation on how to provide your own translations or alternate text values.
 
-== Contributing
+=== Contributing
 
 * Consider first posting to hydra-tech@googlegroups.com with a question or bug report, or submit an issue
   to the Github issue tracker at https://github.com/projecthydra/fcrepo-admin/issues.
@@ -138,7 +138,7 @@ for the keys and consult the Rails documentation on how to provide your own tran
 
 Thanks!
 
-== License
+=== License
 
 See the LICENSE file in the root directory of the project for copyright and license information.
 
