@@ -1,17 +1,15 @@
 <% content_for :main do %>
   <h1><%= object_title %></h1>
-  <h3>
-	<%= t("fcrepo_admin.datastream.title") %>: <%= @datastream.dsid %>
-  </h3>
-  <% unless ds_is_current_version? %>
+  <h3><%= datastream_title %></h3>
+  <% unless @datastream.current_version? %>
     <p>
-      <%= render :partial => 'version', :locals => {:datastream => @datastream} %>
+      <%= render_datastream_version %>
 	</p>
   <% end %>
   <%= yield %>
 <% end %>
 <% content_for :sidebar do %>
   <%= render 'fcrepo_admin/objects/context_nav' %>
-  <%= render 'context_nav' %>
+  <%= render :partial => 'context_nav', :locals => {:datastream => @datastream} %>
 <% end %>
 <%= render :template => 'layouts/fcrepo_admin/default' %>
