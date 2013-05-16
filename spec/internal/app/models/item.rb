@@ -2,6 +2,9 @@ class Item < ActiveFedora::Base
 
   has_metadata :name => "descMetadata", :type => ActiveFedora::QualifiedDublinCoreDatastream
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
+  has_metadata :name => "externalMetadata", :type => ActiveFedora::Datastream, :control_group => 'E'
+  has_metadata :name => "redirectedMetadata", :type => ActiveFedora::Datastream, :control_group => 'R'
+  has_file_datastream :name => "content"
 
   delegate :title, :to => "descMetadata", :unique => true
 
