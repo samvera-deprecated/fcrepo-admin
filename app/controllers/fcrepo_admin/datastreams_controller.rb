@@ -57,7 +57,7 @@ module FcrepoAdmin
       end
       @object.save
       flash[:notice] = "Datastream content updated." # i18n
-      redirect_to fcrepo_admin.object_datastream_url(@object, @datastream.dsid)
+      redirect_to fcrepo_admin.object_datastream_url(@object, @datastream)
     end
 
     private
