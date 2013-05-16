@@ -38,7 +38,7 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
   You may use any mount point (except perhaps <code>'/catalog'</code>).
   All routes include <code>objects</code> as a subpath.
 
-* Add CanCan action aliases (version >= 0.4.0)
+* Add CanCan action aliases (fcrepo_admin >= 0.4.0)
 
   In your Ability class (app/models/ability.rb) include the FcrepoAdmin::Ability module, for example:
 
@@ -51,7 +51,7 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
   FcrepoAdmin::Ability defines action aliases for permissions which are enforced on (ActiveFedora::Base) objects.
   If your application defines action aliases, please check FcrepoAdmin::Ability for conflicts as aliases are global.
 
-* Add Javascript (not required for version >= 0.4.0)
+* Add Javascript (fcrepo_admin < 0.4.0)
   
   In app/assets/javascripts/application.js add:
 
@@ -98,6 +98,12 @@ Override datastreams helpers by creating app/helpers/fcrepo_admin/datastreams_he
     end    
 
 ==== Context Navigation Menus
+
+Beginning with fcrepo_admin 0.5.0 (unreleased), the preferred method of customizing the object and datastream context navs
+involves configuration settings and (optionally) overriding new helper methods for custom nav items.  Details be added here
+at release time.
+
+*fcrepo_admin < 0.5.0*
 
 The contents of the object context navigation menu can be customized by overriding the #object_context_nav_items
 helper method, or by copying and modifying the partial fcrepo_admin/objects/context_nav_items.
