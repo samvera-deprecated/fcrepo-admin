@@ -100,10 +100,10 @@ Override datastreams helpers by creating app/helpers/fcrepo_admin/datastreams_he
 ==== Context Navigation Menus
 
 Beginning with fcrepo_admin 0.5.0 (unreleased), the preferred method of customizing the object and datastream context navs
-involves configuration settings and (optionally) overriding new helper methods for custom nav items.  Details be added here
+involves configuration settings and (optionally) overriding new helper methods for custom nav items.  Details will be added here
 at release time.
 
-*fcrepo_admin < 0.5.0*
+===== fcrepo_admin < 0.5.0
 
 The contents of the object context navigation menu can be customized by overriding the #object_context_nav_items
 helper method, or by copying and modifying the partial fcrepo_admin/objects/context_nav_items.
