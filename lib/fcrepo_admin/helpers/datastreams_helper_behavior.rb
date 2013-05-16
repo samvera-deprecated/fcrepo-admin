@@ -29,30 +29,20 @@ module FcrepoAdmin::Helpers
     end
 
     def datastream_context_nav_item(item)
-      condition = case
-                  when item == :current_version then !@datastream.current_version?
-                  when item == :summary         then true
-                  when item == :content         then @datastream.content_is_text?
-                  when item == :download        then @datastream.content_is_downloadable?
-                  when item == :edit            then @datastream.content_is_editable? && can?(:edit, @object)
-                  when item == :upload          then @datastream.content_is_uploadable? && can?(:upload, @object)
-                  when item == :history         then !@datastream.new?
-                  end
-      custom_datastream_context_nav_item(item) if condition.nil?
-      link_to_datastream(item) if condition
-    end
-
-    def custom_datastream_context_nav_item(item)
-      # Override this method with your custom items
-    end
-
-    def link_to_datastream_version(dsVersion)
-      link_to_unless dsVersion.current_version?, dsVersion.dsVersionID, fcrepo_admin.object_datastream_path(@object, @datastream, :asOfDateTime => ds.asOfDateTime) do |name|
-        "#{name} (current version)"
+      case
+      when item == :current_version then link_to_datastream item, !@datastream.current_version?, false
+      when item == :summary         then link_to_datastream item
+      when item == :content         then link_to_datastream item, @datastream.content_is_text?
+      when item == :download        then link_to_datastream item, @datastream.content_is_downloadable?, false
+      when item == :edit            then link_to_datastream item, @datastream.content_is_editable? && can?(:edit, @object)
+      when item == :upload          then link_to_datastream item, @datastream.content_is_uploadable? && can?(:upload, @object)
+      when item == :history         then link_to_datastream item, !@datastream.new?
+      else custom_datastream_context_nav_item item
       end
     end
 
-    def link_to_datastream(view)
+    def link_to_datastream(view, condition=true, unless_current=true)
+      return nil unless condition
       path = case
              when view == :current_version then fcrepo_admin.object_datastream_path(@object, @datastream)
              when view == :summary         then fcrepo_admin.object_datastream_path(@object, @datastream, datastream_params)
@@ -63,10 +53,16 @@ module FcrepoAdmin::Helpers
              when view == :history         then fcrepo_admin.history_object_datastream_path(@object, @datastream)
              end
       label = t("fcrepo_admin.datastream.nav.items.#{view}")
-      if view == :current_version || view == :download
-        link_to label, path
-      else
-        link_to_unless_current label, path
+      unless_current ? link_to_unless_current(label, path) : link_to(label, path)
+    end
+
+    def custom_datastream_context_nav_item(item)
+      # Override this method with your custom items
+    end
+
+    def link_to_datastream_version(dsVersion)
+      link_to_unless dsVersion.current_version?, dsVersion.dsVersionID, fcrepo_admin.object_datastream_path(@object, @datastream, :asOfDateTime => dsVersion.asOfDateTime) do |name|
+        "#{name} (current version)"
       end
     end
 

@@ -29,18 +29,18 @@ module FcrepoAdmin::Helpers
     end
 
     def object_context_nav_item(item)
-      condition = case
-                  when item == :summary      then true
-                  when item == :datastreams  then true
-                  when item == :permissions  then @object.has_permissions? && can?(:permissions, @object)
-                  when item == :associations then true
-                  when item == :audit_trail  then @object.auditable? && can?(:audit_trail, @object)
-                  end
-      custom_object_context_nav_item(item) if condition.nil?
-      link_to_object(item) if condition
+      case
+      when item == :summary      then link_to_object item
+      when item == :datastreams  then link_to_object item
+      when item == :permissions  then link_to_object item, @object.has_permissions? && can?(:permissions, @object)
+      when item == :associations then link_to_object item
+      when item == :audit_trail  then link_to_object item, @object.auditable? && can?(:audit_trail, @object)
+      else custom_object_context_nav_item item
+      end
     end
 
-    def link_to_object(view)
+    def link_to_object(view, condition=true)
+      return nil unless condition
       label = t("fcrepo_admin.object.nav.items.#{view}")
       path = case
              when view == :summary      then fcrepo_admin.object_path(@object)
