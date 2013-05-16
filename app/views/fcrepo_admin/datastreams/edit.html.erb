@@ -1,5 +1,5 @@
 <h4><%= t("fcrepo_admin.datastream.edit.header") %></h4>
-<%= form_tag fcrepo_admin.object_datastream_path(@datastream.pid, @datastream.dsid), :method => :put do %>
+<%= form_tag fcrepo_admin.object_datastream_path(@datastream.pid, @datastream), :method => :put do %>
 <div>
   <%= text_area_tag "content", @datastream.content, :size => "50x20", :class => "field", :style => "width: 100%" %>
 </div>
