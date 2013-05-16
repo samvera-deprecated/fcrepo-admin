@@ -1,5 +1,5 @@
 <h4><%= t("fcrepo_admin.object.permissions.direct") %></h4>
-<% if object_has_permissions? %>
+<% if object.has_permissions? %>
   <%= render :partial => 'permissions_list', :locals => {:permissions => object.permissions} %>
 <% else %>
   <div class="alert">

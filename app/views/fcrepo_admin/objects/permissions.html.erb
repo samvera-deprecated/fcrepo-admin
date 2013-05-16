@@ -1,5 +1,11 @@
 <h3><%= t("fcrepo_admin.object.permissions.title") %></h3>
-<%= render :partial => 'direct_permissions', :locals => {:object => @object} %>
-<%= render 'inherited_permissions' %>
+<div class="row">
+  <div class="span4">
+	<%= render :partial => 'direct_permissions', :locals => {:object => @object} %>
+  </div>
+  <div class="span5">
+	<%= render 'inherited_permissions' %>
+  </div>
+</div>
 
 

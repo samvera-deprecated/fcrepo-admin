@@ -9,16 +9,11 @@
 	</tr>
   </thead>
   <tbody>
-	<% @datastream.versions.each_with_index do |ds, i| %>
+	<% @datastream.versions.each do |dsVersion| %>
 	<tr>
-	  <td><%= 
-			 link_to_unless i == 0, ds.profile["dsVersionID"], "#{fcrepo_admin.object_datastream_path(@object, ds.dsid)}?asOfDateTime=#{ds.asOfDateTime}" do |name|
-			   "#{name} (current version)"
-			 end
-			 -%>
-	  </td>
+	  <td><%= link_to_datastream_version dsVersion %></td>
 	  <% datastream_history_columns.each do |col| %>
-	  <td><%= ds.profile[col] %></td>
+	  <td><%= dsVersion.profile[col] %></td>
 	  <% end %>
 	<% end %>
   </tbody>
