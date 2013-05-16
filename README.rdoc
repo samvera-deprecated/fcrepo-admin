@@ -99,9 +99,37 @@ Override datastreams helpers by creating app/helpers/fcrepo_admin/datastreams_he
 
 ==== Context Navigation Menus
 
-Beginning with fcrepo_admin 0.5.0 (unreleased), the preferred method of customizing the object and datastream context navs
-involves configuration settings and (optionally) overriding new helper methods for custom nav items.  Details will be added here
-at release time.
+===== fcrepo_admin >= 0.5.0
+
+To add to and/or rearrange items on the object and datastream context navigation menus (while retaining the basic behavior),
+follow these steps.
+
+* Create an initializer for fcrepo_admin at config/initializers/fcrepo_admin.rb. You should start with this content:
+
+    module YourApp
+      class Application < Rails::Application
+        config.before_initialize do
+          # Customized settings will go here
+        end
+      end
+    end
+
+  The settings that control the items on the context menus are:
+
+    FcrepoAdmin.object_context_nav_items = [:summary, :datastreams, :permissions, :associations, :audit_trail]
+    FcrepoAdmin.datastream_context_nav_items = [:current_version, :summary, :content, :download, :edit, :upload, :history]
+
+  Each setting takes an array of symbols representing the items.  You can start by copying the default values shown above.
+  If you simply want to rearrange or remove items, then just modify the default arrays.
+
+* To add a custom navigation item, start by adding your own symbol to the approriate array setting.  Then override the 
+  appropriate helper method (see section above on override fcrepo_admin helpers) -- for object context nav, override 
+  #custom_object_context_nav_item in ObjectsHelper; for datastream context nav, override #custom_object_content_nav_item
+  in DatastreamsHelper.
+
+  Each method takes a single symbol argument and should return either nil (meaning no menu item is to be added) or the *content*
+  of a menu item.  Do not include the <li></li> wrapper.  You may want to use link_to_unless_current and/or put a condition on
+  the menu item (i.e., so that nil is returned if the condition is not met).
 
 ===== fcrepo_admin < 0.5.0
 
