@@ -1,6 +1,13 @@
+=== 0.5.0 (unreleased)
+
+* Feature: Configuration settings.
+* Context navigation menus refactored: customizations now done through helpers and configuration settings, not by overriding partials.
+* ActiveFedora::Base and ActiveFedora::Datastream classes extended by decorators.
+
 ==== 0.4.1 (2013-05-14)
 
-* Feature: Datastream history view
+* Feature: Datastream history view.
+* Feature: Support for asOfDateTime parameter added to datastream read views to display content and profile information for datastream versions.
 
 === 0.4.0 (2013-05-03)
 
@@ -16,7 +23,7 @@
 
 * Moved FcrepoAdmin::BlacklightHelperBehavior to FcrepoAdmin::Helpers::BlacklightHelperBehavior.
 * FcrepoAdmin::ObjectsHelper methods can now be easily overridden.
-* DatastreamsHelper module added.
+* FcrepoAdmin::DatastreamsHelper module added.
 * Shared helper methods in new module FcrepoAdmin::Helpers::FcrepoAdminHelperBehavior.
 * Objects and datastreams controller behaviors are now easily overrideable.
 * Refactored object and datastream context navs for greater reusability.
