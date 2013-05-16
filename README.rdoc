@@ -123,8 +123,8 @@ follow these steps.
   If you simply want to rearrange or remove items, then just modify the default arrays.
 
 * To add a custom navigation item, start by adding your own symbol to the approriate array setting.  Then override the 
-  appropriate helper method (see section above on override fcrepo_admin helpers) -- for object context nav, override 
-  #custom_object_context_nav_item in ObjectsHelper; for datastream context nav, override #custom_object_content_nav_item
+  appropriate helper method (see section above on overriding fcrepo_admin helpers) -- for the object context nav, override 
+  #custom_object_context_nav_item in ObjectsHelper; for the datastream context nav, override #custom_object_content_nav_item
   in DatastreamsHelper.
 
   Each method takes a single symbol argument and should return either nil (meaning no menu item is to be added) or the *content*
