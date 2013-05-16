@@ -13,15 +13,6 @@ module FcrepoAdmin
     before_filter :load_and_authorize_object
     before_filter :load_datastream, :except => :index
 
-    helper_method :ds_is_current_version?
-    helper_method :ds_content_is_text?
-    helper_method :ds_content_is_editable?
-    helper_method :ds_content_is_uploadable?
-
-    # TODO Migrate to config initializer
-    EXTRA_TEXT_MIME_TYPES = ['application/xml', 'application/rdf+xml', 'application/json']
-    MAX_EDITABLE_SIZE = 1024 * 64
-
     def index
     end
 
@@ -41,10 +32,13 @@ module FcrepoAdmin
     end
 
     def edit
+      unless @datastream.content_is_editable?
+        render :text => "Datastream content is not editable", :status => 403
+      end
     end
 
     def upload
-      unless ds_content_is_uploadable?
+      unless @datastream.content_is_uploadable?
         render :text => "This datstream does not support file content", :status => 403
       end
     end
@@ -65,41 +59,6 @@ module FcrepoAdmin
     def load_datastream
       @datastream = @object.datastreams[params[:id]]
       @datastream = @datastream.asOfDateTime(params[:asOfDateTime]) if params[:asOfDateTime]
-    end
-
-    protected
-
-    # XXX Use Rubydora::Datastream#current_version? when it becomes available
-    # https://github.com/projecthydra/rubydora/pull/25
-    def ds_is_current_version?
-      @current_version ||= (@datastream.new? || @datastream.dsVersionID == @datastream.versions.first.dsVersionID)
-    end
-
-    def ds_content_is_url?
-      @datastream.external? || @datastream.redirect?
-    end
-
-    def ds_content_is_editable?
-      !ds_content_is_url? && ds_content_is_text? && ds_editable_content_size_ok?
-    end
-
-    def ds_editable_content_size_ok?
-      @datastream.dsSize <= MAX_EDITABLE_SIZE
-    end
-
-    def ds_content_is_uploadable?
-      @datastream.managed? || @datastream.inline?
-    end
-
-    private
-
-    def ds_content_is_text?
-      mimetype_is_text(@datastream.mimeType)
-    end
-
-    def mimetype_is_text(mimetype)
-      return false if mimetype.blank?
-      mimetype.start_with?('text/') || EXTRA_TEXT_MIME_TYPES.include?(mimetype)
     end
 
   end

@@ -5,13 +5,17 @@ module FcrepoAdmin::Helpers
       "#{t('fcrepo_admin.datastream.title')}: #{@datastream.dsid}"
     end
 
-    def datastream_context_nav_header
+    def datastream_nav
+      render :partial => 'fcrepo_admin/shared/context_nav', :locals => {:header => datastream_nav_header, :items => datastream_nav_items}      
+    end
+
+    def datastream_nav_header
       t("fcrepo_admin.datastream.nav.header")
     end
 
-    def datastream_context_nav_items
-      FcrepoAdmin.datastream_context_nav_items.collect do |item| 
-        content = datastream_context_nav_item(item)
+    def datastream_nav_items
+      FcrepoAdmin.datastream_nav_items.collect do |item| 
+        content = datastream_nav_item(item)
         content unless content.nil?
       end
     end
@@ -28,8 +32,9 @@ module FcrepoAdmin::Helpers
       params.has_key?(:asOfDateTime) ? {:asOfDateTime => params[:asOfDateTime]} : {}
     end
 
-    def datastream_context_nav_item(item)
+    def datastream_nav_item(item)
       case
+      when item == :version_label   then render_datastream_version unless @datastream.current_version?
       when item == :current_version then link_to_datastream item, !@datastream.current_version?, false
       when item == :summary         then link_to_datastream item
       when item == :content         then link_to_datastream item, @datastream.content_is_text?
@@ -37,7 +42,7 @@ module FcrepoAdmin::Helpers
       when item == :edit            then link_to_datastream item, @datastream.content_is_editable? && can?(:edit, @object)
       when item == :upload          then link_to_datastream item, @datastream.content_is_uploadable? && can?(:upload, @object)
       when item == :history         then link_to_datastream item, !@datastream.new?
-      else custom_datastream_context_nav_item item
+      else custom_datastream_nav_item item
       end
     end
 
@@ -56,8 +61,8 @@ module FcrepoAdmin::Helpers
       unless_current ? link_to_unless_current(label, path) : link_to(label, path)
     end
 
-    def custom_datastream_context_nav_item(item)
-      # Override this method with your custom items
+    def custom_datastream_nav_item(item)
+      # Override this method with your custom item behavior
     end
 
     def link_to_datastream_version(dsVersion)

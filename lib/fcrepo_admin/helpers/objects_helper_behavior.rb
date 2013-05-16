@@ -17,25 +17,29 @@ module FcrepoAdmin::Helpers
       FcrepoAdmin.object_show_datastream_columns
     end
 
-    def object_context_nav_header
+    def object_nav
+      render :partial => 'fcrepo_admin/shared/context_nav', :locals => {:header => object_nav_header, :items => object_nav_items}
+    end
+
+    def object_nav_header
 	  t("fcrepo_admin.object.nav.header")
     end
 
-    def object_context_nav_items
-      FcrepoAdmin.object_context_nav_items.collect do |item|
-        content = object_context_nav_item(item)
+    def object_nav_items
+      FcrepoAdmin.object_nav_items.collect do |item|
+        content = object_nav_item(item)
         content unless content.nil?
       end
     end
 
-    def object_context_nav_item(item)
+    def object_nav_item(item)
       case
       when item == :summary      then link_to_object item
       when item == :datastreams  then link_to_object item
       when item == :permissions  then link_to_object item, @object.has_permissions? && can?(:permissions, @object)
       when item == :associations then link_to_object item
       when item == :audit_trail  then link_to_object item, @object.auditable? && can?(:audit_trail, @object)
-      else custom_object_context_nav_item item
+      else custom_object_nav_item item
       end
     end
 
@@ -52,8 +56,8 @@ module FcrepoAdmin::Helpers
       link_to_unless_current label, path
     end
 
-    def custom_object_context_nav_item(item)
-      # Override this method with your custom items
+    def custom_object_nav_item(item)
+      # Override this method with your custom item behavior
     end
     
   end

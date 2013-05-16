@@ -20,12 +20,16 @@ module FcrepoAdmin
   self.datastream_history_columns = ["dsCreateDate"]
 
   # Datastream context navigation items
-  mattr_accessor :datastream_context_nav_items
-  self.datastream_context_nav_items = [:current_version, :summary, :content, :download, :edit, :upload, :history]
+  mattr_accessor :datastream_nav_items
+  self.datastream_nav_items = [:version_label, :current_version, :summary, :content, :download, :edit, :upload, :history]
+
+  # Sanity check on amount of text data to make editable via web form
+  mattr_accessor :max_editable_datastream_size
+  self.max_editable_datastream_size = 1024 * 64
 
   # Object context navigation items
-  mattr_accessor :object_context_nav_items
-  self.object_context_nav_items = [:summary, :datastreams, :permissions, :associations, :audit_trail]
+  mattr_accessor :object_nav_items
+  self.object_nav_items = [:summary, :datastreams, :permissions, :associations, :audit_trail]
 
   # Datastream profile values to display on object show view
   mattr_accessor :object_show_datastream_columns

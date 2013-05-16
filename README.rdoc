@@ -116,15 +116,15 @@ follow these steps.
 
   The settings that control the items on the context menus are:
 
-    FcrepoAdmin.object_context_nav_items = [:summary, :datastreams, :permissions, :associations, :audit_trail]
-    FcrepoAdmin.datastream_context_nav_items = [:current_version, :summary, :content, :download, :edit, :upload, :history]
+    FcrepoAdmin.object_nav_items = [:summary, :datastreams, :permissions, :associations, :audit_trail]
+    FcrepoAdmin.datastream_nav_items = [:version_label, :current_version, :summary, :content, :download, :edit, :upload, :history]
 
   Each setting takes an array of symbols representing the items.  You can start by copying the default values shown above.
   If you simply want to rearrange or remove items, then just modify the default arrays.
 
 * To add a custom navigation item, start by adding your own symbol to the approriate array setting.  Then override the 
   appropriate helper method (see section above on override fcrepo_admin helpers) -- for object context nav, override 
-  #custom_object_context_nav_item in ObjectsHelper; for datastream context nav, override #custom_object_content_nav_item
+  #custom_object_nav_item in ObjectsHelper; for datastream context nav, override #custom_datastream_nav_item
   in DatastreamsHelper.
 
   Each method takes a single symbol argument and should return either nil (meaning no menu item is to be added) or the *content*

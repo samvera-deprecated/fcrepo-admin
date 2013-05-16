@@ -13,7 +13,7 @@ module FcrepoAdmin
     end
 
     def audit_trail
-      if object_is_auditable?
+      if @object.auditable?
         if params[:download] # TODO use format instead download param
           send_data @object.audit_trail.to_xml, :disposition => 'inline', :type => 'text/xml'
         end

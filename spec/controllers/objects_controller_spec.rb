@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe FcrepoAdmin::ObjectsController do
-  let(:object) { FactoryGirl.create(:item) }
+  let!(:object) { FactoryGirl.create(:item) }
   after { object.delete }
   context "#show" do
     subject { get :show, :id => object, :use_route => 'fcrepo_admin' }

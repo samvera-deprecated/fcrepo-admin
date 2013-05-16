@@ -3,9 +3,9 @@
 	<li class="nav-header">
 	  <%= header %>
 	</li>
-	<% items.each do |label, path| %>
+	<% items.each do |item| %>
 	<li>
-	  <%= link_to_unless_current label, path %>
+	  <%= item %>
 	</li>
 	<% end %>
   </ul>

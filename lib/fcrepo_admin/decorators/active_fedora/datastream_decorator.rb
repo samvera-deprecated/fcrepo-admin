@@ -17,7 +17,7 @@ ActiveFedora::Datastream.class_eval do
   end
 
   def content_is_editable?
-    current_version? && !content_is_url? && content_is_text?
+    current_version? && !content_is_url? && content_is_text? && dsSize <= FcrepoAdmin.max_editable_datastream_size
   end
 
   def content_is_text?
