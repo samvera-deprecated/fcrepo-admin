@@ -24,7 +24,7 @@ describe "datastreams/edit.html.erb" do
   <dcterms:title>Altered Test Component</dcterms:title>
 </dc>
 EOS
-    click_button I18n.t("fcrepo_admin.datastream.edit.submit")
+    click_button I18n.t("fcrepo_admin.datastream.edit.form.submit")
     object.reload
     object.title.should == "Altered Test Component"
   end

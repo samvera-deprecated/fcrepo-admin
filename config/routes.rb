@@ -1,5 +1,8 @@
 FcrepoAdmin::Engine.routes.draw do
 
+  datastreams_resources = [:index, :show]
+  datastreams_resources += [:edit, :update] unless FcrepoAdmin.read_only
+
   scope :module => "fcrepo_admin" do
     resources :objects, :only => :show do
       member do
@@ -7,10 +10,10 @@ FcrepoAdmin::Engine.routes.draw do
         get 'permissions'
       end
       resources :associations, :only => [:index, :show]
-      resources :datastreams, :only => [:index, :show, :edit, :update] do
+      resources :datastreams, :only => datastreams_resources do
         member do
           get 'content'
-          get 'upload'
+          get 'upload' unless FcrepoAdmin.read_only
           get 'download'
           get 'history'
         end

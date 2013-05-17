@@ -3,7 +3,7 @@
     <tr>
 	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.id") %></th>
 	  <% columns.each do |col| %>
-	  <th scope="col"><%= t("fcrepo_admin.datastream.profile.#{col}") %></th>
+	  <th scope="col"><%= t("fcrepo_admin.datastream.profile.keys.#{col}") %></th>
 	  <% end %>
     </tr>
   </thead>
@@ -11,12 +11,12 @@
     <% object.datastreams.each do |dsid, ds| %>
       <tr>
 	    <td>
-		  <%= link_to dsid, fcrepo_admin.object_datastream_path(object, dsid) %>
+		  <%= link_to dsid, fcrepo_admin.object_datastream_path(object, ds) %>
 		</td>
 	    <% unless ds.new? %>
 	      <% columns.each do |col| %>
 	        <td>
-			  <%= format_ds_profile_value ds, col %>
+			  <%= format_datastream_profile_value ds, col %>
 			</td>
 	      <% end %>
         <% else %>

@@ -1,0 +1,4 @@
+<%= content_tag :div, :class => css_class do %>
+  <% if caution %><strong><%= t("fcrepo_admin.datastream.alerts.caution") %></strong><% end %> 
+  <%= t("fcrepo_admin.datastream.alerts.#{alert}") %>
+<% end %>

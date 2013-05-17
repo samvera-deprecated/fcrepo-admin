@@ -4,12 +4,18 @@ describe FcrepoAdmin::DatastreamsController do
   let(:object) { FactoryGirl.create(:item) }
   after { object.delete }
   context "#show" do
-    subject { get :show, :object_id => object, :id => object.descMetadata, :use_route => 'fcrepo_admin' }
-    it { should render_template(:show) }
+    it "should render the show template" do
+      get :show, :object_id => object, :id => object.descMetadata, :use_route => 'fcrepo_admin'
+      response.should be_successful
+      response.should render_template(:show)
+    end
   end
   context "#content" do
-    subject { get :content, :object_id => object, :id => object.descMetadata, :use_route => 'fcrepo_admin' }
-    it { should render_template(:content) }
+    it "should render the content template" do
+      get :content, :object_id => object, :id => object.descMetadata, :use_route => 'fcrepo_admin'
+      response.should be_successful
+      response.should render_template(:content)
+    end
   end
   context "#download" do
     subject { get :download, :object_id => object, :id => object.descMetadata, :use_route => 'fcrepo_admin' }
@@ -25,8 +31,11 @@ describe FcrepoAdmin::DatastreamsController do
     after { user.delete }
     context "#edit" do
       context "content is editable" do
-        subject { get :edit, :object_id => object, :id => object.descMetadata, :use_route => 'fcrepo_admin' }
-        it { should render_template(:edit) }
+        it "should render the edit tenplate" do
+          get :edit, :object_id => object, :id => object.descMetadata, :use_route => 'fcrepo_admin'
+          response.should be_successful
+          response.should render_template(:edit)
+        end
       end
       context "content is not editable" do
         before do
@@ -39,8 +48,11 @@ describe FcrepoAdmin::DatastreamsController do
     end
     context "#upload" do
       context "content is uploadable" do
-        subject { get :upload, :object_id => object, :id => object.descMetadata, :use_route => 'fcrepo_admin' }
-        it { should render_template(:upload) }        
+        it "should render the upload template" do
+          get :upload, :object_id => object, :id => object.descMetadata, :use_route => 'fcrepo_admin'
+          response.should be_successful
+          response.should render_template(:upload)
+        end
       end
       context "content is not uploadable" do
         subject { get :upload, :object_id => object, :id => object.externalMetadata, :use_route => 'fcrepo_admin' }

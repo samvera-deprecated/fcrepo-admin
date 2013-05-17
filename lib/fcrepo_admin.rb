@@ -7,6 +7,9 @@ module FcrepoAdmin
   #
   # FcrepoAdmin configuration settings
   #
+  mattr_accessor :read_only
+  self.read_only = false
+
   # MIME types representing text content that do not have "text" media type.
   mattr_accessor :extra_text_mime_types
   self.extra_text_mime_types = ['application/xml', 'application/rdf+xml', 'application/json']
@@ -21,7 +24,13 @@ module FcrepoAdmin
 
   # Datastream context navigation items
   mattr_accessor :datastream_nav_items
-  self.datastream_nav_items = [:version_label, :current_version, :summary, :content, :download, :edit, :upload, :history]
+  self.datastream_nav_items = [:dsid, :version, :current_version, :summary, :content, :download, :edit, :upload, :history]
+
+  mattr_accessor :datastream_show_profile_keys
+  self.datastream_show_profile_keys = ["dsLabel", "dsMIME", "dsVersionID", "dsCreateDate", "dsState", 
+                                       "dsFormatURI", "dsControlGroup", "dsSize", "dsVersionable", 
+                                       "dsInfoType", "dsLocation", "dsLocationType", "dsChecksumType",
+                                       "dsChecksum"]
 
   # Sanity check on amount of text data to make editable via web form
   mattr_accessor :max_editable_datastream_size
@@ -29,7 +38,7 @@ module FcrepoAdmin
 
   # Object context navigation items
   mattr_accessor :object_nav_items
-  self.object_nav_items = [:summary, :datastreams, :permissions, :associations, :audit_trail]
+  self.object_nav_items = [:pid, :summary, :datastreams, :permissions, :associations, :audit_trail]
 
   # Datastream profile values to display on object show view
   mattr_accessor :object_show_datastream_columns

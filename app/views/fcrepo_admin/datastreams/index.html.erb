@@ -1,1 +1,4 @@
-<%= render :partial => 'datastreams', :locals => {:object => @object} %>
+<h3><%= t("fcrepo_admin.datastreams.title") %></h3>
+
+<%= render :partial => 'datastreams_list', :locals => {:object => @object, :columns => datastream_index_columns} %>
+

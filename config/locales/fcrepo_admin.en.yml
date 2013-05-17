@@ -66,6 +66,16 @@ en:
       title: 'Datastream'
       not_persisted: 'Not persisted to Fedora'
       version: 'Version'
+      current_version: 'current version'
+      content:
+        title: 'Content'
+      alerts:
+        inactive: 'This datastream is in the inactive state.'
+        deleted: 'This datastream is in the deleted state.'
+        caution: 'Caution!'
+        not_versionable: 'This datastream is not versionable. Changes cannot be reverted.'
+        system_managed: 'This datastream is managed by Fedora and/or Hydra and should be modified only with great care.'
+        not_persisted: 'This datastream has not been persisted to Fedora.'
       nav:
         header: 'Datastream Admin'
         items:
@@ -81,27 +91,28 @@ en:
       content_not_text: 'The datastream content is not text'
       profile:
         title: 'Profile'
-        dsLabel: 'Label'
-        dsMIME: 'MIME Type'
-        dsVersionID: 'Version'
-        dsCreateDate: 'Create Date'
-        dsState: 'State'
-        dsFormatURI: 'Format URI'
-        dsControlGroup: 'Control Group'
-        dsSize: 'Size'
-        dsVersionable: 'Versionable'
-        dsInfoType: 'Info Type'
-        dsLocation: 'Location'
-        dsLocationType: 'Location Type'
-        dsChecksumType: 'Checksum Type'
-        dsChecksum: 'Checksum'
+        keys:
+          dsLabel: 'Label'
+          dsMIME: 'MIME Type'
+          dsVersionID: 'Version'
+          dsCreateDate: 'Create Date'
+          dsState: 'State'
+          dsFormatURI: 'Format URI'
+          dsControlGroup: 'Control Group'
+          dsSize: 'Size'
+          dsVersionable: 'Versionable'
+          dsInfoType: 'Info Type'
+          dsLocation: 'Location'
+          dsLocationType: 'Location Type'
+          dsChecksumType: 'Checksum Type'
+          dsChecksum: 'Checksum'
       edit:
-        header: 'Edit Content'
-        confirm: "These changes are not validated and cannot be undone!"
-        submit: 'Update'
+        title: 'Edit Content'
+        form:
+          confirm: "These changes are not validated and cannot be undone!"
+          submit: 'Update'
       upload:
-        header: 'Upload Content'
-        confirm: "These changes are not validated and cannot be undone!"
-        submit: 'Upload'
-
-
+        title: 'Upload Content'
+        form:
+          confirm: "These changes are not validated and cannot be undone!"
+          submit: 'Upload'

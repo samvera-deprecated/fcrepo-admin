@@ -1,5 +1,9 @@
 ActiveFedora::Datastream.class_eval do
 
+  def active?
+    dsState == 'A'
+  end
+
   def current_version?
     @current_version ||= (new? || versions.empty? || dsVersionID == versions.first.dsVersionID)
   end
@@ -12,12 +16,16 @@ ActiveFedora::Datastream.class_eval do
     has_content? && (managed? || inline?)
   end
 
+  def modifiable?
+    !FcrepoAdmin.read_only && active? && current_version?
+  end
+
   def content_is_uploadable?
-    current_version? && (managed? || inline?)
+    modifiable? && (managed? || inline?)
   end
 
   def content_is_editable?
-    current_version? && !content_is_url? && content_is_text? && dsSize <= FcrepoAdmin.max_editable_datastream_size
+    modifiable? && !content_is_url? && content_is_text? && dsSize <= FcrepoAdmin.max_editable_datastream_size
   end
 
   def content_is_text?

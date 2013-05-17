@@ -26,14 +26,12 @@ module FcrepoAdmin::Helpers
     end
 
     def object_nav_items
-      FcrepoAdmin.object_nav_items.collect do |item|
-        content = object_nav_item(item)
-        content unless content.nil?
-      end
+      FcrepoAdmin.object_nav_items.collect { |item| object_nav_item(item) }.reject { |item| item.nil? }
     end
 
     def object_nav_item(item)
       case
+      when item == :pid          then render_object_pid_label
       when item == :summary      then link_to_object item
       when item == :datastreams  then link_to_object item
       when item == :permissions  then link_to_object item, @object.has_permissions? && can?(:permissions, @object)
@@ -41,6 +39,10 @@ module FcrepoAdmin::Helpers
       when item == :audit_trail  then link_to_object item, @object.auditable? && can?(:audit_trail, @object)
       else custom_object_nav_item item
       end
+    end
+
+    def render_object_pid_label
+      content_tag :span, @object.pid, :class => "label"
     end
 
     def link_to_object(view, condition=true)

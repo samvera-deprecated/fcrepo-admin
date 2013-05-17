@@ -1,10 +1,11 @@
-<h4><%= t("fcrepo_admin.datastream.upload.header") %></h4>
-<%= form_tag fcrepo_admin.object_datastream_path(@datastream.pid, @datastream), :method => :put, :multipart => true do %>
+<h4><%= t("fcrepo_admin.datastream.upload.title") %></h4>
+<%= datastream_alerts :system_managed, :not_versionable %>
+<%= form_tag fcrepo_admin.object_datastream_path(@object, @datastream), :method => :put, :multipart => true do %>
 <div>
   <%= file_field_tag "file" %>
 </div>
 <p>
-  <%= submit_tag t("fcrepo_admin.datastream.upload.submit"), :confirm => t("fcrepo_admin.datastream.upload.confirm"), :class => "btn btn-primary" %>
+  <%= submit_tag t("fcrepo_admin.datastream.upload.form.submit"), :confirm => t("fcrepo_admin.datastream.upload.form.confirm"), :class => "btn btn-primary" %>
 </p>
 <% end %>
 

@@ -20,6 +20,9 @@ module FcrepoAdmin
     end
 
     def content
+      unless @datastream.content_is_text?
+        render :text => "Datastream content is not text.", :status => 403
+      end
     end
 
     def history

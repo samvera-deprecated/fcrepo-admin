@@ -20,7 +20,7 @@ describe "datastreams/upload.html.erb" do
   end
   it "should provide an upload form" do
     attach_file "file", File.join(Rails.root, "spec", "fixtures", "files", "descMetadata.xml")
-    click_button I18n.t("fcrepo_admin.datastream.upload.submit")
+    click_button I18n.t("fcrepo_admin.datastream.upload.form.submit")
     object.reload
     object.title.should == "Altered Test Component"
   end

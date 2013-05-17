@@ -1,9 +1,10 @@
-<h4><%= t("fcrepo_admin.datastream.edit.header") %></h4>
-<%= form_tag fcrepo_admin.object_datastream_path(@datastream.pid, @datastream), :method => :put do %>
+<h4><%= t("fcrepo_admin.datastream.edit.title") %></h4>
+<%= datastream_alerts :system_managed, :not_versionable %>
+<%= form_tag fcrepo_admin.object_datastream_path(@object, @datastream), :method => :put do %>
 <div>
   <%= text_area_tag "content", @datastream.content, :size => "50x20", :class => "field", :style => "width: 100%" %>
 </div>
 <p>
-  <%= submit_tag t("fcrepo_admin.datastream.edit.submit"), :confirm => t("fcrepo_admin.datastream.edit.confirm"), :class => "btn btn-primary" %>
+  <%= submit_tag t("fcrepo_admin.datastream.edit.form.submit"), :confirm => t("fcrepo_admin.datastream.edit.form.confirm"), :class => "btn btn-primary" %>
 </p>
 <% end %>

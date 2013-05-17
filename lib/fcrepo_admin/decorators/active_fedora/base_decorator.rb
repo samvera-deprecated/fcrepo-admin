@@ -1,6 +1,8 @@
 ActiveFedora::Base.class_eval do
 
-  # method_missing is defined, so adding methods
+  def active?
+    state == 'A'
+  end
 
   def auditable?
     begin

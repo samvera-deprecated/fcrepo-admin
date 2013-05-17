@@ -1,16 +1,15 @@
 <% unless datastream.new? %>
   <h4><%= t("fcrepo_admin.datastream.profile.title") %></h4>
-
   <table class="table table-bordered table-condensed table-striped" style="width: auto">
-	<% datastream.profile.each_key do |key| %>
+	<% datastream_show_profile_keys.each do |key| %>
 	<tr>
-	  <th scope="row"><%= t("fcrepo_admin.datastream.profile.#{key}") %></th>
-	  <td><%= format_ds_profile_value datastream, key %></td>
+	  <th scope="row"><%= t("fcrepo_admin.datastream.profile.keys.#{key}") %></th>
+	  <td><%= format_datastream_profile_value datastream, key %></td>
 	</tr>
 	<% end %>
   </table>  
 <% else %>
   <div class="alert alert-info">
-	This datastream has not been persisted to Fedora.
+	<%= t("fcrepo_admin.datastream.alerts.not_persisted") %>
   </div>
 <% end %>

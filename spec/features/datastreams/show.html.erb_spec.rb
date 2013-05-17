@@ -13,7 +13,7 @@ describe "datastreams/show.html.erb" do
       let(:datastream) { object.descMetadata }
       it "should display all attributes of the datastream profile" do
         datastream.profile.each do |key, value|
-          page.should have_content(I18n.t("fcrepo_admin.datastream.profile.#{key}"))
+          page.should have_content(I18n.t("fcrepo_admin.datastream.profile.keys.#{key}"))
         end
       end
       it "should have a link to download the datastream content" do

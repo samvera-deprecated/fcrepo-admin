@@ -5,6 +5,10 @@ module FcrepoAdmin::Helpers
       "#{t('fcrepo_admin.datastream.title')}: #{@datastream.dsid}"
     end
 
+    def datastream_show_profile_keys
+      FcrepoAdmin.datastream_show_profile_keys
+    end
+
     def datastream_nav
       render :partial => 'fcrepo_admin/shared/context_nav', :locals => {:header => datastream_nav_header, :items => datastream_nav_items}      
     end
@@ -14,10 +18,7 @@ module FcrepoAdmin::Helpers
     end
 
     def datastream_nav_items
-      FcrepoAdmin.datastream_nav_items.collect do |item| 
-        content = datastream_nav_item(item)
-        content unless content.nil?
-      end
+      FcrepoAdmin.datastream_nav_items.collect { |item| datastream_nav_item(item) }.reject { |item| item.nil? }
     end
 
     def datastream_index_columns
@@ -34,7 +35,8 @@ module FcrepoAdmin::Helpers
 
     def datastream_nav_item(item)
       case
-      when item == :version_label   then render_datastream_version unless @datastream.current_version?
+      when item == :dsid            then render_datastream_dsid_label
+      when item == :version         then render_datastream_version unless @datastream.current_version?
       when item == :current_version then link_to_datastream item, !@datastream.current_version?, false
       when item == :summary         then link_to_datastream item
       when item == :content         then link_to_datastream item, @datastream.content_is_text?
@@ -75,13 +77,74 @@ module FcrepoAdmin::Helpers
       render :partial => 'version', :locals => {:datastream => @datastream}
     end
 
-    def format_ds_profile_value(ds, key)
-      value = ds.profile[key]
+    def render_datastream_dsid_label
+      content_tag :span, @datastream.dsid, :class => "label"
+    end
+
+    def datastream_alerts(*alerts)
+      rendered = ""
+      alerts.each do |alert|
+        content = datastream_alert(alert)
+        rendered << content unless content.nil?
+      end
+      rendered.html_safe
+    end
+
+    def datastream_alert(alert)
       case
-      when key == "dsSize" then number_to_human_size(value)
-      when key == "dsCreateDate" then value.strftime("%Y-%m-%dT%H:%M:%S.%LZ")
-      when key == "dsLocation" && (ds.external? || ds.redirect?) then link_to(value, value)
-      else value
+      when alert == :system_managed
+        if ["DC", "RELS-EXT", "rightsMetadata", "defaultRights"].include?(@datastream.dsid)
+          render_datastream_alert(alert, :caution => true)
+        end
+      when alert == :not_versionable        
+        render_datastream_alert(alert, :caution => true) unless @datastream.versionable
+      when alert == :inactive
+        render_datastream_alert(alert) if @datastream.inactive?
+      when alert == :deleted
+        render_datastream_alert(alert, :css_class => "alert alert-error") if @datastream.deleted?
+      end
+    end
+
+    def render_datastream_alert(alert, opts={})
+      render :partial => 'alert', :locals => {:alert => alert, :caution => opts.fetch(:caution, false), :css_class => opts.fetch(:css_class, "alert")}
+    end
+
+    def format_datastream_state(ds)
+      state = ds.dsState
+      formatted = case 
+                  when state == 'A' then "A (Active)"
+                  when state == 'I' then "I (Inactive)"
+                  when state == 'D' then "D (Deleted)"
+                  end
+      formatted
+    end
+
+    def format_datastream_control_group(ds)
+      control_group = ds.controlGroup
+      formatted = case
+                  when control_group == 'M' then "M (Managed)"
+                  when control_group == 'X' then "X (Inline XML)"
+                  when control_group == 'E' then "E (External Referenced)"
+                  when control_group == 'R' then "R (Redirect)"
+                  end
+      formatted
+    end
+
+    def format_datastream_version_id(ds)
+      version_id = ds.dsVersionID
+      version_id += " (#{t('fcrepo_admin.datastream.current_version')})" if ds.current_version?
+      version_id
+    end
+
+    def format_datastream_profile_value(ds, key)
+      case
+      when key == "dsSize" then number_to_human_size(ds.dsSize)
+      when key == "dsCreateDate" then ds.dsCreateDate.strftime("%Y-%m-%dT%H:%M:%S.%LZ")
+      when key == "dsLocation" && ds.content_is_url? then link_to(ds.dsLocation, ds.dsLocation)
+      when key == "dsState" then format_datastream_state(ds)
+      when key == "dsControlGroup" then format_datastream_control_group(ds)
+      when key == "dsVersionID" then format_datastream_version_id(ds)
+      else ds.profile[key]
       end
     end
 
