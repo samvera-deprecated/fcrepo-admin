@@ -10,7 +10,25 @@ module FcrepoAdmin::Helpers
     end
 
     def object_properties
-      FcrepoAdmin.object_properties.inject(Hash.new) { |h, p| h[p] = @object.send(p); h }
+      FcrepoAdmin.object_properties.inject(Hash.new) { |hash, prop| hash[prop] = object_property(prop); hash }
+    end
+
+    def object_property(prop)
+      if prop == :state
+        object_state
+      else 
+        @object.send(prop)
+      end
+    end
+
+    def object_state
+      state = @object.state
+      value = case 
+              when state == 'A' then "A (Active)"
+              when state == 'I' then "I (Inactive)"
+              when state == 'D' then "D (Deleted)"
+              end
+      value
     end
 
     def object_show_datastream_columns
