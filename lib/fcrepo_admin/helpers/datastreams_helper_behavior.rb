@@ -139,7 +139,7 @@ module FcrepoAdmin::Helpers
     def format_datastream_profile_value(ds, key)
       case
       when key == "dsSize" then number_to_human_size(ds.dsSize)
-      when key == "dsCreateDate" then ds.dsCreateDate.strftime("%Y-%m-%dT%H:%M:%S.%LZ")
+      when key == "dsCreateDate" then ds.dsCreateDate.localtime
       when key == "dsLocation" && ds.content_is_url? then link_to(ds.dsLocation, ds.dsLocation)
       when key == "dsState" then format_datastream_state(ds)
       when key == "dsControlGroup" then format_datastream_control_group(ds)

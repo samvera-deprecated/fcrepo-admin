@@ -14,11 +14,16 @@ module FcrepoAdmin::Helpers
     end
 
     def object_property(prop)
-      if prop == :state
-        object_state
-      else 
-        @object.send(prop)
+      case
+      when prop == :state then object_state
+      when prop == :create_date then object_date(@object.create_date)
+      when prop == :modified_date then object_date(@object.modified_date)
+      else @object.send(prop)
       end
+    end
+
+    def object_date(dt)
+      Time.parse(dt).localtime
     end
 
     def object_state
@@ -79,6 +84,6 @@ module FcrepoAdmin::Helpers
     def custom_object_nav_item(item)
       # Override this method with your custom item behavior
     end
-    
+
   end
 end
