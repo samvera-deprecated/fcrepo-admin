@@ -1,8 +1,9 @@
-=== 0.5.0 (unreleased)
+=== 0.5.0 (2013-05-17)
 
-* Feature: Configuration settings.
+* Feature: Configurable settings.
 * Context navigation menus refactored: customizations now done through helpers and configuration settings, not by overriding partials.
 * ActiveFedora::Base and ActiveFedora::Datastream classes extended by decorators.
+* Tests added.
 
 ==== 0.4.1 (2013-05-14)
 
