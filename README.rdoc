@@ -77,7 +77,24 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
 === Overriding fcrepo_admin behaviors
 
-The following are examples of possible customizations.  This list is not necessarily exhaustive.
+==== Configurable settings (fcrepo_admin >= 0.5.0)
+
+To override default configurable settings for fcrepo_admin, create an initializer at config/initializers/fcrepo_admin.rb. 
+You should start with this content:
+
+    module YourApp
+      class Application < Rails::Application
+        config.before_initialize do
+          # Customized settings will go here
+        end
+      end
+    end
+
+Refer to the default configuration settings at https://github.com/projecthydra/fcrepo-admin/blob/master/lib/fcrepo_admin.rb.
+
+All configuration options are set by module methods prefixed by FcrepoAdmin, for example:
+
+    FcrepoAdmin.read_only = true
 
 ==== Helpers
 
@@ -101,35 +118,22 @@ Override datastreams helpers by creating app/helpers/fcrepo_admin/datastreams_he
 
 ===== fcrepo_admin >= 0.5.0
 
-To add to and/or rearrange items on the object and datastream context navigation menus (while retaining the basic behavior),
-follow these steps.
+The configuration settings that control the items on the context menus are:
 
-* Create an initializer for fcrepo_admin at config/initializers/fcrepo_admin.rb. You should start with this content:
+  FcrepoAdmin.object_nav_items = [:pid, :summary, :datastreams, :permissions, :associations, :audit_trail]
+  FcrepoAdmin.datastream_nav_items = [:dsid, :version, :current_version, :summary, :content, :download, :edit, :upload, :history]
 
-    module YourApp
-      class Application < Rails::Application
-        config.before_initialize do
-          # Customized settings will go here
-        end
-      end
-    end
+Each setting takes an array of symbols representing the items.  You can start by copying the default values shown above.
+If you simply want to rearrange or remove items, then just modify the default arrays.
 
-  The settings that control the items on the context menus are:
+To add a custom navigation item, start by adding your own symbol to the approriate array setting.  Then override the 
+appropriate helper method (see section above on overriding fcrepo_admin helpers) -- for object context nav, override 
+#custom_object_nav_item in ObjectsHelper; for datastream context nav, override #custom_datastream_nav_item
+in DatastreamsHelper.
 
-    FcrepoAdmin.object_nav_items = [:summary, :datastreams, :permissions, :associations, :audit_trail]
-    FcrepoAdmin.datastream_nav_items = [:version_label, :current_version, :summary, :content, :download, :edit, :upload, :history]
-
-  Each setting takes an array of symbols representing the items.  You can start by copying the default values shown above.
-  If you simply want to rearrange or remove items, then just modify the default arrays.
-
-* To add a custom navigation item, start by adding your own symbol to the approriate array setting.  Then override the 
-  appropriate helper method (see section above on overriding fcrepo_admin helpers) -- for object context nav, override 
-  #custom_object_nav_item in ObjectsHelper; for datastream context nav, override #custom_datastream_nav_item
-  in DatastreamsHelper.
-
-  Each method takes a single symbol argument and should return either nil (meaning no menu item is to be added) or the *content*
-  of a menu item.  Do not include the <li></li> wrapper.  You may want to use link_to_unless_current and/or put a condition on
-  the menu item (i.e., so that nil is returned if the condition is not met).
+Each method takes a single symbol argument and should return either nil (meaning no menu item is to be added) or the *content*
+of a menu item.  Do not include the <li></li> wrapper.  You may want to use link_to_unless_current and/or put a condition on
+the menu item (i.e., so that nil is returned if the condition is not met).
 
 ===== fcrepo_admin < 0.5.0
 
@@ -157,6 +161,13 @@ to your Ability class.  For this, you can use Hydra's #custom_permissions callba
       end
 
     end  
+
+==== Read-only mode
+
+To suppress mutating behaviors (i.e, routes, nav items, etc.) regardless of user permissions, 
+add this configuration setting:
+
+  FcrepoAdmin.read_only = true
 
 === Internationalization (i18n)
 
