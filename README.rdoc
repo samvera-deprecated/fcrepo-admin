@@ -90,7 +90,7 @@ You should start with this content:
       end
     end
 
-Refer to the default configuration settings at https://github.com/projecthydra/fcrepo-admin/blob/master/lib/fcrepo_admin.rb.
+Refer to the default configuration settings at https://github.com/projecthydra/fcrepo-admin/blob/master/lib/fcrepo_admin/configurable.rb.
 
 All configuration options are set by module methods prefixed by FcrepoAdmin, for example:
 
