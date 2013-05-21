@@ -37,7 +37,7 @@ module FcrepoAdmin::Configurable
 
     # Object context navigation items
     mattr_accessor :object_nav_items
-    self.object_nav_items = [:pid, :summary, :datastreams, :permissions, :associations, :audit_trail]
+    self.object_nav_items = [:pid, :summary, :datastreams, :permissions, :associations, :audit_trail, :bookmark]
 
     # Datastream profile values to display on object show view
     mattr_accessor :object_show_datastream_columns

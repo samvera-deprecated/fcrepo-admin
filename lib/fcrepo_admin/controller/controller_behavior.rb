@@ -3,8 +3,6 @@ module FcrepoAdmin::Controller
     extend ActiveSupport::Concern
 
     included do
-      helper_method :object_is_auditable?
-      helper_method :object_is_governable?
       helper_method :object_is_governed_by
     end
 
@@ -28,28 +26,8 @@ module FcrepoAdmin::Controller
       authorize! params[:action].to_sym, @object
     end
 
-    def object_is_auditable?
-      begin
-        @object && @object.is_a?(ActiveFedora::Auditable)
-      rescue
-        false
-      end
-    end
-
     def object_is_governed_by
-      @object_is_governed_by ||= object_is_governable? && @object.send(is_governed_by_association_name)
-    end
-
-    def object_is_governable?
-      !is_governed_by_association_name.nil?
-    end
-
-    def is_governed_by_association_name
-      @object.reflections.each do |name, reflection|
-        if reflection.macro == :belongs_to && reflection.options[:property] == :is_governed_by # TODO add policy class
-          return reflection.name
-        end
-      end
+      @object_is_governed_by ||= @object.send(@object.governed_by_association.name) rescue nil
     end
 
     # #solr_response_for_raw_result and #solr_documents_for_response

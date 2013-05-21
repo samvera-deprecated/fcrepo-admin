@@ -6,6 +6,7 @@ module FcrepoAdmin
     include FcrepoAdmin::Controller::ControllerBehavior
 
     before_filter :load_and_authorize_object
+    before_filter :load_solr_document, :only => :show
     
     def show
     end
@@ -21,6 +22,13 @@ module FcrepoAdmin
     end
 
     def permissions
+    end
+
+    protected
+
+    def load_solr_document
+      query = ActiveFedora::SolrService.construct_query_for_pids([@object.pid])
+      @document = SolrDocument.new(ActiveFedora::SolrService.query(query).first, nil)
     end
 
   end

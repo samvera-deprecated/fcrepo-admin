@@ -4,7 +4,7 @@
 	<%= render :partial => 'direct_permissions', :locals => {:object => @object} %>
   </div>
   <div class="span5">
-	<%= render 'inherited_permissions' %>
+	<%= render :partial => 'inherited_permissions', :locals => {:object => @object} %>
   </div>
 </div>
 

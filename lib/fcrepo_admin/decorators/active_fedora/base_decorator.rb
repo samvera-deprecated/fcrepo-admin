@@ -17,10 +17,8 @@ ActiveFedora::Base.class_eval do
   end
 
   def governable?
-    !is_governed_by_association.nil?
+    !governed_by_association.nil?
   end
-
-  private
 
   def governed_by_association
     self.reflections.each do |name, reflection|

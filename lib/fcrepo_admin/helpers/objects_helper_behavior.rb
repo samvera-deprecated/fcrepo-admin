@@ -60,6 +60,8 @@ module FcrepoAdmin::Helpers
       when item == :permissions  then link_to_object item, @object.has_permissions? && can?(:permissions, @object)
       when item == :associations then link_to_object item
       when item == :audit_trail  then link_to_object item, @object.auditable? && can?(:audit_trail, @object)
+      when item == :bookmark
+        render(:partial => 'catalog/bookmark_control', :locals => {:document=> @document}) if @document
       else custom_object_nav_item item
       end
     end

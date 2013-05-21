@@ -1,6 +1,8 @@
-==== 0.5.1 (unreleased)
+==== 0.5.1 (2013-05-21)
 
-* Association show view paginated (Fixes #18). Also uses blacklight document list rendering.
+* Association show view paginated (Fixes #18). 
+* Association show view uses blacklight document list rendering.
+* Object show view loads Solr document for object and incorporates Blacklight document show fields.
 
 === 0.5.0 (2013-05-17)
 
