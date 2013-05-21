@@ -1,0 +1,7 @@
+<ul>
+  <li class="<% if pagination_info.current_page == 1 %>disabled<% end %>"><a href="?page=<%= pagination_info.current_page - 1 %>">&laquo;</a></li>
+  <% (1..pagination_info.num_pages).each do |n| %>
+    <li class="<% if n == pagination_info.current_page %>active<% end %>"><a href="?page=<%= n %>"><%= n %></a></li>
+  <% end %>
+  <li class="<% if pagination_info.current_page == pagination_info.num_pages %>disabled<% end %>"><a href="?page=<%= pagination_info.current_page + 1 %>">&raquo;</a></li>
+</ul>

@@ -9,7 +9,7 @@
   <%= render :partial => 'catalog/document_list', :locals => {:documents => @documents} %>
   <% if @response.total > associated_objects_per_page %>
     <div class="pagination">
-      <%= paginate_rsolr_response @response, :layout => 'blacklight' %>
+      <%= render :partial => 'pagination', :locals => {:pagination_info => paginate_params(@response)} %>
     </div>
   <% end %>
 <% else %>
