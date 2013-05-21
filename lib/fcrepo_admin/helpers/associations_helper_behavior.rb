@@ -16,5 +16,9 @@ module FcrepoAdmin::Helpers
       end
     end
 
+    def associated_objects_per_page
+      FcrepoAdmin.associated_objects_per_page
+    end
+
   end
 end

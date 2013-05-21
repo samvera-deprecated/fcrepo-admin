@@ -1,12 +1,16 @@
 <h3><%= t("fcrepo_admin.object.associations.title") %>: <%= @association.name %></h3>
 
 <% if @response.total > 0 %>
-  <%= content_tag :ol, :start => @response.params[:start].to_i + 1 do %>
-    <% @documents.each do |doc| %>
-	  <li>
-		<%= link_to doc.id, fcrepo_admin.object_path(doc.id) %>
-	  </li>
-	<% end %>
+  <% if @response.total > associated_objects_per_page %>
+    <div class="pagination">
+	  <%= render_pagination_info @response %>
+	</div>
+  <% end %>
+  <%= render :partial => 'catalog/document_list', :locals => {:documents => @documents} %>
+  <% if @response.total > associated_objects_per_page %>
+    <div class="pagination">
+      <%= paginate_rsolr_response @response, :layout => 'blacklight' %>
+    </div>
   <% end %>
 <% else %>
   <div class="alert">

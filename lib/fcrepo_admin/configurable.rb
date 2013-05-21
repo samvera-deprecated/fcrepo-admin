@@ -46,6 +46,10 @@ module FcrepoAdmin::Configurable
     # Methods on ActiveFedora::Base objects that represent Fcrepo object properties
     mattr_accessor :object_properties
     self.object_properties = [:label, :state, :create_date, :modified_date, :owner_id]
+    
+    # Number of objects to display per page on object associations show view
+    mattr_accessor :associated_objects_per_page
+    self.associated_objects_per_page = 10
   end
 
 end

@@ -12,9 +12,12 @@ module FcrepoAdmin
     end
 
     def show
+      render(:text => "Association not found", :status => 404) if @association.nil?
       if @association.collection?
         get_collection_from_solr
-      else
+      else 
+        # This shouldn't normally happen b/c UI links directly to target object view in this case
+        # but we'll handle it gracefully anyway.
         target = @object.send("#{@association.name}_id")
         if target
           redirect_to :controller => 'objects', :action => 'show', :id => target, :use_route => 'fcrepo_admin'
@@ -32,20 +35,27 @@ module FcrepoAdmin
     end
 
     def get_collection_query_result
-      args = {raw: true}
-      apply_gated_discovery(args, {}) # add args to enforce Hydra permissions and admin policies
-      ActiveFedora::SolrService.query(construct_collection_query, args)
+      ActiveFedora::SolrService.query(construct_collection_query, collection_query_args)
+    end
+
+    def collection_query_args
+      page = params[:page] ||= 1
+      rows = FcrepoAdmin.associated_objects_per_page
+      start = (page.to_i - 1) * rows
+      args = {raw: true, start: start, rows: rows}
+      apply_gated_discovery(args, nil) # add args to enforce Hydra access controls
+      args
     end
 
     def construct_collection_query
       # Copied from ActiveFedora::Associations::AssociationCollection#construct_query
       clauses = {@association.options[:property] => @object.internal_uri}
       clauses[:has_model] = @association.class_name.constantize.to_class_uri if @association.class_name && @association.class_name != 'ActiveFedora::Base'
-      query = ActiveFedora::SolrService.construct_query_for_rel(clauses)
+      ActiveFedora::SolrService.construct_query_for_rel(clauses)
     end
 
     def load_association
-      @association = @object.reflections[params[:id].to_sym] # XXX raise exception if nil
+      @association = @object.reflections[params[:id].to_sym]
     end
 
   end
