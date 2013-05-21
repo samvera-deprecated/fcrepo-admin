@@ -6,8 +6,6 @@ module FcrepoAdmin
     layout 'fcrepo_admin/datastreams', :except => :index
     layout 'fcrepo_admin/objects', :only => :index
 
-    include Hydra::Controller::ControllerBehavior
-    include Hydra::PolicyAwareAccessControlsEnforcement
     include FcrepoAdmin::Controller::ControllerBehavior
 
     before_filter :load_and_authorize_object

@@ -3,8 +3,6 @@ module FcrepoAdmin
 
     layout 'fcrepo_admin/objects'
 
-    include Hydra::Controller::ControllerBehavior
-    include Hydra::PolicyAwareAccessControlsEnforcement
     include FcrepoAdmin::Controller::ControllerBehavior
 
     before_filter :load_and_authorize_object
