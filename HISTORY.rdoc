@@ -1,3 +1,7 @@
+==== 0.5.2 (unreleased)
+
+* Fixed association show view pagination by working around Kaminari.
+
 ==== 0.5.1 (2013-05-21)
 
 * Association show view paginated (Fixes #18). 
