@@ -133,7 +133,8 @@ The configuration settings that control the items on the context menus are:
 
 ```ruby
 FcrepoAdmin.object_nav_items = [:pid, :summary, :datastreams, :permissions, :associations, :audit_trail, :object_xml]
-FcrepoAdmin.datastream_nav_items = [:dsid, :version, :current_version, :summary, :content, :download, :edit, :upload, :history]
+FcrepoAdmin.datastream_nav_items = [:dsid, :version, :current_version, :summary, :content, :download, 
+                                    :edit, :upload, :history]
 ```
 
 Each setting takes an array of symbols representing the items.  You can start by copying the default values shown above.
