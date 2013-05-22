@@ -44,6 +44,9 @@ module FcrepoAdmin
       rows = FcrepoAdmin.associated_objects_per_page
       start = (page - 1) * rows
       args = {raw: true, start: start, rows: rows}
+      if FcrepoAdmin.associated_objects_sort_param
+        args[:sort] = FcrepoAdmin.associated_objects_sort_param
+      end
       apply_gated_discovery(args, nil) # add args to enforce Hydra access controls
       args
     end

@@ -47,9 +47,13 @@ module FcrepoAdmin::Configurable
     mattr_accessor :object_properties
     self.object_properties = [:label, :state, :create_date, :modified_date, :owner_id]
     
-    # Number of objects to display per page on object associations show view
+    # Number of objects to display per page on associations show view
     mattr_accessor :associated_objects_per_page
     self.associated_objects_per_page = 10
+
+    # Solr sort param added to association collection query
+    mattr_accessor :associated_objects_sort_param
+    self.associated_objects_sort_param = nil
   end
 
 end
