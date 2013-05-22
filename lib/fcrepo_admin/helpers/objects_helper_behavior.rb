@@ -60,8 +60,7 @@ module FcrepoAdmin::Helpers
       when item == :permissions  then link_to_object item, @object.has_permissions? && can?(:permissions, @object)
       when item == :associations then link_to_object item
       when item == :audit_trail  then link_to_object item, @object.auditable? && can?(:audit_trail, @object)
-      when item == :bookmark
-        render(:partial => 'catalog/bookmark_control', :locals => {:document=> @document}) if @document
+      when item == :object_xml   then link_to_object item
       else custom_object_nav_item item
       end
     end
@@ -79,6 +78,7 @@ module FcrepoAdmin::Helpers
              when view == :permissions  then fcrepo_admin.permissions_object_path(@object)
              when view == :associations then fcrepo_admin.object_associations_path(@object)
              when view == :audit_trail  then fcrepo_admin.audit_trail_object_path(@object)
+             when view == :object_xml   then fcrepo_admin.object_path(@object, :format => 'xml')
              end
       link_to_unless_current label, path
     end
