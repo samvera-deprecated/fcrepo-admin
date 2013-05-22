@@ -1,5 +1,10 @@
-<div class="document" style="border-bottom: none">
-   <%= render :partial => 'catalog/show_default', :locals => {:document => @document} %>
+<div class="document row">
+  <div class="span7">
+	<%= render :partial => 'catalog/show_default', :locals => {:document => @document} %>
+  </div>
+  <div class="span2">
+    <%= render_show_doc_actions @document %>
+  </div>
 </div>
 <div class="row">
   <div class="span5">
