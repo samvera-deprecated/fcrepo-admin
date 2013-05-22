@@ -1,6 +1,8 @@
-==== 0.5.2 (unreleased)
+==== 0.5.2 (2013-05-22)
 
 * Fixed association show view pagination by working around Kaminari.
+* Object XML (FOXML) accessible from object context nav.
+* Catalog show fields and show document actions displayed in object show view (summary).
 
 ==== 0.5.1 (2013-05-21)
 
