@@ -1,3 +1,7 @@
+#### 0.5.3 (unreleased)
+
+* Added configuration setting `associated_object_sort_param` to specify Solr query sort clause for retrieving associated objects. Default is `nil`, meaning that no sort clause is used.
+
 #### 0.5.2 (2013-05-22)
 
 * Fixed association show view pagination by working around Kaminari.
