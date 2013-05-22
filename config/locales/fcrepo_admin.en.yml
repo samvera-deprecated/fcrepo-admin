@@ -9,6 +9,7 @@ en:
           permissions: 'Permissions'
           datastreams: 'Datastreams'
           associations: 'Associations'
+          object_xml: 'Object XML'
       properties:
         title: 'Properties'
         keys:
