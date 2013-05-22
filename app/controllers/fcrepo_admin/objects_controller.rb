@@ -9,12 +9,18 @@ module FcrepoAdmin
     before_filter :load_solr_document, :only => :show
     
     def show
+      respond_to do |format|
+        format.html
+        # XXX https://github.com/projecthydra/rubydora/pull/26
+        format.xml { render :xml => @object.inner_object.repository.object_xml(:pid => @object.pid) }
+      end
     end
 
     def audit_trail
       if @object.auditable?
-        if params[:download] # TODO use format instead download param
-          send_data @object.audit_trail.to_xml, :disposition => 'inline', :type => 'text/xml'
+        respond_to do |format|
+          format.html
+          format.xml { render :xml => @object.audit_trail.to_xml }
         end
       else
         render :text => I18n.t("fcrepo_admin.object.audit_trail.not_implemented"), :status => 404
