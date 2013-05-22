@@ -6,13 +6,11 @@ module FcrepoAdmin
     include FcrepoAdmin::Controller::ControllerBehavior
 
     before_filter :load_and_authorize_object
-    before_filter :load_solr_document, :only => :show
     
     def show
       respond_to do |format|
-        format.html
-        # XXX https://github.com/projecthydra/rubydora/pull/26
-        format.xml { render :xml => @object.inner_object.repository.object_xml(:pid => @object.pid) }
+        format.html { load_solr_document }
+        format.xml { render :xml => @object.object_xml }
       end
     end
 

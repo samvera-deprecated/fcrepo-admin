@@ -27,5 +27,10 @@ ActiveFedora::Base.class_eval do
       return reflection if reflection.macro == :belongs_to && reflection.options[:property] == :is_governed_by
     end
   end
+
+  def object_xml
+    # XXX https://github.com/projecthydra/rubydora/pull/26
+    inner_object.repository.object_xml(:pid => pid)
+  end
   
 end
