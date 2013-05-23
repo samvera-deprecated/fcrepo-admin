@@ -1,4 +1,4 @@
-#### 0.5.3 (unreleased)
+#### 0.5.3 (2013-05-23)
 
 * Added configuration setting `associated_object_sort_param` to specify Solr query sort clause for retrieving associated objects. Default is `nil`, meaning that no sort clause is used.
 
