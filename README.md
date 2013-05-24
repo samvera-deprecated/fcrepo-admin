@@ -210,6 +210,20 @@ FcrepoAdmin.read_only = true
 An effort has been made to support i18n on headings, menus, etc.  See https://github.com/projecthydra/fcrepo-admin/blob/master/config/locales/fcrepo_admin.en.yml
 for the keys and consult the Rails documentation on how to provide your own translations or alternate text values.
 
+### Known Issues
+
+#### Pagination
+
+Kaminari as of version 0.14.1 does not support namespace-prefixed routes, which causes a routing error in Blacklight's 
+`paginate_rsolr_response` helper when called from within fcrepo_admin.  As a workaround fcrepo_admin provides a helper 
+method `safe_paginate_rsolr_response` which falls back to a simple pagination rendering in this case.  There is 
+(as of 2013-05-24) an outstanding Kaminari pull request which resolves this issue (https://github.com/amatsuda/kaminari/pull/322).
+You can implement this solution by adding to your application's Gemfile:
+
+```
+gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
+```
+
 ### Contributing
 
 * Consider first posting to hydra-tech@googlegroups.com with a question or bug report, or submit an issue

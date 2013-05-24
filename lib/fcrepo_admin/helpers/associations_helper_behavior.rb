@@ -17,25 +17,16 @@ module FcrepoAdmin::Helpers
       end
     end
 
-    def render_association_collection
-      begin 
-        # Try to use Blacklight document index rendering ...
-        render_document_index @documents
-      rescue ActionView::MissingTemplate
-        # By default, that will probably raise an exception
-        # so fall back to custom fcrepo_admin rendering
-        render :partial => 'association_collection', :locals => {:documents => @documents}
-      end
-    end
-
-    def fcrepo_admin_solr_pagination_links(response)
-      if response.total > response.rows
+    # We attempt to use Blacklight's #paginate_rsolr_response, but as of Kaminari 0.14.1
+    # it causes a routing error b/c it cannot handle namespace-prefixed routes.
+    # The fallback rendering bypasses Kaminari, but doesn't look so good on a large page set.
+    # See https://github.com/amatsuda/kaminari/pull/322.
+    def safe_paginate_rsolr_response(response)
+      begin
+        paginate_rsolr_response response, :outer_window => 2, :theme => 'blacklight', :route_set => fcrepo_admin
+      rescue
         render :partial => "fcrepo_admin/pagination/links", :locals => {:response => response}
       end
-    end
-
-    def fcrepo_admin_solr_pagination_info(response)
-      render :partial => "fcrepo_admin/pagination/info", :locals => {:response => response}
     end
 
   end
