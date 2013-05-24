@@ -215,14 +215,28 @@ for the keys and consult the Rails documentation on how to provide your own tran
 #### Pagination
 
 Kaminari as of version 0.14.1 does not support namespace-prefixed routes, which causes a routing error in Blacklight's 
-`paginate_rsolr_response` helper when called from within fcrepo_admin.  As a workaround fcrepo_admin provides a helper 
-method `safe_paginate_rsolr_response` which falls back to a simple pagination rendering in this case.  There is 
-(as of 2013-05-24) an outstanding Kaminari pull request which resolves this issue (https://github.com/amatsuda/kaminari/pull/322).
+`paginate_rsolr_response` helper when called from within fcrepo_admin.  In place of `paginate_rsolr_response` fcrepo_admin
+use its own helper `safe_paginate_rsolr_response` which provides a basic set of pagination links without using Kaminari.  
+
+There is (as of 2013-05-24) an outstanding Kaminari pull request which resolves the routing issue (https://github.com/amatsuda/kaminari/pull/322).
 You can implement this solution by adding to your application's Gemfile:
 
 ```
 gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
 ```
+
+and then override the `safe_paginate_rsolr_response` helper with something like:
+
+```ruby
+def safe_paginate_rsolr_response(response)
+  paginate_rsolr_response response, :outer_window => 2, :theme => 'blacklight', :route_set => fcrepo_admin
+end
+```
+
+the key part being the `:route_set` option -- note that the value is not a string -- with gets passed through to Kaminari.
+
+If Kaminari is suitably patched in the future, we will likely remove `safe_paginate_rsolr_response` in favor of
+`paginate_rsolr_response`.
 
 ### Contributing
 
