@@ -17,16 +17,12 @@ module FcrepoAdmin::Helpers
       end
     end
 
-    # We attempt to use Blacklight's #paginate_rsolr_response, but as of Kaminari 0.14.1
-    # it causes a routing error b/c it cannot handle namespace-prefixed routes.
+    # We attempt to use Blacklight's #paginate_rsolr_response, but it causes a routing error 
+    # b/c Kaminari as of version 0.14.1 cannot handle namespace-prefixed routes.
     # The fallback rendering bypasses Kaminari, but doesn't look so good on a large page set.
     # See https://github.com/amatsuda/kaminari/pull/322.
     def safe_paginate_rsolr_response(response)
-      begin
-        paginate_rsolr_response response, :outer_window => 2, :theme => 'blacklight', :route_set => fcrepo_admin
-      rescue
-        render :partial => "fcrepo_admin/pagination/links", :locals => {:response => response}
-      end
+      render :partial => "fcrepo_admin/pagination/links", :locals => {:response => response}
     end
 
   end
