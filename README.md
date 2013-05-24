@@ -65,9 +65,11 @@ instead of the catalog show view, create `app/helpers/blacklight_helper.rb` with
 module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior  # Default Blacklight behaviors
   include FcrepoAdmin::Helpers::BlacklightHelperBehavior # fcrepo_admin overrides
-  # additional customizations here, if any
 end
 ```
+
+If you have an existing custom blacklight helper module, simply include `FcrepoAdmin::Helpers::BlacklightHelperBehavior`
+*after* `Blacklight::BlacklightHelperBehavior`.
 
 **Add audit trail support** (optional)
 
@@ -177,6 +179,22 @@ class Ability
   end
 end
 ```  
+
+#### Associations
+
+Due to issues with Rails partials and relative paths, in order to use Blacklight's default document index view behavior
+on the associations show page and avoid missing template errors, fcrepo_admin provides a custom document partial at 
+`fcrepo_admin/catalog/document` that renders the partial at `catalog/document`, for which Blacklight provides a default.
+If you have a custom document partial at a different path that you want to use for the document list on the associations 
+show page, you *may* be able to simply copy it to `app/views/fcrepo_admin/catalog/document`, or you might try putting 
+this content in that file:
+
+```
+<%= render :partial => 'path/to/my/document', :locals => { :document => document, :document_counter => document_counter } %>
+```
+
+replacing the partial path as appropriate.  If anyone has a better solution or knows of a way to avoid providing the 
+document partial in fcrepo_admin admin, please submit a pull request.
 
 #### Read-only mode
 
