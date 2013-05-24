@@ -15,7 +15,7 @@ module FcrepoAdmin
       if @association.nil?
         render :text => "Association not found", :status => 404
       elsif @association.collection?
-        get_collection_from_solr
+        @response, @documents = get_collection_from_solr
       else 
         # This shouldn't normally happen b/c UI links directly to target object view in this case
         # but we'll handle it gracefully anyway.
@@ -31,8 +31,8 @@ module FcrepoAdmin
     protected
 
     def get_collection_from_solr
-      @response = solr_response_for_raw_result(get_collection_query_result)
-      @documents = solr_documents_for_response(@response)
+      solr_response = solr_response_for_raw_result(get_collection_query_result)
+      [solr_response, solr_documents_for_response(solr_response)]
     end
 
     def get_collection_query_result
@@ -41,11 +41,11 @@ module FcrepoAdmin
 
     def collection_query_args
       page = params[:page].blank? ? 1 : params[:page].to_i
-      rows = FcrepoAdmin.associated_objects_per_page
+      rows = FcrepoAdmin.association_show_docs_per_page
       start = (page - 1) * rows
       args = {raw: true, start: start, rows: rows}
-      if FcrepoAdmin.associated_objects_sort_param
-        args[:sort] = FcrepoAdmin.associated_objects_sort_param
+      if FcrepoAdmin.association_collection_query_sort_param
+        args[:sort] = FcrepoAdmin.association_collection_query_sort_param
       end
       apply_gated_discovery(args, nil) # add args to enforce Hydra access controls
       args

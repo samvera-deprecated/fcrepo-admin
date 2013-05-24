@@ -17,8 +17,25 @@ module FcrepoAdmin::Helpers
       end
     end
 
-    def associated_objects_per_page
-      FcrepoAdmin.associated_objects_per_page
+    def render_association_collection
+      begin 
+        # Try to use Blacklight document index rendering ...
+        render_document_index @documents
+      rescue ActionView::MissingTemplate
+        # By default, that will probably raise an exception
+        # so fall back to custom fcrepo_admin rendering
+        render :partial => 'association_collection', :locals => {:documents => @documents}
+      end
+    end
+
+    def fcrepo_admin_solr_pagination_links(response)
+      if response.total > response.rows
+        render :partial => "fcrepo_admin/pagination/links", :locals => {:response => response}
+      end
+    end
+
+    def fcrepo_admin_solr_pagination_info(response)
+      render :partial => "fcrepo_admin/pagination/info", :locals => {:response => response}
     end
 
   end
