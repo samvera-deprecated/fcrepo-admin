@@ -1,7 +1,7 @@
-#### 0.5.4 (unreleased)
+#### 0.5.4 (2013-05-24)
 
 * Changed config setting `associated_objects_sort_param` (v0.5.3) to `association_collection_query_sort_param`.
-* Changed config setting `associated_objects_per_page` to `association_show_docs_per_page`.
+* Changed config setting `associated_objects_per_page` (v0.5.1) to `association_show_docs_per_page`.
 
 #### 0.5.3 (2013-05-23)
 
@@ -11,13 +11,13 @@
 
 * Fixed association show view pagination by working around Kaminari.
 * Object XML (FOXML) accessible from object context nav.
-* Catalog show fields and show document actions displayed in object show view (summary).
+* Catalog show document actions displayed in object show view (summary).
 
 #### 0.5.1 (2013-05-21)
 
 * Association show view paginated (Fixes #18). 
 * Association show view uses blacklight document list rendering.
-* Object show view loads Solr document for object and incorporates Blacklight document show fields.
+* Object show action loads Solr document for object and show view incorporates Blacklight document show fields.
 
 ### 0.5.0 (2013-05-17)
 
