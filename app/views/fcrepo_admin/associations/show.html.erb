@@ -6,7 +6,7 @@
 	  <%= render_pagination_info @response %>
 	</div>
   <% end %>
-  <%= render :partial => 'catalog/document_list', :locals => {:documents => @documents} %>
+  <%= render_document_index @documents %>
   <% if @response.total > associated_objects_per_page %>
     <div class="pagination">
       <%= render :partial => 'pagination', :locals => {:pagination_info => paginate_params(@response)} %>
