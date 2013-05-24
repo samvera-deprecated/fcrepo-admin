@@ -1,6 +1,11 @@
+#### 0.5.4 (unreleased)
+
+* Changed config setting `associated_objects_sort_param` (v0.5.3) to `association_collection_query_sort_param`.
+* Changed config setting `associated_objects_per_page` to `association_show_docs_per_page`.
+
 #### 0.5.3 (2013-05-23)
 
-* Added configuration setting `associated_object_sort_param` to specify Solr query sort clause for retrieving associated objects. Default is `nil`, meaning that no sort clause is used.
+* Added configuration setting `associated_objects_sort_param` to specify Solr query sort clause for retrieving associated objects. Default is `nil`, meaning that no sort clause is used.
 
 #### 0.5.2 (2013-05-22)
 
