@@ -182,7 +182,7 @@ end
 
 #### Associations
 
-Due to issues with Rails partials and relative paths, in order to use Blacklight's default document index view behavior
+Due to the way Rails resolves relative paths to partials, in order to use Blacklight's default document index view behavior
 on the associations show page and avoid missing template errors, fcrepo_admin provides a custom document partial at 
 `fcrepo_admin/catalog/document` that renders the partial at `catalog/document`, for which Blacklight provides a default.
 If you have a custom document partial at a different path that you want to use for the document list on the associations 
@@ -195,6 +195,14 @@ this content in that file:
 
 replacing the partial path as appropriate.  If anyone has a better solution or knows of a way to avoid providing the 
 document partial in fcrepo_admin admin, please submit a pull request.
+
+#### Blacklight document actions
+
+Blacklight's default show page for a document (i.e., Solr document for, in this case, an ActiveFedora object) includes a menu
+of actions, including a bookmark function.  In order to provide the most flexible interface with a focus on repository "administrative"
+functions, we have not included this content in the default fcrepo_admin views.  However, since the fcrepo_admin object show view
+includes the Solr document in its context, you could re-add this functionality by overriding the default template at
+`fcrepo_admin/objects/show.html.erb` or by overriding the catalog show partial which that views renders.
 
 #### Read-only mode
 
