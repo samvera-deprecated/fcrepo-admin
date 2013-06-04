@@ -14,7 +14,7 @@ FcrepoAdmin::Engine.routes.draw do
         member do
           get 'content'
           get 'upload' unless FcrepoAdmin.read_only
-          get 'download'
+          get 'download' => 'fcrpeo_admin/download#show'
           get 'history'
         end
       end
