@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = ["lib"]
 
+  s.add_dependency "rubydora", ">= 1.6.5"
   s.add_dependency "hydra-head", "~> 6.0"
   s.add_dependency "active-fedora", "~> 6.1"
   s.add_dependency "blacklight"

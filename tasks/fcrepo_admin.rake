@@ -1,4 +1,24 @@
+require 'rspec/core'
+require 'rspec/core/rake_task'
+APP_ROOT = "." # for jettywrapper
+require 'jettywrapper'
+ENV["RAILS_ROOT"] ||= 'spec/internal'
+
+desc "Run specs"
+RSpec::Core::RakeTask.new(:spec => 'app:db:test:prepare') do |t|
+  t.rspec_opts = "--colour"
+end
 namespace :fcrepo_admin do
+    desc "CI Build"
+    task :ci do
+		ENV['environment'] = "test"
+		Rake::Task["app:jetty:clean"].invoke
+  		jetty_params = Jettywrapper.load_config
+  		jetty_params[:startup_wait] = 60
+  		Jettywrapper.wrap(jetty_params) do
+    	    Rake::Task['app:spec'].invoke
+  		end
+	end
     namespace :solr do
         desc "Deletes everything from the Solr index"
         task :clean => :environment do

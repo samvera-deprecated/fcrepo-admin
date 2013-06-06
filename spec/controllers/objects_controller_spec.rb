@@ -1,22 +1,30 @@
 require 'spec_helper'
 
 describe FcrepoAdmin::ObjectsController do
-  let!(:object) { FactoryGirl.create(:item) }
-  after { object.delete }
+  before { @object = FactoryGirl.create(:item) }
+  after { @object.delete }
   context "#show" do
-    subject { get :show, :id => object, :use_route => 'fcrepo_admin' }
-    it { should render_template(:show) }
+    context "html format" do
+      subject { get :show, :id => @object, :use_route => 'fcrepo_admin' }
+      it { should render_template(:show) }
+    end
+    context "xml format" do
+      subject { get :show, :id => @object.pid, :format => 'xml', :use_route => 'fcrepo_admin' }
+      its(:body) { should eq(@object.object_xml) }
+    end
   end
   context "#audit_trail" do
-    subject { get :audit_trail, :id => object, :use_route => 'fcrepo_admin' }
-    it { should render_template(:audit_trail) }
-  end
-  context "#audit_trail?download=true" do
-    subject { get :audit_trail, :id => object, :download => 'true', :use_route => 'fcrepo_admin' }
-    its(:response_code) { should eq(200) }
+    context "html format" do
+      subject { get :audit_trail, :id => @object, :use_route => 'fcrepo_admin' }
+      it { should render_template(:audit_trail) }
+    end
+    context "xml format" do
+      subject { get :audit_trail, :id => @object.pid, :format => 'xml', :use_route => 'fcrepo_admin' }
+      its(:body) { should eq(@object.audit_trail.to_xml) }
+    end
   end
   context "#permissions" do
-    subject { get :permissions, :id => object, :use_route => 'fcrepo_admin' }
+    subject { get :permissions, :id => @object, :use_route => 'fcrepo_admin' }
     it { should render_template(:permissions) }
   end
 end

@@ -4,6 +4,8 @@ A Rails engine providing an administrative interface to a Fedora Commons reposit
 
 ### Status
 
+[![Build Status](https://travis-ci.org/projecthydra/fcrepo-admin.png?branch=master)](https://travis-ci.org/projecthydra/fcrepo-admin)
+
 This project should be considered *experimental*. Versions earlier than 1.0 may change API and/or UI without notice 
 or regard for backward compatibility.
 
