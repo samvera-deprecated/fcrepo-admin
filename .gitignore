@@ -1,5 +1,6 @@
 /.bundle
 Gemfile.lock
+jetty
 pkg
 spec/internal/db/*.sqlite3
 spec/internal/log/*.log
