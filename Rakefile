@@ -9,10 +9,10 @@ end
 #APP_ROOT = "."
 #require 'jettywrapper'
 
-#APP_RAKEFILE = File.expand_path("../spec/internal/Rakefile", __FILE__)
-#load 'rails/tasks/engine.rake'
+APP_RAKEFILE = File.expand_path("../spec/internal/Rakefile", __FILE__)
+load 'rails/tasks/engine.rake'
 
-#Bundler::GemHelper.install_tasks
+Bundler::GemHelper.install_tasks
 
 Dir[File.join(File.dirname(__FILE__), 'tasks/**/*.rake')].each {|f| load f }
 
