@@ -6,6 +6,7 @@ rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
 
+APP_ROOT = "."
 require 'jettywrapper'
 
 APP_RAKEFILE = File.expand_path("../spec/internal/Rakefile", __FILE__)
