@@ -1,13 +1,13 @@
-require 'rspec/core'
-require 'rspec/core/rake_task'
-APP_ROOT = "." # for jettywrapper
-require 'jettywrapper'
-ENV["RAILS_ROOT"] ||= 'spec/internal'
+#require 'rspec/core'
+#require 'rspec/core/rake_task'
+#APP_ROOT = "." # for jettywrapper
+#require 'jettywrapper'
+#ENV["RAILS_ROOT"] ||= 'spec/internal'
 
-desc "Run specs"
-RSpec::Core::RakeTask.new(:spec => 'app:db:test:prepare') do |t|
-  t.rspec_opts = "--colour"
-end
+#desc "Run specs"
+#RSpec::Core::RakeTask.new(:spec => 'app:db:test:prepare') do |t|
+#  t.rspec_opts = "--colour"
+#end
 namespace :fcrepo_admin do
     desc "CI Build"
     task :ci do
