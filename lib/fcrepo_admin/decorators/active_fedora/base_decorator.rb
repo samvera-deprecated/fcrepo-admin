@@ -29,8 +29,7 @@ ActiveFedora::Base.class_eval do
   end
 
   def object_xml
-    # XXX https://github.com/projecthydra/rubydora/pull/26
-    inner_object.repository.object_xml(:pid => pid)
+    inner_object.object_xml
   end
   
 end
