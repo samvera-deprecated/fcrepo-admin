@@ -9,6 +9,7 @@ end
 #APP_ROOT = "."
 #require 'jettywrapper'
 
+ENGINE_PATH = File.dirname(__FILE__)
 APP_RAKEFILE = File.expand_path("../spec/internal/Rakefile", __FILE__)
 load 'rails/tasks/engine.rake'
 
