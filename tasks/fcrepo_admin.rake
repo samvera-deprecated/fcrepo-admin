@@ -12,11 +12,11 @@ namespace :fcrepo_admin do
     desc "CI Build"
     task :ci do
 		ENV['environment'] = "test"
-		Rake::Task["app:jetty:clean"].invoke
+		Rake::Task["jetty:clean"].invoke
   		jetty_params = Jettywrapper.load_config
   		jetty_params[:startup_wait] = 60
   		Jettywrapper.wrap(jetty_params) do
-    	    Rake::Task['app:spec'].invoke
+    	    Rake::Task['spec'].invoke
   		end
 	end
     namespace :solr do
