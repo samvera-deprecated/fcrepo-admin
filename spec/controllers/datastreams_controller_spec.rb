@@ -17,10 +17,6 @@ describe FcrepoAdmin::DatastreamsController do
       response.should render_template(:content)
     end
   end
-  context "#download" do
-    subject { get :download, :object_id => object, :id => object.descMetadata, :use_route => 'fcrepo_admin' }
-    it { should be_successful }
-  end
   context "change methods" do
     let(:user) { FactoryGirl.create(:user) }
     before do
