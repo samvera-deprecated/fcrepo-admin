@@ -1,5 +1,3 @@
-require 'mime/types'
-
 module FcrepoAdmin
   class DatastreamsController < ApplicationController
 
@@ -24,12 +22,6 @@ module FcrepoAdmin
     end
 
     def history
-    end
-
-    def download
-      # XXX Replace with Hydra download behavior?
-      mimetypes = MIME::Types[@datastream.mimeType]
-      send_data @datastream.content, :disposition => 'attachment', :type => @datastream.mimeType, :filename => "#{@datastream.pid.sub(/:/, '_')}_#{@datastream.dsid}.#{mimetypes.first.extensions.first}"                
     end
 
     def edit
