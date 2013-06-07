@@ -1,3 +1,3 @@
 module FcrepoAdmin
-  VERSION = "0.5.5.pre"
+  VERSION = "0.5.5"
 end
