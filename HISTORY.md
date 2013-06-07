@@ -1,3 +1,8 @@
+#### 0.5.5 (2013-06-07)
+
+* Upgraded Rubydora to version 1.6.5 (for Rubydora::DigitalObject#object_xml)
+* Datastream downloads now routed through FcrpeoAdmin::DownloadController, which uses Hydra::Controller::DownloadBehavior.
+
 #### 0.5.4 (2013-05-24)
 
 * Changed config setting `associated_objects_sort_param` (v0.5.3) to `association_collection_query_sort_param`.
