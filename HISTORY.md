@@ -2,6 +2,7 @@
 
 * Upgraded Rubydora to version 1.6.5 (for Rubydora::DigitalObject#object_xml)
 * Datastream downloads now routed through FcrpeoAdmin::DownloadController, which uses Hydra::Controller::DownloadBehavior.
+* Added fcrepo_admin:ci rake task for CI build and hooked into Travis.
 
 #### 0.5.4 (2013-05-24)
 
