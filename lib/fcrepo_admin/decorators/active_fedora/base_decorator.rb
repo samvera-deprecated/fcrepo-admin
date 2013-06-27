@@ -1,5 +1,7 @@
 ActiveFedora::Base.class_eval do
 
+  delegate :object_xml, :models, :to => :inner_object
+
   def active?
     state == 'A'
   end
@@ -26,10 +28,6 @@ ActiveFedora::Base.class_eval do
       # && reflection.class_name == [Hydra configured policy class or Hydra::AdminPolicy]
       return reflection if reflection.macro == :belongs_to && reflection.options[:property] == :is_governed_by
     end
-  end
-
-  def object_xml
-    inner_object.object_xml
   end
   
 end
