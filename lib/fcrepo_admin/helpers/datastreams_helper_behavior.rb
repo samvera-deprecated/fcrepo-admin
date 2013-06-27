@@ -35,29 +35,46 @@ module FcrepoAdmin::Helpers
 
     def datastream_nav_item(item)
       case
-      when item == :dsid            then render_datastream_dsid_label
-      when item == :version         then render_datastream_version unless @datastream.current_version?
-      when item == :current_version then link_to_datastream item, !@datastream.current_version?, false
-      when item == :summary         then link_to_datastream item
-      when item == :content         then link_to_datastream item, @datastream.content_is_text?
-      when item == :download        then link_to_datastream item, @datastream.content_is_downloadable?, false
-      when item == :edit            then link_to_datastream item, @datastream.content_is_editable? && can?(:edit, @object)
-      when item == :upload          then link_to_datastream item, @datastream.content_is_uploadable? && can?(:upload, @object)
-      when item == :history         then link_to_datastream item, !@datastream.new?
-      else custom_datastream_nav_item item
+      when item == :dsid
+        render_datastream_dsid_label
+      when item == :version
+        render_datastream_version unless @datastream.current_version?
+      when item == :current_version 
+        link_to_datastream item, !@datastream.current_version?, false
+      when item == :summary 
+        link_to_datastream item
+      when item == :content
+        link_to_datastream item, @datastream.content_is_text?
+      when item == :download
+        link_to_datastream item, @datastream.content_is_downloadable?, false
+      when item == :edit
+        link_to_datastream item, @datastream.content_is_editable? && can?(:edit, @object)
+      when item == :upload
+        link_to_datastream item, @datastream.content_is_uploadable? && can?(:upload, @object)
+      when item == :history
+        link_to_datastream item, !@datastream.new?
+      else 
+        custom_datastream_nav_item item
       end
     end
 
     def link_to_datastream(view, condition=true, unless_current=true)
       return nil unless condition
       path = case
-             when view == :current_version then fcrepo_admin.object_datastream_path(@object, @datastream)
-             when view == :summary         then fcrepo_admin.object_datastream_path(@object, @datastream, datastream_params)
-             when view == :content         then fcrepo_admin.content_object_datastream_path(@object, @datastream, datastream_params)
-             when view == :download        then fcrepo_admin.download_object_datastream_path(@object, @datastream, datastream_params)
-             when view == :edit            then fcrepo_admin.edit_object_datastream_path(@object, @datastream)
-             when view == :upload          then fcrepo_admin.upload_object_datastream_path(@object, @datastream)
-             when view == :history         then fcrepo_admin.history_object_datastream_path(@object, @datastream)
+             when view == :current_version
+               fcrepo_admin.object_datastream_path(@object, @datastream)
+             when view == :summary       
+               fcrepo_admin.object_datastream_path(@object, @datastream, datastream_params)
+             when view == :content         
+               fcrepo_admin.content_object_datastream_path(@object, @datastream, datastream_params)
+             when view == :download
+               fcrepo_admin.download_object_datastream_path(@object, @datastream, datastream_params)
+             when view == :edit 
+               fcrepo_admin.edit_object_datastream_path(@object, @datastream)
+             when view == :upload
+               fcrepo_admin.upload_object_datastream_path(@object, @datastream)
+             when view == :history
+               fcrepo_admin.history_object_datastream_path(@object, @datastream)
              end
       label = t("fcrepo_admin.datastream.nav.items.#{view}")
       unless_current ? link_to_unless_current(label, path) : link_to(label, path)
@@ -78,7 +95,7 @@ module FcrepoAdmin::Helpers
     end
 
     def render_datastream_dsid_label
-      content_tag :span, @datastream.dsid, :class => "label"
+      content_tag :strong, @datastream.dsid
     end
 
     def datastream_alerts(*alerts)
