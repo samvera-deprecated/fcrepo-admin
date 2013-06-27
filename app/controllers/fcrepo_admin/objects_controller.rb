@@ -25,14 +25,25 @@ module FcrepoAdmin
       end
     end
 
+    def solr
+      render :xml => raw_solr_response
+    end
+
     def permissions
     end
 
     protected
 
     def load_solr_document
-      query = ActiveFedora::SolrService.construct_query_for_pids([@object.pid])
-      @document = SolrDocument.new(ActiveFedora::SolrService.query(query).first, nil)
+      @document = SolrDocument.new(ActiveFedora::SolrService.query(solr_document_query).first, nil)
+    end
+
+    def raw_solr_response
+      ActiveFedora::SolrService.query(solr_document_query, raw: true, wt: 'xml')
+    end
+
+    def solr_document_query
+      ActiveFedora::SolrService.construct_query_for_pids([@object.pid])
     end
 
   end
