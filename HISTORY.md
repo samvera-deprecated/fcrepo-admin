@@ -1,3 +1,11 @@
+### 0.6.0 (2013-06-27)
+
+* Feature: Display Solr index record for object.
+* Removed Blacklight document show partial from object summary view
+* Added models to object properties partial.
+* Custom permissions are now set from configuration, not using aliases.
+* Minor changes to default labels.
+
 #### 0.5.5 (2013-06-07)
 
 * Upgraded Rubydora to version 1.6.5 (for Rubydora::DigitalObject#object_xml)
