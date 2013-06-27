@@ -7,6 +7,7 @@ FcrepoAdmin::Engine.routes.draw do
     resources :objects, :only => :show do
       member do
         get 'audit_trail'
+        get 'solr'
         get 'permissions'
       end
       resources :associations, :only => [:index, :show]
