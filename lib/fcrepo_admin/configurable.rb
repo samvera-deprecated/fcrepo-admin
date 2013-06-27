@@ -8,6 +8,16 @@ module FcrepoAdmin::Configurable
     mattr_accessor :read_only
     self.read_only = false
 
+    mattr_accessor :object_permissions
+    self.object_permissions = {
+      :audit_trail => :read, 
+      :content => :read,
+      :history => :read,
+      :permissions => :read, 
+      :solr => :read,
+      :upload => :edit
+    }
+
     # MIME types representing text content that do not have "text" media type.
     mattr_accessor :extra_text_mime_types
     self.extra_text_mime_types = ['application/xml', 'application/rdf+xml', 'application/json']
@@ -37,7 +47,7 @@ module FcrepoAdmin::Configurable
 
     # Object context navigation items
     mattr_accessor :object_nav_items
-    self.object_nav_items = [:pid, :summary, :datastreams, :permissions, :associations, :audit_trail, :object_xml]
+    self.object_nav_items = [:pid, :summary, :datastreams, :permissions, :associations, :audit_trail, :object_xml, :solr]
 
     # Datastream profile values to display on object show view
     mattr_accessor :object_show_datastream_columns
@@ -45,7 +55,7 @@ module FcrepoAdmin::Configurable
 
     # Methods on ActiveFedora::Base objects that represent Fcrepo object properties
     mattr_accessor :object_properties
-    self.object_properties = [:label, :state, :create_date, :modified_date, :owner_id]
+    self.object_properties = [:label, :state, :create_date, :modified_date, :owner_id, :models]
     
     # Number of documents to display per page on associations show view
     mattr_accessor :association_show_docs_per_page
