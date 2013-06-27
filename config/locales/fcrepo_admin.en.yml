@@ -2,7 +2,7 @@ en:
   fcrepo_admin:
     object:
       nav:
-        header: 'Object Admin'
+        header: 'Fcrepo Object'
         items:
           summary: 'Summary'
           audit_trail: 'Audit Trail'
@@ -10,14 +10,16 @@ en:
           datastreams: 'Datastreams'
           associations: 'Associations'
           object_xml: 'Object XML'
+          solr: 'Solr Record'
       properties:
         title: 'Properties'
         keys:
           owner_id: 'Owner ID'
           state: 'State'
-          create_date: 'Create Date'
-          modified_date: 'Modified Date'
+          create_date: 'Created'
+          modified_date: 'Modified'
           label: 'Label'
+          models: 'Models'
       permissions:
         title: 'Permissions'
         no_permissions: 'No permissions.'
@@ -78,7 +80,7 @@ en:
         system_managed: 'This datastream is managed by Fedora and/or Hydra and should be modified only with great care.'
         not_persisted: 'This datastream has not been persisted to Fedora.'
       nav:
-        header: 'Datastream Admin'
+        header: 'Datastream'
         items:
           current_version: 'Current Version'
           summary: 'Profile'
