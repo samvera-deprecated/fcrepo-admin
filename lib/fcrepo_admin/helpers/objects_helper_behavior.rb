@@ -16,8 +16,8 @@ module FcrepoAdmin::Helpers
     def object_property(prop)
       case
       when prop == :state then object_state
-      when prop == :create_date then object_date(@object.create_date)
-      when prop == :modified_date then object_date(@object.modified_date)
+      when [:create_date, :modified_date].include?(prop) then object_date(@object.send(prop))
+      when prop == :models then @object.models.join("<br/>").html_safe
       else @object.send(prop)
       end
     end
@@ -61,12 +61,13 @@ module FcrepoAdmin::Helpers
       when item == :associations then link_to_object item
       when item == :audit_trail  then link_to_object item, @object.auditable? && can?(:audit_trail, @object)
       when item == :object_xml   then link_to_object item
+      when item == :solr         then link_to_object item
       else custom_object_nav_item item
       end
     end
 
     def render_object_pid_label
-      content_tag :span, @object.pid, :class => "label"
+      content_tag :strong, @object.pid
     end
 
     def link_to_object(view, condition=true)
@@ -79,6 +80,7 @@ module FcrepoAdmin::Helpers
              when view == :associations then fcrepo_admin.object_associations_path(@object)
              when view == :audit_trail  then fcrepo_admin.audit_trail_object_path(@object)
              when view == :object_xml   then fcrepo_admin.object_path(@object, :format => 'xml')
+             when view == :solr         then fcrepo_admin.solr_object_path(@object)
              end
       link_to_unless_current label, path
     end
