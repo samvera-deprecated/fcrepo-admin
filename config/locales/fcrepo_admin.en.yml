@@ -11,6 +11,7 @@ en:
           associations: 'Associations'
           object_xml: 'Object XML'
           solr: 'Solr Record'
+          catalog: 'Catalog View'
       properties:
         title: 'Properties'
         keys:
