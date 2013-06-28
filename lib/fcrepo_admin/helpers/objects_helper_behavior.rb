@@ -62,6 +62,7 @@ module FcrepoAdmin::Helpers
       when item == :audit_trail  then link_to_object item, @object.auditable? && can?(:audit_trail, @object)
       when item == :object_xml   then link_to_object item
       when item == :solr         then link_to_object item
+      when item == :catalog      then link_to_object item
       else custom_object_nav_item item
       end
     end
@@ -81,6 +82,7 @@ module FcrepoAdmin::Helpers
              when view == :audit_trail  then fcrepo_admin.audit_trail_object_path(@object)
              when view == :object_xml   then fcrepo_admin.object_path(@object, :format => 'xml')
              when view == :solr         then fcrepo_admin.solr_object_path(@object)
+             when view == :catalog      then catalog_path(@object)
              end
       link_to_unless_current label, path
     end
