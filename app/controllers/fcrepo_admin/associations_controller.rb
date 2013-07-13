@@ -36,7 +36,7 @@ module FcrepoAdmin
     end
 
     def get_collection_query_result
-      ActiveFedora::SolrService.query(construct_collection_query, collection_query_args)
+      ActiveFedora::SolrService.query(collection_query, collection_query_args)
     end
 
     def collection_query_args
@@ -51,11 +51,8 @@ module FcrepoAdmin
       args
     end
 
-    def construct_collection_query
-      # Copied from ActiveFedora::Associations::AssociationCollection#construct_query
-      clauses = {@association.options[:property] => @object.internal_uri}
-      clauses[:has_model] = @association.class_name.constantize.to_class_uri if @association.class_name && @association.class_name != 'ActiveFedora::Base'
-      ActiveFedora::SolrService.construct_query_for_rel(clauses)
+    def collection_query
+      @object.send(params[:id].to_sym).send(:construct_query)
     end
 
     def load_association
