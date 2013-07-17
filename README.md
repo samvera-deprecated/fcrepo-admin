@@ -250,15 +250,10 @@ If Kaminari is suitably patched in the future, we will likely remove `safe_pagin
 
 ### Contributing
 
-* Consider first posting to hydra-tech@googlegroups.com with a question or bug report, or submit an issue
-  to the Github issue tracker at https://github.com/projecthydra/fcrepo-admin/issues.
-* Fork the git repository, create a feature branch, make your changes, and submit a pull request.  
-  It is preferable for all changes to be made in one commit, if possible.
-
-Thanks!
+See `CONTRIBUTING.md` in the root of the project.
 
 ### License
 
-See the LICENSE file in the root directory of the project for copyright and license information.
+See the `LICENSE` file in the root directory of the project for copyright and license information.
 
 Licenses for code copied from other projects will be included in source files as required.
