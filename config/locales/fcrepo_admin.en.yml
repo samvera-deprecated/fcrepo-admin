@@ -95,6 +95,7 @@ en:
       content_not_text: 'The datastream content is not text'
       profile:
         title: 'Profile'
+        no_label: 'No label'
         keys:
           dsLabel: 'Label'
           dsMIME: 'MIME Type'

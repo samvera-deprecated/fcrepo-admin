@@ -1,30 +1,26 @@
-<table class="table table-bordered table-condensed table-striped">
+<table class="table table-bordered table-condensed table-striped <%= ds_list_css_class object %>">
   <thead>
     <tr>
 	  <th scope="col"><%= t("fcrepo_admin.datastreams.header.id") %></th>
-	  <% columns.each do |col| %>
+	  <% columns.each do |col| -%>
 	  <th scope="col"><%= t("fcrepo_admin.datastream.profile.keys.#{col}") %></th>
-	  <% end %>
+	  <% end -%>
     </tr>
   </thead>
   <tbody>
-    <% object.datastreams.each do |dsid, ds| %>
-      <tr>
-	    <td>
-		  <%= link_to dsid, fcrepo_admin.object_datastream_path(object, ds) %>
-		</td>
-	    <% unless ds.new? %>
-	      <% columns.each do |col| %>
-	        <td>
-			  <%= format_datastream_profile_value ds, col %>
-			</td>
-	      <% end %>
-        <% else %>
-	      <%= content_tag :td, :colspan => columns.size do %>
-		    <em><%= t("fcrepo_admin.datastream.not_persisted") %></em>
-		  <% end %>
-	    <% end %>
+    <% object.datastreams.each do |dsid, ds| -%>
+      <tr class="<%= ds_css_class ds %>">
+	    <td><%= link_to dsid, fcrepo_admin.object_datastream_path(object, ds) %></td>
+	    <% unless ds.new? -%>
+	      <% columns.each do |col| -%>
+	        <td class="<%= ds_profile_css_class ds, col %>"><%= format_datastream_profile_value ds, col %></td>
+	      <% end -%>
+        <% else -%>
+		  <td class="<%= ds_profile_css_class ds, 'not-persisted' %>" colspan="<%= columns.size %>">
+			<em><%= t("fcrepo_admin.datastream.not_persisted") %></em>
+		  </td>
+	    <% end -%>
       </tr>
-    <% end %>
+    <% end -%>
   </tbody>
 </table>

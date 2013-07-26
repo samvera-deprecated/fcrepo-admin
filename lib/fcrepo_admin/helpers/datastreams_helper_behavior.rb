@@ -34,24 +34,24 @@ module FcrepoAdmin::Helpers
     end
 
     def datastream_nav_item(item)
-      case
-      when item == :dsid
+      case item
+      when :dsid
         render_datastream_dsid_label
-      when item == :version
+      when :version
         render_datastream_version unless @datastream.current_version?
-      when item == :current_version 
+      when :current_version 
         link_to_datastream item, !@datastream.current_version?, false
-      when item == :summary 
+      when :summary 
         link_to_datastream item
-      when item == :content
+      when :content
         link_to_datastream item, @datastream.content_is_text?
-      when item == :download
+      when :download
         link_to_datastream item, @datastream.content_is_downloadable?, false
-      when item == :edit
+      when :edit
         link_to_datastream item, @datastream.content_is_editable? && can?(:edit, @object)
-      when item == :upload
+      when :upload
         link_to_datastream item, @datastream.content_is_uploadable? && can?(:upload, @object)
-      when item == :history
+      when :history
         link_to_datastream item, !@datastream.new?
       else 
         custom_datastream_nav_item item
@@ -60,20 +60,20 @@ module FcrepoAdmin::Helpers
 
     def link_to_datastream(view, condition=true, unless_current=true)
       return nil unless condition
-      path = case
-             when view == :current_version
+      path = case view
+             when :current_version
                fcrepo_admin.object_datastream_path(@object, @datastream)
-             when view == :summary       
+             when :summary       
                fcrepo_admin.object_datastream_path(@object, @datastream, datastream_params)
-             when view == :content         
+             when :content         
                fcrepo_admin.content_object_datastream_path(@object, @datastream, datastream_params)
-             when view == :download
+             when :download
                fcrepo_admin.download_object_datastream_path(@object, @datastream, datastream_params)
-             when view == :edit 
+             when :edit 
                fcrepo_admin.edit_object_datastream_path(@object, @datastream)
-             when view == :upload
+             when :upload
                fcrepo_admin.upload_object_datastream_path(@object, @datastream)
-             when view == :history
+             when :history
                fcrepo_admin.history_object_datastream_path(@object, @datastream)
              end
       label = t("fcrepo_admin.datastream.nav.items.#{view}")
@@ -108,16 +108,16 @@ module FcrepoAdmin::Helpers
     end
 
     def datastream_alert(alert)
-      case
-      when alert == :system_managed
+      case alert
+      when :system_managed
         if ["DC", "RELS-EXT", "rightsMetadata", "defaultRights"].include?(@datastream.dsid)
           render_datastream_alert(alert, :caution => true)
         end
-      when alert == :not_versionable        
+      when :not_versionable        
         render_datastream_alert(alert, :caution => true) unless @datastream.versionable
-      when alert == :inactive
+      when :inactive
         render_datastream_alert(alert) if @datastream.inactive?
-      when alert == :deleted
+      when :deleted
         render_datastream_alert(alert, :css_class => "alert alert-error") if @datastream.deleted?
       end
     end
@@ -128,21 +128,28 @@ module FcrepoAdmin::Helpers
 
     def format_datastream_state(ds)
       state = ds.dsState
-      formatted = case 
-                  when state == 'A' then "A (Active)"
-                  when state == 'I' then "I (Inactive)"
-                  when state == 'D' then "D (Deleted)"
+      formatted = case state
+                  when 'A'
+                    "A (Active)"
+                  when 'I'
+                    "I (Inactive)"
+                  when 'D'
+                    "D (Deleted)"
                   end
       formatted
     end
 
     def format_datastream_control_group(ds)
       control_group = ds.controlGroup
-      formatted = case
-                  when control_group == 'M' then "M (Managed)"
-                  when control_group == 'X' then "X (Inline XML)"
-                  when control_group == 'E' then "E (External Referenced)"
-                  when control_group == 'R' then "R (Redirect)"
+      formatted = case control_group
+                  when 'M'
+                    "M (Managed)"
+                  when 'X'
+                    "X (Inline XML)"
+                  when 'E'
+                    "E (External Referenced)"
+                  when 'R'
+                    "R (Redirect)"
                   end
       formatted
     end
@@ -153,16 +160,44 @@ module FcrepoAdmin::Helpers
       version_id
     end
 
+    def format_datastream_label(ds)
+      if ds.dsLabel.blank?
+        content_tag(:em, I18n.t('fcrepo_admin.datastream.profile.no_label'))
+      else
+        ds.dsLabel
+      end
+    end
+
     def format_datastream_profile_value(ds, key)
-      case
-      when key == "dsSize" then number_to_human_size(ds.dsSize)
-      when key == "dsCreateDate" then ds.dsCreateDate.localtime
-      when key == "dsLocation" && ds.content_is_url? then link_to(ds.dsLocation, ds.dsLocation)
-      when key == "dsState" then format_datastream_state(ds)
-      when key == "dsControlGroup" then format_datastream_control_group(ds)
-      when key == "dsVersionID" then format_datastream_version_id(ds)
+      case key
+      when "dsSize"
+        number_to_human_size(ds.dsSize)
+      when "dsCreateDate"
+        ds.dsCreateDate.localtime
+      when "dsLabel"
+        format_datastream_label(ds)
+      when "dsLocation" && ds.content_is_url?
+        link_to(ds.dsLocation, ds.dsLocation)
+      when "dsState"
+        format_datastream_state(ds)
+      when "dsControlGroup"
+        format_datastream_control_group(ds)
+      when "dsVersionID"
+        format_datastream_version_id(ds)
       else ds.profile[key]
       end
+    end
+
+    def ds_list_css_class(object_or_ds)
+      [object_or_ds.safe_pid, "datastreams"].join("-")
+    end
+
+    def ds_css_class(ds)
+      [ds_list_css_class(ds), ds.dsid].join("-")
+    end
+
+    def ds_profile_css_class(ds, attr)
+      [ds_css_class(ds), attr].join("-")
     end
 
   end

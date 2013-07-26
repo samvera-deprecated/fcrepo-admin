@@ -2,6 +2,10 @@ ActiveFedora::Base.class_eval do
 
   delegate :object_xml, :models, :to => :inner_object
 
+  def safe_pid
+    pid.sub(/:/, "-")
+  end
+
   def active?
     state == 'A'
   end

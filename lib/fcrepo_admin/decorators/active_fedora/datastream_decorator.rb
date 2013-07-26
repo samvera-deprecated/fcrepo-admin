@@ -1,5 +1,9 @@
 ActiveFedora::Datastream.class_eval do
 
+  def safe_pid
+    pid.sub(/:/, "-")
+  end
+
   def active?
     dsState == 'A'
   end
