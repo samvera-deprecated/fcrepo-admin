@@ -1,3 +1,12 @@
+#### 0.6.1 (2013-07-26)
+
+* Use `send(:construct_query)` on object association to get query for associated objects (Fixes #21).
+* Added `CONTRIBUTING.md` for Hydra projects.
+* Added CSS classes to datastream list table, rows, and columns.
+* Added I18n key for display when datastream label is blank.
+* Added #safe_pid methods to ActiveFedora::Base and ActiveFedora::Datastream decorators.
+* Added tests for datastreams index view.
+
 ### 0.6.0 (2013-06-27)
 
 * Feature: Display Solr index record for object.

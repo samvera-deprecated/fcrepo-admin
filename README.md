@@ -16,6 +16,10 @@ See https://github.com/projecthydra/hydra-head/wiki/Installation-Prerequisites.
 
 ### Installation
 
+**Prerequisite**
+
+An existing Hydra head. If you are starting from scratch, see https://github.com/projecthydra/hydra-head for instructions on creating a new Hydra head.
+
 **Add to Gemfile**
 
 ```
@@ -23,15 +27,6 @@ gem 'fcrepo_admin'
 ```
 
 Then `bundle install`
-
-**Run the Blacklight and Hydra generators** (if this is a new Rails app, not an existing Hydra head)
-
-```
-rails g blacklight --devise
-rails g hydra:head -f
-rake db:migrate
-rails g hydra:jetty  # if you need a development copy of jetty with solr and fedora
-```
 
 **Mount the engine**
 
